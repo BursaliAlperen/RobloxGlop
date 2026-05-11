@@ -1,0 +1,322 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RobloxGlop | Direct Script Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #00f2ff;
+            --accent: #7000ff;
+            --bg: #050505;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg);
+            color: #fff;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .btn-premium:hover:not(:disabled) {
+            transform: translateY(-2px);
+            filter: brightness(1.2);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
+        }
+
+        #adGate {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 9000;
+            overflow-y: auto;
+        }
+
+        .ad-shimmer {
+            background: linear-gradient(90deg, #0a0a0a 25%, #1a1a1a 50%, #0a0a0a 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite linear;
+        }
+
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-weight: bold;
+            z-index: 99999;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Yönetim Paneli -->
+    <div id="adminPanel" class="p-4 bg-white/5 border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex flex-wrap gap-4 items-center">
+            <input id="newScriptName" type="text" placeholder="Script Adı" class="bg-black/40 border border-white/10 px-4 py-2 rounded-lg text-sm outline-none focus:border-cyan-400">
+            <input id="newScriptDesc" type="text" placeholder="Kısa Açıklama" class="bg-black/40 border border-white/10 px-4 py-2 rounded-lg text-sm outline-none focus:border-cyan-400">
+            <input id="newScriptLink" type="text" placeholder="Pastebin veya Kod Linki" class="bg-black/40 border border-white/10 px-4 py-2 rounded-lg text-sm flex-1 outline-none focus:border-cyan-400">
+            <button onclick="addNewScript()" class="bg-cyan-500 text-black px-6 py-2 rounded-lg font-bold text-xs">LİNK OLUŞTUR</button>
+        </div>
+    </div>
+
+    <!-- Navigasyon -->
+    <nav class="p-8 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="text-3xl font-black tracking-tighter flex items-center gap-3">
+            <i class="fas fa-bolt text-cyan-400"></i>
+            <span>ROBLOX<span class="text-cyan-400 font-light">GLOP</span></span>
+        </div>
+        <div class="flex gap-6 items-center text-xs font-bold text-gray-500">
+            <span class="text-green-500 flex items-center gap-2"><i class="fas fa-circle text-[8px]"></i> SYSTEM ONLINE</span>
+        </div>
+    </nav>
+
+    <!-- Ana Başlık -->
+    <header class="py-20 px-6 text-center max-w-5xl mx-auto">
+        <h1 class="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tighter uppercase">
+            Fastest <br><span class="text-cyan-400">Access.</span>
+        </h1>
+        <p class="text-gray-500 text-lg max-w-xl mx-auto">
+            Scriptlerinize en güvenli ve en hızlı şekilde ulaşın. Key sistemi kaldırıldı, doğrudan erişim aktif.
+        </p>
+    </header>
+
+    <!-- Script Listesi -->
+    <section class="max-w-7xl mx-auto px-6 pb-40">
+        <div id="scriptList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Scriptler buraya eklenecek -->
+        </div>
+    </section>
+
+    <!-- REKLAM GEÇİŞ EKRANI -->
+    <div id="adGate">
+        <div class="sticky top-0 w-full glass z-50 p-6 flex justify-between items-center border-b border-white/10">
+            <div class="flex items-center gap-4">
+                <span class="text-[10px] font-black bg-cyan-500 text-black px-2 py-0.5 rounded">AD <span id="stepDisplay">1</span>/5</span>
+                <span id="adTitle" class="font-bold text-sm text-gray-400 uppercase tracking-widest">Kontrol Ediliyor...</span>
+            </div>
+            <div class="flex items-center gap-6">
+                <div id="scrollMsg" class="text-xs font-bold text-orange-500 animate-pulse">
+                    DEVAM ETMEK İÇİN AŞAĞI KAYDIRIN
+                </div>
+                <div id="timer" class="hidden font-black text-2xl text-cyan-400">15s</div>
+                <button id="gateBtn" disabled class="px-10 py-2.5 rounded-xl bg-gray-800 text-gray-600 font-black text-xs cursor-not-allowed">DEVAM ET</button>
+            </div>
+        </div>
+
+        <div id="gateBody" class="max-w-4xl mx-auto py-24 px-6">
+            <!-- İçerik -->
+        </div>
+    </div>
+
+    <!-- SONUÇ EKRANI (LİNK VERME) -->
+    <div id="finalResult" class="fixed inset-0 bg-black/98 z-[10000] hidden flex items-center justify-center p-6 text-center">
+        <div class="glass p-12 rounded-[40px] max-w-lg w-full border border-cyan-400/30">
+            <div class="w-20 h-20 bg-cyan-400/10 text-cyan-400 rounded-full flex items-center justify-center mx-auto mb-8 text-3xl">
+                <i class="fas fa-unlock-alt"></i>
+            </div>
+            <h2 class="text-4xl font-black mb-2 uppercase">Erişim Hazır!</h2>
+            <p class="text-gray-500 mb-10">Tüm adımları başarıyla tamamladınız. Aşağıdaki butona basarak script koduna ulaşabilirsiniz.</p>
+            <a id="finalRedirectBtn" href="#" target="_blank" class="block w-full btn-premium py-6 rounded-2xl text-black text-center no-underline text-lg">SCRIPTI AL (GET SCRIPT)</a>
+            <button onclick="location.reload()" class="mt-6 text-gray-600 text-xs font-bold uppercase tracking-widest">ANA SAYFAYA DÖN</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">İşlem Başarılı!</div>
+
+    <script>
+        // Veritabanı
+        let scriptDB = JSON.parse(localStorage.getItem('glop_db')) || [
+            { id: 'start1', name: 'Infinite Yield', desc: 'Evrensel admin komutları.', link: 'https://pastebin.com/raw/infy' }
+        ];
+
+        let currentStep = 1;
+        let timerRunning = false;
+        let activeTargetLink = "";
+
+        const articles = [
+            { t: "Neden Bir VPN Kullanmalısınız?", c: "VPN (Sanal Özel Ağ), internet bağlantınızı şifreleyerek ve IP adresinizi gizleyerek çevrimiçi gizliliğinizi korur. Özellikle halka açık Wi-Fi ağlarında verilerinizin çalınmasını engeller." },
+            { t: "Cloud Gaming'in Geleceği", c: "Artık oyun oynamak için binlerce dolarlık bilgisayarlara ihtiyacınız yok. NVIDIA GeForce Now ve Xbox Cloud Gaming gibi servisler, oyunları uzak sunucularda çalıştırıp size sadece görüntüsünü iletir." },
+            { t: "Yapay Zeka ve Yazılım", c: "Yapay zeka, kod yazma süreçlerini devrimsel bir şekilde değiştiriyor. GitHub Copilot gibi araçlar, scripterların daha hızlı ve hatasız kod yazmasına yardımcı oluyor." },
+            { t: "Siber Güvenlik İpuçları", c: "İki faktörlü doğrulama (2FA) kullanmak, hesap güvenliğinizi %99 oranında artırır. Şifrelerinizi asla tarayıcıda saklamayın, bunun yerine güvenilir şifre yöneticileri kullanın." },
+            { t: "Son Doğrulama Aşaması", c: "Tebrikler! Son aşamaya geldiniz. Bu aşamadan sonra sistem sizi doğrudan gitmek istediğiniz linke yönlendirecek. Bizi desteklediğiniz için teşekkürler." }
+        ];
+
+        window.onload = () => {
+            const params = new URLSearchParams(window.location.search);
+            const sId = params.get('script');
+            renderGrid();
+
+            if (sId) {
+                const found = scriptDB.find(s => s.id === sId);
+                if (found) {
+                    activeTargetLink = found.link;
+                    startAdFlow();
+                }
+            }
+        };
+
+        function addNewScript() {
+            const name = document.getElementById('newScriptName').value;
+            const desc = document.getElementById('newScriptDesc').value;
+            const link = document.getElementById('newScriptLink').value;
+            if (!name || !link) return showToast("Ad ve Link alanları zorunludur!");
+
+            const id = Math.random().toString(36).substring(2, 8);
+            scriptDB.push({ id, name, desc, link });
+            localStorage.setItem('glop_db', JSON.stringify(scriptDB));
+            
+            renderGrid();
+            
+            const directLink = window.location.origin + window.location.pathname + "?script=" + id;
+            navigator.clipboard.writeText(directLink);
+            showToast("Script Eklendi & Link Kopyalandı!");
+            
+            document.getElementById('newScriptName').value = "";
+            document.getElementById('newScriptDesc').value = "";
+            document.getElementById('newScriptLink').value = "";
+        }
+
+        function renderGrid() {
+            const container = document.getElementById('scriptList');
+            container.innerHTML = "";
+            scriptDB.forEach(s => {
+                container.innerHTML += `
+                    <div class="glass p-8 rounded-3xl group border-white/5 hover:border-cyan-400/30 transition-all">
+                        <h3 class="text-2xl font-black mb-2">${s.name}</h3>
+                        <p class="text-gray-500 text-sm mb-8">${s.desc || 'Açıklama belirtilmedi.'}</p>
+                        <div class="flex gap-3">
+                            <button onclick="window.location.href='?script=${s.id}'" class="flex-1 py-4 bg-white/5 hover:bg-white/10 rounded-xl font-bold text-[10px] uppercase tracking-widest transition">Scripti Al</button>
+                            <button onclick="copyLink('${s.id}')" class="px-5 rounded-xl bg-white/5 hover:text-cyan-400 transition"><i class="fas fa-link"></i></button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function startAdFlow() {
+            currentStep = 1;
+            document.getElementById('adGate').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            loadStep();
+        }
+
+        function loadStep() {
+            const data = articles[currentStep - 1];
+            const body = document.getElementById('gateBody');
+            const btn = document.getElementById('gateBtn');
+            const scrollMsg = document.getElementById('scrollMsg');
+            const timer = document.getElementById('timer');
+
+            document.getElementById('stepDisplay').innerText = currentStep;
+            document.getElementById('adTitle').innerText = data.t;
+
+            timerRunning = false;
+            btn.disabled = true;
+            btn.className = "px-10 py-2.5 rounded-xl bg-gray-800 text-gray-600 font-black text-xs cursor-not-allowed";
+            scrollMsg.style.display = 'flex';
+            timer.style.display = 'none';
+
+            body.innerHTML = `
+                <div class="mb-20">
+                    <h1 class="text-6xl font-black mb-10 leading-tight">${data.t}</h1>
+                    <div class="ad-shimmer h-48 rounded-3xl mb-12"></div>
+                    <p class="text-xl text-gray-400 leading-relaxed mb-12">${data.c}</p>
+                    <div class="ad-shimmer h-32 rounded-2xl mb-12"></div>
+                    <p class="text-xl text-gray-400 leading-relaxed">Sayfanın sonuna kadar kaydırdığınızda 15 saniyelik geri sayım başlayacaktır. Lütfen bekleyiniz.</p>
+                </div>
+            `;
+            document.getElementById('adGate').scrollTop = 0;
+        }
+
+        document.getElementById('adGate').onscroll = function() {
+            if (timerRunning) return;
+            const wrap = document.getElementById('adGate');
+            if (wrap.scrollHeight - wrap.scrollTop <= wrap.clientHeight + 100) {
+                startTimer();
+            }
+        };
+
+        function startTimer() {
+            timerRunning = true;
+            const timer = document.getElementById('timer');
+            const scrollMsg = document.getElementById('scrollMsg');
+            const btn = document.getElementById('gateBtn');
+
+            scrollMsg.style.display = 'none';
+            timer.style.display = 'block';
+            
+            let time = 15;
+            timer.innerText = time + "s";
+
+            const clock = setInterval(() => {
+                time--;
+                timer.innerText = time + "s";
+                if (time <= 0) {
+                    clearInterval(clock);
+                    btn.disabled = false;
+                    btn.className = "px-10 py-2.5 rounded-xl btn-premium text-black font-black text-xs cursor-pointer";
+                    timer.style.display = 'none';
+                }
+            }, 1000);
+        }
+
+        document.getElementById('gateBtn').onclick = () => {
+            if (currentStep < 5) {
+                currentStep++;
+                if (Math.random() > 0.4) window.open('https://google.com', '_blank'); // Rastgele reklam sekmesi
+                loadStep();
+            } else {
+                showFinal();
+            }
+        };
+
+        function showFinal() {
+            document.getElementById('adGate').style.display = 'none';
+            document.getElementById('finalRedirectBtn').href = activeTargetLink;
+            document.getElementById('finalResult').classList.remove('hidden');
+        }
+
+        function copyLink(id) {
+            const link = window.location.origin + window.location.pathname + "?script=" + id;
+            navigator.clipboard.writeText(link);
+            showToast("Link Kopyalandı!");
+        }
+
+        function showToast(m) {
+            const t = document.getElementById('toast');
+            t.innerText = m;
+            t.style.display = 'block';
+            setTimeout(() => t.style.display = 'none', 3000);
+        }
+    </script>
+</body>
+</html>
+
+```
