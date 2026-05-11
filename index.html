@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RobloxGlop | Fast & Secure Script Access</title>
 
-    <!-- Google AdSense Integration -->
+    <!-- Google AdSense Main Library -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7036109597530319" crossorigin="anonymous"></script>
 
     <!-- Tailwind CSS -->
@@ -52,9 +51,9 @@
         }
 
         .ad-container {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: #f1f5f9;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8fafc;
             border-radius: 1rem;
             min-height: 100px;
             display: flex;
@@ -62,15 +61,21 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            border: 1px dashed #e2e8f0;
+            position: relative;
         }
 
+        /* Prevent script text from leaking */
+        .ad-container script { display: none !important; }
+
         .ad-tag {
-            font-size: 10px;
+            font-size: 9px;
             text-transform: uppercase;
-            color: #94a3b8;
+            color: #cbd5e1;
             font-weight: 800;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             letter-spacing: 0.1em;
+            pointer-events: none;
         }
 
         #adGate {
@@ -106,12 +111,6 @@
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .fade-in { animation: fadeIn 0.4s ease forwards; }
-
-        /* Prevent text/code leaking */
-        .ad-container ins {
-            background: transparent !important;
-            text-decoration: none !important;
-        }
     </style>
 </head>
 <body class="antialiased">
@@ -137,36 +136,29 @@
                 </div>
                 <span class="text-2xl font-black tracking-tight">Roblox<span class="accent-blue">Glop</span></span>
             </div>
-            <div class="hidden sm:flex items-center gap-6 text-sm font-bold">
-                <div class="flex items-center gap-2 text-green-500">
-                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    SECURE ACCESS
-                </div>
-            </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <header class="pt-20 pb-12 px-6 text-center max-w-4xl mx-auto">
+    <header class="pt-16 pb-12 px-6 text-center max-w-4xl mx-auto">
         <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight mb-6 tracking-tight">
             Premium scripts, <br><span class="accent-blue">zero keys.</span>
         </h1>
-        <p class="text-gray-500 text-lg mb-10 font-medium">
-            Access the latest Roblox exploits instantly. Fast, reliable, and light.
-        </p>
-
-        <!-- Top Ad Slot -->
-        <div class="ad-container shadow-sm border border-gray-100">
+        
+        <!-- REKLAM 1 -->
+        <div class="ad-container">
             <span class="ad-tag">Advertisement</span>
-            <div class="w-full flex justify-center">
-                <ins class="adsbygoogle"
-                     style="display:block; min-width:300px; min-height:90px"
-                     data-ad-client="ca-pub-7036109597530319"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
-            </div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7036109597530319"
+                 data-ad-slot="6017950337"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
         </div>
+
+        <p class="text-gray-500 text-lg mb-10 font-medium">
+            Access the latest Roblox exploits instantly.
+        </p>
     </header>
 
     <!-- Script Grid -->
@@ -192,28 +184,36 @@
             </div>
         </div>
 
-        <div id="gateBody" class="max-w-3xl mx-auto py-20 px-6">
+        <div id="gateBody" class="max-w-3xl mx-auto py-10 px-6">
             <!-- Dynamic Content -->
         </div>
     </div>
 
     <!-- Final Step -->
-    <div id="successOverlay" class="fixed inset-0 bg-white z-[10000] hidden flex items-center justify-center p-6 text-center">
-        <div class="max-w-md w-full glass-card p-12 border-2 border-blue-50">
-            <div class="w-24 h-24 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-8 text-4xl">
+    <div id="successOverlay" class="fixed inset-0 bg-white z-[10000] hidden flex flex-col items-center justify-start p-6 text-center overflow-y-auto">
+        <div class="max-w-md w-full glass-card p-10 border-2 border-blue-50 mt-10">
+            <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
                 <i class="fas fa-check"></i>
             </div>
             <h2 class="text-3xl font-black mb-4">Access Granted!</h2>
-            <p class="text-gray-500 mb-10 font-medium">Your script is ready. Click below to download.</p>
-            <a id="finalAccessLink" href="#" target="_blank" class="block w-full btn-primary py-5 text-lg no-underline shadow-xl">GET SCRIPT</a>
-            <button onclick="location.reload()" class="mt-8 text-gray-400 text-xs font-bold uppercase tracking-widest hover:text-gray-900">Home</button>
+            <a id="finalAccessLink" href="#" target="_blank" class="block w-full btn-primary py-4 text-lg no-underline shadow-xl mb-4">GET SCRIPT</a>
+            <button onclick="location.reload()" class="text-gray-400 text-xs font-bold uppercase tracking-widest hover:text-gray-900">Home</button>
+        </div>
+
+        <!-- REKLAM 4 -->
+        <div class="ad-container w-full max-w-3xl mt-8">
+            <span class="ad-tag">Recommended Content</span>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-format="autorelaxed"
+                 data-ad-client="ca-pub-7036109597530319"
+                 data-ad-slot="8023120978"></ins>
         </div>
     </div>
 
     <div id="toast" class="toast">Action completed!</div>
 
     <script>
-        // DB
         let scripts = JSON.parse(localStorage.getItem('glop_v3_data')) || [
             { id: 'def1', name: 'Infinite Yield', desc: 'Universal Admin Commands.', url: 'https://pastebin.com/raw/infyield' }
         ];
@@ -223,68 +223,57 @@
         let targetUrl = "";
 
         const adArticles = [
-            { t: "The Future of Cybersecurity", c: "Protecting your digital footprint is paramount. Learn how end-to-end encryption is shaping the way we browse the internet securely." },
-            { t: "Cloud Infrastructure Scaling", c: "Serverless computing allows developers to deploy scripts that scale instantly. This reduces latency for users globally." },
-            { t: "AI Integration in Scripting", c: "Artificial intelligence is being used to automate repetitive tasks and optimize code execution in real-time environments." },
-            { t: "Optimizing Roblox Luau", c: "Luau offers performance enhancements that are critical for complex tasks. Proper memory management can prevent crashes." },
-            { t: "Final Security Clearance", c: "Your session has been verified. Click the button below to retrieve your requested script link securely." }
+            { t: "The Future of Cybersecurity", c: "Protecting your digital footprint is paramount. Learn how end-to-end encryption is shaping secure browsing." },
+            { t: "Cloud Infrastructure Scaling", c: "Serverless computing allows developers to deploy scripts that scale instantly across global nodes." },
+            { t: "AI Integration in Scripting", c: "Artificial intelligence is being used to automate repetitive tasks and optimize real-time code." },
+            { t: "Optimizing Roblox Luau", c: "Luau offers performance enhancements that are critical for complex tasks. Proper memory management is key." },
+            { t: "Verification Complete", c: "Your session is verified. Click below to retrieve your requested script link securely." }
         ];
+
+        // Safe Ad Refresh Function
+        function refreshAds() {
+            const ads = document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status="done"])');
+            ads.forEach(() => {
+                try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+            });
+        }
 
         function createScriptLink() {
             const name = document.getElementById('admName').value;
             const desc = document.getElementById('admDesc').value;
             const url = document.getElementById('admUrl').value;
             if(!name || !url) return triggerToast("Fill name and URL!");
-
             const id = Math.random().toString(36).substring(2, 8);
             scripts.push({ id, name, desc, url });
             localStorage.setItem('glop_v3_data', JSON.stringify(scripts));
             renderList();
-
-            const shortLink = window.location.origin + window.location.pathname + "?script=" + id;
-            navigator.clipboard.writeText(shortLink);
-            triggerToast("Link Generated & Copied!");
-
-            document.getElementById('admName').value = "";
-            document.getElementById('admDesc').value = "";
-            document.getElementById('admUrl').value = "";
+            triggerToast("Link Generated!");
         }
 
         function renderList() {
             const container = document.getElementById('scriptContainer');
             if(!container) return;
             container.innerHTML = scripts.map(s => `
-                <div class="glass-card p-8 group hover:shadow-2xl transition-all duration-300">
-                    <div class="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-gray-400 mb-6 group-hover:text-blue-600 transition">
-                        <i class="fas fa-terminal"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">${escapeHTML(s.name)}</h3>
-                    <p class="text-gray-400 text-sm mb-8 leading-relaxed">${escapeHTML(s.desc || 'No description.')}</p>
+                <div class="glass-card p-8 group transition-all duration-300">
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">${s.name}</h3>
+                    <p class="text-gray-400 text-sm mb-8">${s.desc || ''}</p>
                     <div class="flex gap-3">
                         <button onclick="handleScriptClick('${s.id}')" class="flex-1 btn-primary py-3.5 text-xs">UNLOAD SCRIPT</button>
-                        <button onclick="copyToClipboard('${s.id}')" class="px-5 rounded-xl bg-gray-50 text-gray-400 hover:text-blue-600 transition"><i class="fas fa-link"></i></button>
                     </div>
                 </div>
             `).join('');
-        }
-
-        function escapeHTML(str) {
-            const p = document.createElement('p');
-            p.textContent = str;
-            return p.innerHTML;
+            refreshAds();
         }
 
         function handleScriptClick(id) {
             const s = scripts.find(x => x.id === id);
-            if(s) startAdFlow(s.url);
-        }
-
-        function startAdFlow(url) {
-            targetUrl = url;
-            currentStep = 1;
-            document.getElementById('adGate').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            loadStep();
+            if(s) {
+                targetUrl = s.url;
+                currentStep = 1;
+                document.getElementById('adGate').style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                loadStep();
+            }
         }
 
         function loadStep() {
@@ -299,44 +288,47 @@
 
             timerRunning = false;
             btn.disabled = true;
-            btn.classList.add('opacity-30', 'cursor-not-allowed');
+            btn.classList.add('opacity-30');
             hint.style.display = 'block';
             timer.style.display = 'none';
 
+            // TEMİZ HTML: Script etiketlerini JS içinden HTML'e basmıyoruz
             body.innerHTML = `
-                <div class="space-y-12">
-                    <h2 class="text-5xl font-black text-gray-900 leading-tight">${data.t}</h2>
-                    
-                    <div class="ad-container shadow-inner border border-gray-100">
+                <div class="space-y-8 fade-in">
+                    <div class="ad-container">
                         <span class="ad-tag">Advertisement</span>
-                        <div class="w-full flex justify-center">
-                            <ins class="adsbygoogle"
-                                 style="display:block; width:100%; min-height:100px"
-                                 data-ad-client="ca-pub-7036109597530319"
-                                 data-ad-format="rectangle"
-                                 data-full-width-responsive="true"></ins>
-                        </div>
+                        <ins class="adsbygoogle"
+                             style="display:block; text-align:center;"
+                             data-ad-layout="in-article"
+                             data-ad-format="fluid"
+                             data-ad-client="ca-pub-7036109597530319"
+                             data-ad-slot="9219213187"></ins>
                     </div>
 
-                    <p class="text-xl text-gray-500 leading-relaxed">${data.c}</p>
+                    <h2 class="text-4xl font-black text-gray-900">${data.t}</h2>
+                    <p class="text-lg text-gray-500">${data.c}</p>
                     
                     <div class="ad-container">
-                         <span class="ad-tag">Sponsored Content</span>
-                         <div class="text-gray-300 italic text-sm">Waiting for ad to load...</div>
+                        <span class="ad-tag">Sponsored Content</span>
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-format="fluid"
+                             data-ad-layout-key="-6t+ed+2i-1n-4w"
+                             data-ad-client="ca-pub-7036109597530319"
+                             data-ad-slot="7169204305"></ins>
                     </div>
-                    <div class="h-32"></div>
+                    <div class="h-60"></div>
                 </div>
             `;
             
-            // Re-trigger AdSense inside dynamic content
-            try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+            refreshAds();
             document.getElementById('adGate').scrollTop = 0;
         }
 
         document.getElementById('adGate').onscroll = function() {
             if(timerRunning) return;
             const wrap = document.getElementById('adGate');
-            if(wrap.scrollHeight - wrap.scrollTop <= wrap.clientHeight + 150) {
+            if(wrap.scrollHeight - wrap.scrollTop <= wrap.clientHeight + 100) {
                 beginStepTimer();
             }
         };
@@ -361,7 +353,7 @@
                     if(timer) timer.style.display = 'none';
                     if(btn) {
                         btn.disabled = false;
-                        btn.classList.remove('opacity-30', 'cursor-not-allowed');
+                        btn.classList.remove('opacity-30');
                     }
                 }
             }, 1000);
@@ -370,21 +362,15 @@
         document.getElementById('gateContinue').onclick = () => {
             if(currentStep < 5) {
                 currentStep++;
-                if(Math.random() > 0.4) window.open('https://google.com', '_blank');
+                if(Math.random() > 0.7) window.open('https://www.google.com', '_blank');
                 loadStep();
             } else {
                 document.getElementById('adGate').style.display = 'none';
                 document.getElementById('finalAccessLink').href = targetUrl;
                 document.getElementById('successOverlay').classList.remove('hidden');
-                document.body.style.overflow = 'auto';
+                refreshAds();
             }
         };
-
-        function copyToClipboard(id) {
-            const link = window.location.origin + window.location.pathname + "?script=" + id;
-            navigator.clipboard.writeText(link);
-            triggerToast("Direct Link Copied!");
-        }
 
         function triggerToast(m) {
             const t = document.getElementById('toast');
@@ -399,11 +385,9 @@
             renderList();
             if(scriptId) {
                 const s = scripts.find(x => x.id === scriptId);
-                if(s) startAdFlow(s.url);
+                if(s) handleScriptClick(s.id);
             }
         };
     </script>
 </body>
 </html>
-
-```
