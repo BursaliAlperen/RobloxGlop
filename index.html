@@ -181,9 +181,11 @@
         update(); setInterval(update, 1000);
     }
 
-    // ========== RENDER SCRIPTS (no key links) ==========
+    // ========== RENDER SCRIPTS (no reward leaks, no key links) ==========
     function renderScriptCard(s) {
-        const tiktokID = s.tiktok ? extractTikTokID(s.tiktok) : null, pastefyID = s.pastefy ? extractPastefyID(s.pastefy) : null, imgDirect = s.imgur ? getDirectImgurURL(s.imgur) : null;
+        const tiktokID = s.tiktok ? extractTikTokID(s.tiktok) : null;
+        const pastefyID = s.pastefy ? extractPastefyID(s.pastefy) : null;
+        const imgDirect = s.imgur ? getDirectImgurURL(s.imgur) : null;
         const slug = s.slug || slugify(s.name);
         const scriptPageUrl = `${location.origin}/${slug}/script/${s.id}`;
         return `<div class="glass-card p-4 md:p-6 flex flex-col">
@@ -191,12 +193,9 @@
             <h3 class="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors">${escHtml(s.name)}</h3>
             <p class="text-slate-400 text-sm mb-4 flex-grow">${escHtml(s.desc || '')}</p>
             ${tiktokID ? `<div class="tiktok-container"><iframe src="https://www.tiktok.com/embed/v2/${tiktokID}" allowfullscreen></iframe></div>` : ''}
-            ${pastefyID ? `<div class="pastefy-container" style="max-height:260px;"><iframe src="https://pastefy.app/${pastefyID}/embed" allowfullscreen></iframe></div>` : ''}
-            ${imgDirect ? `<div class="mb-4 rounded-xl overflow-hidden"><img src="${imgDirect}" class="w-full h-auto object-cover" style="max-height:200px" onerror="this.style.display='none'"></div>` : ''}
+            <!-- NO Pastefy embed, NO Imgur image, NO Pastefy/Imgur copy buttons (reward is hidden) -->
             <div class="flex flex-wrap gap-2 mt-auto">
                 ${s.tiktok ? `<button onclick="copyToClipboard('${escAttr(s.tiktok)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> TikTok</button>` : ''}
-                ${s.pastefy ? `<button onclick="copyToClipboard('${escAttr(s.pastefy)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> Pastefy</button>` : ''}
-                ${s.imgur ? `<button onclick="copyToClipboard('${escAttr(imgDirect)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> Imgur</button>` : ''}
                 <button onclick="copyToClipboard('${escAttr(scriptPageUrl)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-link"></i> Link</button>
                 <button onclick="openEditModal('${escAttr(s.id)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-edit"></i> Edit</button>
             </div>
@@ -375,54 +374,19 @@
     // ========== PATH ROUTING ==========
     async function handleRouting() {
         const path = location.pathname;
-        // key pages: /<slug>/key<num>
         const keyMatch = path.match(/^\/([a-z0-9-]+)\/key(\d+)\/?$/);
-        if (keyMatch) {
-            openKeySystem(keyMatch[1], parseInt(keyMatch[2]));
-            return;
-        }
-        // script pages: /<slug>/script/<id>
+        if (keyMatch) { openKeySystem(keyMatch[1], parseInt(keyMatch[2])); return; }
         const scriptMatch = path.match(/^\/([a-z0-9-]+)\/script\/([a-zA-Z0-9]+)\/?$/);
         if (scriptMatch) {
-            try {
-                const doc = await scriptsColl.doc(scriptMatch[2]).get();
-                if (doc.exists) {
-                    const s = doc.data();
-                    if (s.pastefy) startFlow(scriptMatch[2], s.pastefy, scriptMatch[1]);
-                    else showToast('No Pastefy link');
-                } else showToast('Script not found');
-            } catch (e) { showToast('Error loading script'); }
+            try { const doc = await scriptsColl.doc(scriptMatch[2]).get(); if (doc.exists) { const s = doc.data(); if (s.pastefy) startFlow(scriptMatch[2], s.pastefy, scriptMatch[1]); else showToast('No Pastefy link'); } else showToast('Script not found'); } catch (e) { showToast('Error'); }
             return;
         }
-        // archive page
-        if (path === '/aizen/scripts/' || path === '/aizen/scripts') {
-            window.openArchive();
-            return;
-        }
-        // default home
+        if (path === '/aizen/scripts/' || path === '/aizen/scripts') { window.openArchive(); return; }
         window.goHome();
     }
-
-    window.addEventListener('load', async () => {
-        await loadScripts();
-        handleRouting();
-        startCountdown();
-        pushAllAds();
-    });
-    window.addEventListener('popstate', () => {
-        if (adGate && !adGate.classList.contains('hidden')) {
-            adGate.classList.add('hidden');
-            document.body.style.overflow = '';
-            clearTimer();
-        }
-        handleRouting();
-    });
-    window.addEventListener('click', e => {
-        if (e.target === finalModal) {
-            finalModal.classList.add('hidden');
-            location.reload();
-        }
-    });
+    window.addEventListener('load', async () => { await loadScripts(); handleRouting(); startCountdown(); pushAllAds(); });
+    window.addEventListener('popstate', () => { if (adGate && !adGate.classList.contains('hidden')) { adGate.classList.add('hidden'); document.body.style.overflow = ''; clearTimer(); } handleRouting(); });
+    window.addEventListener('click', e => { if (e.target === finalModal) { finalModal.classList.add('hidden'); location.reload(); } });
 })();
 </script>
 </body>
