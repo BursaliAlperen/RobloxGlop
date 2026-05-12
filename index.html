@@ -11,6 +11,12 @@
     <!-- RichAds Inpage -->
     <script src="https://richinfo.co/richpartners/in-page/js/richads-ob.js?pubid=988708&siteid=396627" async></script>
 
+    <!-- Adsterra Popunder -->
+    <script src="https://pl29428061.profitablecpmratenetwork.com/49/e3/b8/49e3b8ee46ff62b0baf2e2d1815f51ca.js"></script>
+
+    <!-- Adsterra Smartlink -->
+    <script src="https://www.profitablecpmratenetwork.com/zbnwjiuy0?key=e6edc75eb8d9b0dd37a361d6702ace82"></script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -18,19 +24,8 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        primary: {
-                            50: '#faf5ff',
-                            100: '#f3e8ff',
-                            200: '#e9d5ff',
-                            300: '#d8b4fe',
-                            400: '#c084fc',
-                            500: '#a855f7',
-                            600: '#9333ea',
-                            700: '#7e22ce',
-                            800: '#6b21a8',
-                            900: '#581c87',
-                        }
+                    fontFamily: {
+                        'manrope': ['Manrope', 'sans-serif'],
                     }
                 }
             }
@@ -50,23 +45,33 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --glass-bg: rgba(17, 24, 39, 0.6);
+            --glass-bg: rgba(17, 24, 39, 0.65);
             --glass-border: rgba(255, 255, 255, 0.08);
             --glass-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7);
             --text-primary: #f1f5f9;
             --text-secondary: #94a3b8;
             --bg-deep: #0b0f19;
             --surface: #111827;
+            --ad-bg: rgba(15, 20, 32, 0.6);
+            --ad-border: rgba(255, 255, 255, 0.05);
+            --substep-bg: rgba(30, 41, 59, 0.45);
+            --input-bg: rgba(15, 23, 42, 0.8);
+            --input-border: #1e293b;
         }
 
         .light {
-            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-bg: rgba(255, 255, 255, 0.75);
             --glass-border: rgba(0, 0, 0, 0.05);
             --glass-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.1);
             --text-primary: #1e293b;
             --text-secondary: #475569;
             --bg-deep: #f8fafc;
             --surface: #ffffff;
+            --ad-bg: rgba(255, 255, 255, 0.7);
+            --ad-border: rgba(0, 0, 0, 0.08);
+            --substep-bg: rgba(241, 245, 249, 0.7);
+            --input-bg: rgba(255, 255, 255, 0.9);
+            --input-border: #cbd5e1;
         }
 
         body {
@@ -79,7 +84,6 @@
             transition: background-color 0.4s, color 0.4s;
         }
 
-        /* Arkaplan animasyonu */
         body::before {
             content: "";
             position: fixed;
@@ -98,45 +102,20 @@
             100% { transform: rotate(360deg) scale(1); }
         }
 
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"><path d="M10 10 L90 10 L90 90 L10 90 Z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/><circle cx="20" cy="20" r="1.5" fill="rgba(255,255,255,0.06)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.04)"/></svg>');
-            background-size: 200px 200px;
-            opacity: 0.5;
-            pointer-events: none;
-            z-index: -1;
-        }
-
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 2rem;
-            box-shadow: var(--glass-shadow), inset 0 1px 1px rgba(255,255,255,0.05);
+            box-shadow: var(--glass-shadow);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
+            color: var(--text-primary);
         }
 
-        .glass-card::after {
-            content: "";
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
-        }
-
-        .glass-card:hover::after { opacity: 1; }
         .glass-card:hover {
             border-color: rgba(139, 92, 246, 0.4);
-            box-shadow: 0 30px 60px -20px rgba(139, 92, 246, 0.3), inset 0 1px 1px rgba(255,255,255,0.1);
+            box-shadow: 0 30px 60px -20px rgba(139, 92, 246, 0.3);
             transform: translateY(-5px);
         }
 
@@ -149,8 +128,7 @@
             padding: 0.9rem 1.8rem;
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 24px -6px rgba(139, 92, 246, 0.5), 0 0 0 1px rgba(255,255,255,0.1) inset;
+            box-shadow: 0 8px 24px -6px rgba(139, 92, 246, 0.5);
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -173,7 +151,7 @@
         }
 
         .btn-premium:disabled {
-            opacity: 0.4; cursor: not-allowed; filter: grayscale(0.7); animation: none; box-shadow: none;
+            opacity: 0.4; cursor: not-allowed; filter: grayscale(0.7); animation: none;
         }
 
         .btn-copy {
@@ -189,14 +167,13 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            white-space: nowrap;
         }
 
         .btn-copy:hover { background: rgba(139, 92, 246, 0.25); color: white; }
 
         .ad-spot {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+            background: var(--ad-bg);
+            border: 1px solid var(--ad-border);
             border-radius: 1.5rem;
             padding: 1.5rem;
             text-align: center;
@@ -270,9 +247,9 @@
         }
 
         .input-elite {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid #1e293b;
-            color: #f1f5f9;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            color: var(--text-primary);
             padding: 0.9rem 1.2rem;
             border-radius: 14px;
             width: 100%;
@@ -312,7 +289,7 @@
             border-radius: 60px;
             font-weight: 700;
             font-size: 0.9rem;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.8), 0 0 0 1px rgba(139,92,246,0.4);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.8);
             z-index: 99999;
             display: none;
             align-items: center;
@@ -339,8 +316,10 @@
         .substep-list { display: flex; flex-direction: column; gap: 0.65rem; margin: 1.2rem 0; }
         .substep-item {
             display: flex; align-items: center; gap: 0.7rem;
-            padding: 0.7rem 1.2rem; background: rgba(30, 41, 59, 0.45);
-            backdrop-filter: blur(8px); border-radius: 14px;
+            padding: 0.7rem 1.2rem;
+            background: var(--substep-bg);
+            backdrop-filter: blur(8px);
+            border-radius: 14px;
             font-size: 0.9rem; font-weight: 600;
             border: 1px solid rgba(255, 255, 255, 0.04);
             transition: all 0.3s;
@@ -359,7 +338,9 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(12px); }
         }
+
         .icon-glow { text-shadow: 0 0 12px currentColor; }
+
         .captcha-box {
             background: rgba(15, 23, 42, 0.7);
             border: 1px solid rgba(139, 92, 246, 0.3);
@@ -378,24 +359,20 @@
         }
         .video-container iframe {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             border: none;
         }
 
-        /* Tema butonu */
         .theme-toggle {
             cursor: pointer;
-            transition: transform 0.3s;
-            width: 40px;
-            height: 40px;
+            width: 42px; height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             background: rgba(255,255,255,0.1);
+            transition: transform 0.3s, background 0.3s;
         }
         .theme-toggle:hover { transform: scale(1.1); background: rgba(255,255,255,0.2); }
     </style>
@@ -406,16 +383,15 @@
 <nav class="sticky top-0 z-[100] bg-slate-950/80 backdrop-blur-2xl border-b border-slate-800/60 px-4 md:px-8 py-4">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="flex items-center gap-3">
-            <div class="w-12 h-12 bg-gradient-to-br from-purple-600 to-fuchsia-700 rounded-2xl flex items-center justify-center text-white shadow-2xl shadow-purple-900/50">
-                <i class="fas fa-bolt text-2xl icon-glow"></i>
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-600 to-fuchsia-700 rounded-2xl flex items-center justify-center text-white shadow-2xl">
+                <i class="fas fa-bolt text-2xl"></i>
             </div>
-            <span class="text-2xl md:text-3xl font-black tracking-tight font-manrope">
+            <span class="text-2xl md:text-3xl font-black tracking-tight font-manrope text-white">
                 ROBLOX<span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-500">GLOP</span>
             </span>
         </div>
         <div class="flex items-center gap-3">
-            <!-- Tema toggle -->
-            <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light">
+            <div class="theme-toggle" onclick="toggleTheme()" title="Dark/Light Mode">
                 <i class="fas fa-moon text-white text-lg" id="themeIcon"></i>
             </div>
             <button onclick="toggleUploadModal(true)" class="btn-premium py-2.5 px-5 text-sm">
@@ -436,8 +412,8 @@
         </p>
     </div>
 
-    <!-- Görüntülü Reklam 1 -->
-    <div class="ad-spot mb-16 max-w-2xl mx-auto" style="min-height:280px;">
+    <!-- Görüntülü Reklam (AdSense) -->
+    <div class="ad-spot mb-16 max-w-2xl mx-auto relative" style="min-height:280px; width:100%;">
         <span class="ad-label"><i class="fas fa-ad"></i> SPONSORED</span>
         <ins class="adsbygoogle"
              style="display:block; width:100%; min-height:250px;"
@@ -447,16 +423,60 @@
              data-full-width-responsive="true"></ins>
     </div>
 
-    <!-- Script Kartları Grid -->
+    <!-- Script Kartları -->
     <h2 class="text-4xl font-black mb-10 text-center flex items-center justify-center gap-3">
-        <i class="fas fa-fire text-fuchsia-500 icon-glow"></i> FEATURED SCRIPTS
+        <i class="fas fa-fire text-fuchsia-500"></i> FEATURED SCRIPTS
     </h2>
-    <div id="scriptGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-        <!-- JS tarafından doldurulacak -->
+    <div id="scriptGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24"></div>
+
+    <!-- Adsterra Banner 728x90 -->
+    <div class="flex justify-center mb-10" style="min-height:90px;">
+        <script>
+            atOptions = { 'key':'e12472019e50186885ab292efec5e643','format':'iframe','height':90,'width':728,'params':{} };
+        </script>
+        <script src="https://www.highperformanceformat.com/e12472019e50186885ab292efec5e643/invoke.js"></script>
     </div>
 
-    <!-- Multiplex Reklam -->
-    <div class="ad-spot mb-24 max-w-2xl mx-auto" style="min-height:280px;">
+    <!-- Adsterra Banner 300x250 -->
+    <div class="flex justify-center mb-10" style="min-height:250px;">
+        <script>
+            atOptions = { 'key':'a2ca6e2544abe06bd1e7e854140fe5fe','format':'iframe','height':250,'width':300,'params':{} };
+        </script>
+        <script src="https://www.highperformanceformat.com/a2ca6e2544abe06bd1e7e854140fe5fe/invoke.js"></script>
+    </div>
+
+    <!-- Adsterra Native Banner -->
+    <div class="flex justify-center mb-10" style="min-height:250px;">
+        <script async="async" data-cfasync="false" src="https://pl29428066.profitablecpmratenetwork.com/0327adf12d4d2dd8b00244dfacc098ae/invoke.js"></script>
+        <div id="container-0327adf12d4d2dd8b00244dfacc098ae"></div>
+    </div>
+
+    <!-- Adsterra Banner 468x60 -->
+    <div class="flex justify-center mb-10" style="min-height:60px;">
+        <script>
+            atOptions = { 'key':'265cf9840f93624909075559deaa6785','format':'iframe','height':60,'width':468,'params':{} };
+        </script>
+        <script src="https://www.highperformanceformat.com/265cf9840f93624909075559deaa6785/invoke.js"></script>
+    </div>
+
+    <!-- Adsterra Banner 320x50 -->
+    <div class="flex justify-center mb-10" style="min-height:50px;">
+        <script>
+            atOptions = { 'key':'179008f089beb875f94bf9d4415698b8','format':'iframe','height':50,'width':320,'params':{} };
+        </script>
+        <script src="https://www.highperformanceformat.com/179008f089beb875f94bf9d4415698b8/invoke.js"></script>
+    </div>
+
+    <!-- Adsterra Banner 160x300 -->
+    <div class="flex justify-center mb-10" style="min-height:300px;">
+        <script>
+            atOptions = { 'key':'308dcd77ce35bbdacb0815e6dd2b3d91','format':'iframe','height':300,'width':160,'params':{} };
+        </script>
+        <script src="https://www.highperformanceformat.com/308dcd77ce35bbdacb0815e6dd2b3d91/invoke.js"></script>
+    </div>
+
+    <!-- Multiplex Reklam (AdSense) -->
+    <div class="ad-spot mb-24 max-w-2xl mx-auto relative" style="min-height:280px; width:100%;">
         <span class="ad-label"><i class="fas fa-star"></i> PREMIUM AD</span>
         <ins class="adsbygoogle"
              style="display:block; width:100%; min-height:250px;"
@@ -465,7 +485,7 @@
              data-ad-slot="8023120978"></ins>
     </div>
 
-    <!-- Yazı İçi Reklam -->
+    <!-- Yazı İçi Reklam (AdSense) -->
     <div class="max-w-4xl mx-auto mb-24" style="min-height:120px;">
         <ins class="adsbygoogle"
              style="display:block; text-align:center; min-height:100px;"
@@ -475,8 +495,8 @@
              data-ad-slot="9219213187"></ins>
     </div>
 
-    <!-- Feed İçi Reklam -->
-    <div class="ad-spot mb-10 max-w-2xl mx-auto" style="min-height:280px;">
+    <!-- Feed Reklam (AdSense) -->
+    <div class="ad-spot mb-10 max-w-2xl mx-auto relative" style="min-height:280px; width:100%;">
         <span class="ad-label"><i class="fas fa-stream"></i> FEED AD</span>
         <ins class="adsbygoogle"
              style="display:block; width:100%; min-height:250px;"
@@ -505,7 +525,6 @@
         </button>
     </header>
     <div class="progress-indicator"><div id="pBar" class="progress-fill"></div></div>
-
     <div class="max-w-4xl mx-auto py-12 px-4 md:px-8">
         <div id="contentArea" class="space-y-10"></div>
         <div class="h-[15vh]"></div>
@@ -516,12 +535,10 @@
 <div id="uploadModal" class="fixed inset-0 z-[300] hidden items-center justify-center p-4 modal-overlay">
     <div class="glass-card p-8 md:p-10 w-full max-w-lg border-purple-500/20 animate-fade-in relative">
         <button onclick="toggleUploadModal(false)" class="absolute top-5 right-5 text-slate-400 hover:text-white transition text-2xl"><i class="fas fa-times"></i></button>
-        <h2 class="text-3xl font-black mb-6 flex items-center gap-3">
-            <i class="fas fa-upload text-purple-400 icon-glow text-3xl"></i> UPLOAD SCRIPT
-        </h2>
+        <h2 class="text-3xl font-black mb-6 flex items-center gap-3"><i class="fas fa-upload text-purple-400 icon-glow text-3xl"></i> UPLOAD SCRIPT</h2>
         <div class="space-y-4">
-            <input id="upName" type="text" placeholder="Script Name (Başlık)" class="input-elite">
-            <input id="upDesc" type="text" placeholder="Short Description (Açıklama)" class="input-elite">
+            <input id="upName" type="text" placeholder="Script Name" class="input-elite">
+            <input id="upDesc" type="text" placeholder="Short Description" class="input-elite">
             <input id="upPastebin" type="text" placeholder="Pastebin URL (ödül)" class="input-elite">
             <input id="upYoutube" type="text" placeholder="YouTube Video URL" class="input-elite">
             <input id="upImgur" type="text" placeholder="Imgur Image URL" class="input-elite">
@@ -530,7 +547,7 @@
     </div>
 </div>
 
-<!-- Başarı Modalı (Sadece Pastebin Ödül) -->
+<!-- Final Modal -->
 <div id="finalModal" class="fixed inset-0 z-[400] hidden flex flex-col items-center justify-center p-4 bg-[#0b0f19]/90 backdrop-blur-xl">
     <div class="glass-card p-10 md:p-14 text-center max-w-md w-full border-purple-500/30 animate-fade-in">
         <div class="w-24 h-24 bg-gradient-to-br from-purple-600 to-fuchsia-600 rounded-full flex items-center justify-center mx-auto mb-8 text-4xl shadow-2xl shadow-purple-500/40 animate-bounce">
@@ -539,12 +556,8 @@
         <h2 class="text-4xl font-black mb-3 font-manrope">ACCESS GRANTED</h2>
         <p class="text-slate-400 mb-4">All AAA layers passed! Your Pastebin reward is ready.</p>
         <div class="space-y-4">
-            <a id="pastebinBtn" href="#" target="_blank" class="block w-full btn-premium py-5 text-xl">
-                <i class="fas fa-external-link-alt"></i> OPEN PASTEBIN
-            </a>
-            <button id="copyPastebinBtn" class="btn-copy w-full py-3 text-lg">
-                <i class="fas fa-copy"></i> COPY PASTEBIN LINK
-            </button>
+            <a id="pastebinBtn" href="#" target="_blank" class="block w-full btn-premium py-5 text-xl"><i class="fas fa-external-link-alt"></i> OPEN PASTEBIN</a>
+            <button id="copyPastebinBtn" class="btn-copy w-full py-3 text-lg"><i class="fas fa-copy"></i> COPY PASTEBIN LINK</button>
         </div>
         <button onclick="location.reload()" class="text-slate-400 font-bold uppercase text-xs hover:text-purple-300 transition mt-8">New Session</button>
     </div>
@@ -557,326 +570,210 @@
 <script src="https://richinfo.co/richpartners/pops/js/richads-pu-ob.js" data-pubid="988708" data-siteid="396626" async data-cfasync="false"></script>
 <script type="module" src="https://richinfo.co/richpartners/push/js/rp-cl-ob.js?pubid=988708&siteid=396625&niche=33" async data-cfasync="false"></script>
 
+<!-- Adsterra Social Bar -->
+<script src="https://pl29428073.profitablecpmratenetwork.com/61/bf/d3/61bfd3c36e30774bca7e152cd94e15aa.js"></script>
+
 <script>
-    (function() {
-        // ========== TEMA YÖNETİMİ ==========
-        const htmlEl = document.documentElement;
-        const themeIcon = document.getElementById('themeIcon');
-
-        function setTheme(isDark) {
-            if (isDark) {
-                htmlEl.classList.add('dark');
-                htmlEl.classList.remove('light');
-                if (themeIcon) themeIcon.className = 'fas fa-moon text-white text-lg';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                htmlEl.classList.remove('dark');
-                htmlEl.classList.add('light');
-                if (themeIcon) themeIcon.className = 'fas fa-sun text-yellow-400 text-lg';
-                localStorage.setItem('theme', 'light');
-            }
+(function() {
+    // Tema
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+    function setTheme(isDark) {
+        if(isDark) {
+            html.classList.add('dark'); html.classList.remove('light');
+            if(themeIcon) themeIcon.className = 'fas fa-moon text-white text-lg';
+            localStorage.setItem('theme','dark');
+        } else {
+            html.classList.remove('dark'); html.classList.add('light');
+            if(themeIcon) themeIcon.className = 'fas fa-sun text-yellow-400 text-lg';
+            localStorage.setItem('theme','light');
         }
+    }
+    window.toggleTheme = () => setTheme(!html.classList.contains('dark'));
+    setTheme((localStorage.getItem('theme')||'dark')==='dark');
 
-        window.toggleTheme = function() {
-            const isDark = htmlEl.classList.contains('dark');
-            setTheme(!isDark);
-        };
+    // Firebase
+    firebase.initializeApp({
+        apiKey: "AIzaSyBhuzEF0gg6CfiddF33hUlm9pWMJQexNWw",
+        authDomain: "robloxglop.firebaseapp.com",
+        projectId: "robloxglop",
+        storageBucket: "robloxglop.firebasestorage.app",
+        messagingSenderId: "956125985175",
+        appId: "1:956125985175:web:1fe8437a767d8107506cd2"
+    });
+    const db = firebase.firestore();
+    const scriptsColl = db.collection("scripts");
 
-        // Başlangıç teması
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        setTheme(savedTheme === 'dark');
+    // Güvenlik
+    document.oncontextmenu = () => false;
+    document.onkeydown = (e) => {
+        if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['I','J'].includes(e.key))||(e.ctrlKey&&e.key==='u')) {
+            e.preventDefault(); return false;
+        }
+    };
 
-        // ========== FIREBASE ==========
-        const firebaseConfig = {
-            apiKey: "AIzaSyBhuzEF0gg6CfiddF33hUlm9pWMJQexNWw",
-            authDomain: "robloxglop.firebaseapp.com",
-            projectId: "robloxglop",
-            storageBucket: "robloxglop.firebasestorage.app",
-            messagingSenderId: "956125985175",
-            appId: "1:956125985175:web:1fe8437a767d8107506cd2",
-            measurementId: "G-R0J1QSG6HM"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const scriptsCollection = db.collection("scripts");
-
-        // Güvenlik
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' || e.keyCode === 123 ||
-               (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.keyCode === 73)) ||
-               (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.keyCode === 74)) ||
-               (e.ctrlKey && (e.key === 'u' || e.keyCode === 85))) {
-                e.preventDefault();
-                showToast('🔒 Developer tools disabled.');
-                return false;
-            }
-        }, false);
-
-        let allScripts = [];
-        const state = {
-            step: 1,
-            pastebinUrl: "",
-            youtubeUrl: "",
-            imgurUrl: "",
-            subStep: 0,
-            subStepCompleted: [false, false, false, false, false, false],
-            timerInterval: null,
-            timerSeconds: 0,
-            captchaAnswer: null,
-            captchaSolved: false
-        };
-
-        const adGate = document.getElementById('adGate');
-        const contentArea = document.getElementById('contentArea');
-        const nextBtn = document.getElementById('nextBtn');
-        const pBar = document.getElementById('pBar');
-        const curStepSpan = document.getElementById('curStep');
-        const stepTitle = document.getElementById('stepTitle');
-        const finalModal = document.getElementById('finalModal');
-        const pastebinBtn = document.getElementById('pastebinBtn');
-        const copyPastebinBtn = document.getElementById('copyPastebinBtn');
-        const toastEl = document.getElementById('toast');
-        const toastMsg = document.getElementById('toastMsg');
-        const scriptGrid = document.getElementById('scriptGrid');
-
-        function refreshAds() {
-            requestAnimationFrame(() => {
-                try {
-                    const ads = document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status="done"])');
-                    ads.forEach(ad => {
-                        (window.adsbygoogle = window.adsbygoogle || []).push({});
-                    });
-                } catch(e) {}
+    // Reklam push
+    function pushAds() {
+        requestAnimationFrame(() => {
+            document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status="done"])').forEach(el => {
+                try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
             });
-        }
-
-        function extractYouTubeID(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-            const match = url.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : null;
-        }
-
-        function getDirectImgurURL(url) {
-            if (!url) return '';
-            if (url.includes('i.imgur.com')) return url;
-            const match = url.match(/imgur\.com\/([a-zA-Z0-9]+)$/);
-            if (match) return `https://i.imgur.com/${match[1]}.png`;
-            return url;
-        }
-
-        function getScriptPageUrl(scriptId) {
-            const base = window.location.origin + window.location.pathname;
-            return `${base}?script=${scriptId}`;
-        }
-
-        async function loadScripts() {
-            try {
-                const snapshot = await scriptsCollection.orderBy("createdAt", "desc").get();
-                allScripts = [];
-                snapshot.forEach(doc => allScripts.push({ id: doc.id, ...doc.data() }));
-                renderScripts();
-            } catch (error) {
-                showToast("⚠️ Veriler yüklenirken hata oluştu.");
-                renderScripts();
-            }
-        }
-
-        function renderScripts() {
-            if (!scriptGrid) return;
-            scriptGrid.innerHTML = allScripts.map(s => {
-                const youtubeID = s.youtube ? extractYouTubeID(s.youtube) : null;
-                const imgurDirect = s.imgur ? getDirectImgurURL(s.imgur) : null;
-                return `
-                <div class="glass-card p-4 md:p-6 transition-all duration-300 group flex flex-col">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="p-3 bg-gradient-to-br from-purple-600/20 to-fuchsia-600/20 rounded-xl text-purple-400">
-                            <i class="fas fa-file-code text-xl icon-glow"></i>
-                        </div>
-                        <span class="badge badge-success"><i class="fas fa-check-circle"></i> Verified</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors">${escapeHTML(s.name)}</h3>
-                    <p class="text-slate-400 text-sm mb-4 flex-grow">${escapeHTML(s.desc || 'No description.')}</p>
-                    ${youtubeID ? `
-                    <div class="video-container mb-4">
-                        <iframe src="https://www.youtube.com/embed/${youtubeID}" allowfullscreen></iframe>
-                    </div>` : ''}
-                    ${imgurDirect ? `
-                    <div class="mb-4 rounded-xl overflow-hidden">
-                        <img src="${imgurDirect}" alt="Script image" class="w-full h-auto object-cover" style="max-height:200px;" onerror="this.style.display='none'">
-                    </div>` : ''}
-                    <div class="flex flex-wrap gap-2 mt-auto">
-                        ${s.youtube ? `<button onclick="copyToClipboard('${escapeAttr(s.youtube)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> YT</button>` : ''}
-                        ${s.imgur ? `<button onclick="copyToClipboard('${escapeAttr(getDirectImgurURL(s.imgur))}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> IMG</button>` : ''}
-                        <button onclick="copyToClipboard('${escapeAttr(getScriptPageUrl(s.id))}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-link"></i> Link</button>
-                    </div>
-                    <button onclick="startFlow('${escapeAttr(s.id)}', '${escapeAttr(s.pastebin || '')}', '${escapeAttr(s.youtube || '')}', '${escapeAttr(s.imgur || '')}')" class="w-full btn-premium py-4 text-sm mt-4">
-                        <i class="fas fa-lock-open"></i> ACCESS
-                    </button>
-                </div>`;
-            }).join('');
-            setTimeout(refreshAds, 300);
-        }
-
-        window.copyToClipboard = function(text) {
-            navigator.clipboard.writeText(text).then(() => showToast('📋 Link copied!'));
-        };
-
-        window.toggleUploadModal = (show) => document.getElementById('uploadModal').style.display = show ? 'flex' : 'none';
-
-        window.handleUpload = async () => {
-            const name = document.getElementById('upName').value.trim();
-            const desc = document.getElementById('upDesc').value.trim();
-            const pastebin = document.getElementById('upPastebin').value.trim();
-            const youtube = document.getElementById('upYoutube').value.trim();
-            const imgur = document.getElementById('upImgur').value.trim();
-            if (!name || !pastebin) return showToast('Please fill at least name and Pastebin URL.');
-
-            try {
-                await scriptsCollection.add({
-                    name, desc, pastebin, youtube, imgur,
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                });
-                showToast('✅ Script uploaded!');
-                window.toggleUploadModal(false);
-                document.querySelectorAll('#upName, #upDesc, #upPastebin, #upYoutube, #upImgur').forEach(el => el.value = '');
-                loadScripts();
-            } catch (error) {
-                showToast("⚠️ Upload failed. Check Firestore rules.");
-            }
-        };
-
-        window.startFlow = function(scriptId, pastebinUrl, youtubeUrl, imgurUrl) {
-            state.pastebinUrl = pastebinUrl || '';
-            state.youtubeUrl = youtubeUrl || '';
-            state.imgurUrl = imgurUrl || '';
-            state.step = 1; state.subStep = 0;
-            state.subStepCompleted = [false,false,false,false,false,false];
-            state.captchaSolved = false;
-            clearTimer();
-            adGate.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            if (scriptId) {
-                window.history.pushState({ scriptId }, '', getScriptPageUrl(scriptId));
-            }
-            loadStep();
-        };
-
-        const stepTitles = ["Quantum Encryption","Behavioral Matrix","Neural Lace","Temporal Firewall","Dimensional Rift"];
-
-        function loadStep() {
-            state.subStep=0; state.subStepCompleted=[false,false,false,false,false,false]; state.captchaSolved=false; clearTimer(); nextBtn.disabled=true;
-            curStepSpan.textContent=state.step; pBar.style.width=`${(state.step/5)*100}%`; stepTitle.textContent=stepTitles[(state.step-1)%5].toUpperCase();
-            const n1=Math.floor(Math.random()*20)+1, n2=Math.floor(Math.random()*20)+1; state.captchaAnswer=n1+n2;
-            contentArea.innerHTML = `
-                <div class="animate-fade-in space-y-10">
-                    <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8">
-                        <h2 class="text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent font-manrope">${stepTitles[(state.step-1)%5]}</h2>
-                        <p class="text-slate-300 text-lg">Complete all sub-verifications. This elite security ensures maximum protection.</p>
-                    </div>
-                    <div class="substep-list" id="substepContainer">
-                        ${renderSubStepItem(1,'Wait 5 seconds','fa-clock')}
-                        ${renderSubStepItem(2,'Scroll to bottom','fa-arrow-down')}
-                        ${renderSubStepItem(3,'Wait 15 seconds','fa-hourglass-half')}
-                        ${renderSubStepItem(4,'Confirm ad view','fa-mouse-pointer')}
-                        ${renderSubStepItem(5,'Wait 5 seconds','fa-clock')}
-                        ${renderSubStepItem(6,'Solve Captcha','fa-shield-alt')}
-                    </div>
-                    <div id="actionArea" class="mt-6"></div>
-                    <div class="ad-spot active-highlight"><span class="ad-label">PREMIUM AD</span><ins class="adsbygoogle" style="display:block; width:100%; min-height:250px;" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto"></ins></div>
-                    <div class="ad-spot"><span class="ad-label">SECONDARY</span><ins class="adsbygoogle" style="display:block; width:100%; min-height:250px;" data-ad-client="ca-pub-7036109597530319" data-ad-slot="7169204305" data-ad-format="auto"></ins></div>
-                </div>`;
-            adGate.scrollTop=0;
-            setTimeout(refreshAds, 300);
-            advanceToSubStep(1);
-        }
-
-        function renderSubStepItem(i,text,icon){ return `<div id="substep-${i}" class="substep-item"><i class="fas ${icon}"></i><span>${text}</span></div>`; }
-        function updateSubStepUI(i,status){ const el=document.getElementById(`substep-${i}`); if(el){el.classList.remove('completed','active'); el.classList.add(status);} }
-
-        function advanceToSubStep(index){
-            if(index>1){ state.subStepCompleted[index-1]=true; updateSubStepUI(index-1,'completed'); }
-            state.subStep=index; updateSubStepUI(index,'active'); executeSubStep(index);
-        }
-
-        function executeSubStep(index){
-            const area=document.getElementById('actionArea'); if(!area) return;
-            switch(index){
-                case 1: area.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Wait 5 seconds</p><div id="timerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div></div>`; startTimer(5,()=>{area.innerHTML=''; advanceToSubStep(2);}); break;
-                case 2: area.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-arrow-down text-fuchsia-400 icon-glow"></i> Scroll to the very bottom</p><div class="scroll-prompt">⬇️</div></div>`;
-                    const h=()=>{ if(adGate.scrollTop+adGate.clientHeight >= adGate.scrollHeight-60){ adGate.removeEventListener('scroll',h); area.innerHTML='<p class="text-green-400 font-bold text-center text-xl">✅ Scroll detected!</p>'; setTimeout(()=>{area.innerHTML=''; advanceToSubStep(3);},800); } }; adGate.addEventListener('scroll',h,{passive:true}); break;
-                case 3: area.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="fas fa-hourglass-half text-pink-400 icon-glow"></i> Wait 15 seconds</p><div id="timerDisplay" class="text-5xl font-mono font-black text-pink-400">15s</div></div>`; startTimer(15,()=>{area.innerHTML=''; advanceToSubStep(4);}); break;
-                case 4: area.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-mouse-pointer text-indigo-400 icon-glow"></i> Confirm you viewed the ad</p><button id="confirmAdBtn" class="btn-premium py-4 px-10 text-lg">I VIEWED IT</button></div>`;
-                    document.getElementById('confirmAdBtn').addEventListener('click',()=>{ area.innerHTML='<p class="text-green-400 font-bold text-center text-xl">✅ Confirmed.</p>'; setTimeout(()=>{area.innerHTML=''; advanceToSubStep(5);},600); }); break;
-                case 5: area.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Finalizing... 5s</p><div id="timerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div></div>`; startTimer(5,()=>{area.innerHTML=''; advanceToSubStep(6);}); break;
-                case 6: area.innerHTML=`
-                    <div class="captcha-box text-center">
-                        <i class="fas fa-shield-alt text-5xl text-purple-400 icon-glow mb-4"></i>
-                        <h3 class="text-2xl font-black mb-3 font-manrope">AAA CAPTCHA</h3>
-                        <p class="text-slate-300 mb-4">Solve: <span class="font-mono text-3xl font-bold text-white">${state.captchaAnswer} = ?</span></p>
-                        <div class="flex gap-3 justify-center"><input type="number" id="captchaInput" class="input-elite w-28 text-center text-xl" placeholder="?"><button id="captchaSubmit" class="btn-premium py-2 px-6">VERIFY</button></div>
-                        <p id="captchaError" class="text-red-400 text-sm mt-3 hidden">Incorrect.</p>
-                    </div>`;
-                    document.getElementById('captchaSubmit').addEventListener('click',()=>{
-                        if(parseInt(document.getElementById('captchaInput').value)===state.captchaAnswer){
-                            state.captchaSolved=true; state.subStepCompleted[6]=true; updateSubStepUI(6,'completed');
-                            area.innerHTML='<p class="text-green-400 font-bold text-center text-2xl">✅ All verifications passed!</p>'; nextBtn.disabled=false; showToast('🎉 Step complete!');
-                        } else { document.getElementById('captchaError').classList.remove('hidden'); document.getElementById('captchaInput').value=''; }
-                    }); break;
-            }
-        }
-
-        function startTimer(s,cb){ clearTimer(); state.timerSeconds=s; const d=document.getElementById('timerDisplay'); if(d)d.textContent=`${s}s`; state.timerInterval=setInterval(()=>{ state.timerSeconds--; if(d)d.textContent=`${state.timerSeconds}s`; if(state.timerSeconds<=0){clearTimer(); if(cb)cb();} },1000); }
-        function clearTimer(){ if(state.timerInterval){clearInterval(state.timerInterval); state.timerInterval=null;} }
-
-        nextBtn.addEventListener('click',()=>{
-            if(nextBtn.disabled) return;
-            if(state.step<5){ state.step++; loadStep(); }
-            else {
-                adGate.classList.add('hidden'); document.body.style.overflow='';
-                pastebinBtn.href = state.pastebinUrl;
-                copyPastebinBtn.onclick = () => { navigator.clipboard.writeText(state.pastebinUrl); showToast('📋 Pastebin link copied!'); };
-                finalModal.classList.remove('hidden'); clearTimer();
-            }
         });
+    }
 
-        function showToast(m){ toastMsg.textContent=m; toastEl.style.display='flex'; setTimeout(()=>toastEl.style.display='none',3000); }
+    // State
+    let scripts = [];
+    const state = { step:1, pastebinUrl:"", youtubeUrl:"", imgurUrl:"", subStep:0, subStepCompleted:[false,false,false,false,false,false], timerInterval:null, timerSeconds:0, captchaAnswer:null, captchaSolved:false };
 
-        async function handleUrlParams() {
-            const params = new URLSearchParams(window.location.search);
-            const scriptId = params.get('script');
-            if (scriptId) {
-                try {
-                    const doc = await scriptsCollection.doc(scriptId).get();
-                    if (doc.exists) {
-                        const d = doc.data();
-                        if (d.pastebin) window.startFlow(scriptId, d.pastebin, d.youtube, d.imgur);
-                        else { showToast("No Pastebin link."); window.history.replaceState({}, '', window.location.pathname); }
-                    } else { showToast("Script not found."); window.history.replaceState({}, '', window.location.pathname); }
-                } catch(e) {}
-            }
+    const adGate = document.getElementById('adGate');
+    const contentArea = document.getElementById('contentArea');
+    const nextBtn = document.getElementById('nextBtn');
+    const pBar = document.getElementById('pBar');
+    const curStepSpan = document.getElementById('curStep');
+    const stepTitle = document.getElementById('stepTitle');
+    const finalModal = document.getElementById('finalModal');
+    const pastebinBtn = document.getElementById('pastebinBtn');
+    const copyPastebinBtn = document.getElementById('copyPastebinBtn');
+    const toastEl = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    const grid = document.getElementById('scriptGrid');
+
+    function showToast(m){ toastMsg.textContent=m; toastEl.style.display='flex'; setTimeout(()=>toastEl.style.display='none',3000); }
+
+    function extractYouTubeID(url) {
+        const m = url.match(/(?:youtu\.be\/|v\/|embed\/|watch\?v=)([^#&?]{11})/);
+        return m ? m[1] : null;
+    }
+    function getDirectImgurURL(url) {
+        if(!url) return '';
+        if(url.includes('i.imgur.com')) return url;
+        const m = url.match(/imgur\.com\/([a-zA-Z0-9]+)$/);
+        return m ? `https://i.imgur.com/${m[1]}.png` : url;
+    }
+    function getScriptPageUrl(id) { return `${location.origin}${location.pathname}?script=${id}`; }
+
+    async function loadScripts() {
+        const snap = await scriptsColl.orderBy("createdAt","desc").get();
+        scripts = []; snap.forEach(d => scripts.push({id:d.id,...d.data()})); renderScripts();
+    }
+
+    function renderScripts() {
+        if(!grid) return;
+        grid.innerHTML = scripts.map(s => {
+            const yt = s.youtube ? extractYouTubeID(s.youtube) : null;
+            const img = s.imgur ? getDirectImgurURL(s.imgur) : null;
+            return `<div class="glass-card p-4 md:p-6 transition-all duration-300 group flex flex-col">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="p-3 bg-gradient-to-br from-purple-600/20 to-fuchsia-600/20 rounded-xl text-purple-400"><i class="fas fa-file-code text-xl icon-glow"></i></div>
+                    <span class="badge badge-success"><i class="fas fa-check-circle"></i> Verified</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors">${escHtml(s.name)}</h3>
+                <p class="text-slate-400 text-sm mb-4 flex-grow">${escHtml(s.desc||'No description.')}</p>
+                ${yt?`<div class="video-container mb-4"><iframe src="https://www.youtube.com/embed/${yt}" allowfullscreen></iframe></div>`:''}
+                ${img?`<div class="mb-4 rounded-xl overflow-hidden"><img src="${img}" class="w-full h-auto object-cover" style="max-height:200px;" onerror="this.style.display='none'"></div>`:''}
+                <div class="flex flex-wrap gap-2 mt-auto">
+                    ${s.youtube?`<button onclick="copyToClipboard('${escAttr(s.youtube)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> YT</button>`:''}
+                    ${s.imgur?`<button onclick="copyToClipboard('${escAttr(img)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> IMG</button>`:''}
+                    <button onclick="copyToClipboard('${escAttr(getScriptPageUrl(s.id))}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-link"></i> Link</button>
+                </div>
+                <button onclick="startFlow('${escAttr(s.id)}','${escAttr(s.pastebin||'')}','${escAttr(s.youtube||'')}','${escAttr(s.imgur||'')}')" class="w-full btn-premium py-4 text-sm mt-4"><i class="fas fa-lock-open"></i> ACCESS</button>
+            </div>`;
+        }).join('');
+        setTimeout(pushAds,200);
+    }
+
+    window.copyToClipboard = (t) => navigator.clipboard.writeText(t).then(()=>showToast('📋 Copied!'));
+    window.toggleUploadModal = (s) => document.getElementById('uploadModal').style.display = s?'flex':'none';
+    window.handleUpload = async () => {
+        const n=document.getElementById('upName').value.trim(), d=document.getElementById('upDesc').value.trim(), p=document.getElementById('upPastebin').value.trim(), y=document.getElementById('upYoutube').value.trim(), i=document.getElementById('upImgur').value.trim();
+        if(!n||!p) return showToast('Name & Pastebin required.');
+        await scriptsColl.add({name:n,desc:d,pastebin:p,youtube:y,imgur:i,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+        showToast('✅ Uploaded!'); window.toggleUploadModal(false);
+        document.querySelectorAll('#upName,#upDesc,#upPastebin,#upYoutube,#upImgur').forEach(e=>e.value='');
+        loadScripts();
+    };
+
+    window.startFlow = (id, pb, yt, img) => {
+        state.pastebinUrl=pb; state.youtubeUrl=yt; state.imgurUrl=img; state.step=1; state.subStep=0; state.subStepCompleted=[false,false,false,false,false,false]; state.captchaSolved=false;
+        clearTimer(); adGate.classList.remove('hidden'); document.body.style.overflow='hidden';
+        if(id) history.pushState({scriptId:id},'',getScriptPageUrl(id));
+        loadStep();
+    };
+
+    const titles = ["Quantum Encryption","Behavioral Matrix","Neural Lace","Temporal Firewall","Dimensional Rift"];
+    function loadStep() {
+        state.subStep=0; state.subStepCompleted=[false,false,false,false,false,false]; state.captchaSolved=false; clearTimer(); nextBtn.disabled=true;
+        curStepSpan.textContent=state.step; pBar.style.width=`${(state.step/5)*100}%`; stepTitle.textContent=titles[(state.step-1)%5].toUpperCase();
+        const a=Math.floor(Math.random()*20)+1, b=Math.floor(Math.random()*20)+1; state.captchaAnswer=a+b;
+        contentArea.innerHTML = `<div class="animate-fade-in space-y-10">
+            <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8">
+                <h2 class="text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent font-manrope">${titles[(state.step-1)%5]}</h2>
+                <p class="text-slate-300 text-lg">Complete all sub-verifications.</p>
+            </div>
+            <div class="substep-list" id="substepContainer">
+                ${sub(1,'Wait 5 seconds','fa-clock')}${sub(2,'Scroll to bottom','fa-arrow-down')}${sub(3,'Wait 15 seconds','fa-hourglass-half')}${sub(4,'Confirm ad view','fa-mouse-pointer')}${sub(5,'Wait 5 seconds','fa-clock')}${sub(6,'Solve Captcha','fa-shield-alt')}
+            </div>
+            <div id="actionArea" class="mt-6"></div>
+            <div class="ad-spot active-highlight"><span class="ad-label">PREMIUM AD</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto"></ins></div>
+            <div class="ad-spot"><span class="ad-label">SECONDARY</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="7169204305" data-ad-format="auto"></ins></div>
+        </div>`;
+        adGate.scrollTop=0; setTimeout(pushAds,300); advanceToSubStep(1);
+    }
+    function sub(i,t,ic){ return `<div id="substep-${i}" class="substep-item"><i class="fas ${ic}"></i><span>${t}</span></div>`; }
+    function updateSub(i,s){ const el=document.getElementById(`substep-${i}`); if(el){el.classList.remove('completed','active'); el.classList.add(s);} }
+
+    function advanceToSubStep(i){
+        if(i>1){ state.subStepCompleted[i-1]=true; updateSub(i-1,'completed'); }
+        state.subStep=i; updateSub(i,'active'); executeSubStep(i);
+    }
+
+    function executeSubStep(i){
+        const a=document.getElementById('actionArea'); if(!a) return;
+        switch(i){
+            case 1: a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Wait 5 seconds</p><div id="timerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div></div>`; startTimer(5,()=>{a.innerHTML='';advanceToSubStep(2);});break;
+            case 2: a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-arrow-down text-fuchsia-400 icon-glow"></i> Scroll to the very bottom</p><div class="scroll-prompt">⬇️</div></div>`;
+                const h=()=>{ if(adGate.scrollTop+adGate.clientHeight>=adGate.scrollHeight-60){adGate.removeEventListener('scroll',h);a.innerHTML='<p class="text-green-400 font-bold text-center text-xl">✅ Scroll detected!</p>';setTimeout(()=>{a.innerHTML='';advanceToSubStep(3);},800);}};adGate.addEventListener('scroll',h,{passive:true});break;
+            case 3: a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="fas fa-hourglass-half text-pink-400 icon-glow"></i> Wait 15 seconds</p><div id="timerDisplay" class="text-5xl font-mono font-black text-pink-400">15s</div></div>`; startTimer(15,()=>{a.innerHTML='';advanceToSubStep(4);});break;
+            case 4: a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-mouse-pointer text-indigo-400 icon-glow"></i> Confirm you viewed the ad</p><button id="confirmAdBtn" class="btn-premium py-4 px-10 text-lg">I VIEWED IT</button></div>`;
+                document.getElementById('confirmAdBtn').addEventListener('click',()=>{a.innerHTML='<p class="text-green-400 font-bold text-center text-xl">✅ Confirmed.</p>';setTimeout(()=>{a.innerHTML='';advanceToSubStep(5);},600);});break;
+            case 5: a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Finalizing... 5s</p><div id="timerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div></div>`; startTimer(5,()=>{a.innerHTML='';advanceToSubStep(6);});break;
+            case 6: a.innerHTML=`<div class="captcha-box text-center"><i class="fas fa-shield-alt text-5xl text-purple-400 icon-glow mb-4"></i><h3 class="text-2xl font-black mb-3 font-manrope">AAA CAPTCHA</h3><p class="text-slate-300 mb-4">Solve: <span class="font-mono text-3xl font-bold text-white">${state.captchaAnswer} = ?</span></p><div class="flex gap-3 justify-center"><input type="number" id="captchaInput" class="input-elite w-28 text-center text-xl" placeholder="?"><button id="captchaSubmit" class="btn-premium py-2 px-6">VERIFY</button></div><p id="captchaError" class="text-red-400 text-sm mt-3 hidden">Incorrect.</p></div>`;
+                document.getElementById('captchaSubmit').addEventListener('click',()=>{
+                    if(parseInt(document.getElementById('captchaInput').value)===state.captchaAnswer){
+                        state.captchaSolved=true; state.subStepCompleted[6]=true; updateSub(6,'completed');
+                        a.innerHTML='<p class="text-green-400 font-bold text-center text-2xl">✅ All verifications passed!</p>';nextBtn.disabled=false;showToast('🎉 Step complete!');
+                    }else{document.getElementById('captchaError').classList.remove('hidden');document.getElementById('captchaInput').value='';}
+                });break;
         }
+    }
 
-        window.addEventListener('click', (e) => { if (e.target === finalModal) { finalModal.classList.add('hidden'); location.reload(); } });
+    function startTimer(s,cb){ clearTimer(); state.timerSeconds=s; const d=document.getElementById('timerDisplay'); if(d)d.textContent=`${s}s`; state.timerInterval=setInterval(()=>{state.timerSeconds--;if(d)d.textContent=`${state.timerSeconds}s`;if(state.timerSeconds<=0){clearTimer();if(cb)cb();}},1000); }
+    function clearTimer(){ if(state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null;} }
 
-        window.addEventListener('load', async () => {
-            await loadScripts();
-            await handleUrlParams();
-            refreshAds();
-            setTimeout(refreshAds, 1200);
-            setTimeout(refreshAds, 2500);
-        });
+    nextBtn.addEventListener('click',()=>{
+        if(nextBtn.disabled) return;
+        if(state.step<5){ state.step++; loadStep(); }
+        else {
+            adGate.classList.add('hidden'); document.body.style.overflow='';
+            pastebinBtn.href=state.pastebinUrl;
+            copyPastebinBtn.onclick=()=>{navigator.clipboard.writeText(state.pastebinUrl);showToast('📋 Pastebin copied!');};
+            finalModal.classList.remove('hidden'); clearTimer();
+        }
+    });
 
-        window.addEventListener('popstate', () => {
-            if (adGate && !adGate.classList.contains('hidden')) { adGate.classList.add('hidden'); document.body.style.overflow = ''; clearTimer(); }
-            handleUrlParams();
-        });
+    async function handleUrlParams(){
+        const id=new URLSearchParams(location.search).get('script');
+        if(id){ const d=await scriptsColl.doc(id).get(); if(d.exists){const s=d.data();if(s.pastebin)startFlow(id,s.pastebin,s.youtube,s.imgur);} }
+    }
 
-        function escapeHTML(str) { return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
-        function escapeAttr(str) { return String(str).replace(/[&<>"']/g, ''); }
-        window.showToast = showToast;
-    })();
+    window.addEventListener('click',(e)=>{if(e.target===finalModal){finalModal.classList.add('hidden');location.reload();}});
+    window.addEventListener('load',async ()=>{await loadScripts();handleUrlParams();pushAds();setTimeout(pushAds,800);setTimeout(pushAds,2000);});
+    window.addEventListener('popstate',()=>{if(adGate&&!adGate.classList.contains('hidden')){adGate.classList.add('hidden');document.body.style.overflow='';clearTimer();}handleUrlParams();});
+
+    function escHtml(s){ return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
+    function escAttr(s){ return String(s).replace(/[&<>"']/g,''); }
+    window.showToast = showToast;
+})();
 </script>
 </body>
 </html>
