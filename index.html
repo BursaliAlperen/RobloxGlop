@@ -308,7 +308,6 @@
         infoEl.textContent = `Key #${keyNum} of 50`;
         history.pushState({ slug, keyNum }, '', `/${slug}/key${keyNum}`);
 
-        // Local storage check
         const usedLocal = getUsedKeys();
         const keyIndex = keyNum - 1;
         if (keyIndex < 0 || keyIndex >= STATIC_KEYS.length) {
@@ -318,7 +317,6 @@
         }
         const assignedKey = STATIC_KEYS[keyIndex];
 
-        // Firestore check
         const keyDocId = `${slug}_key${keyNum}`;
         const keyDoc = await keysColl.doc(keyDocId).get();
         const isUsedInFirestore = keyDoc.exists && keyDoc.data().used === true;
@@ -330,7 +328,6 @@
             return;
         }
 
-        // Key is available
         statusArea.innerHTML = `<div class="text-5xl mb-6">🔑</div><h3 class="text-2xl font-bold text-green-400">KEY AVAILABLE</h3>
             <div class="bg-black border border-purple-500 rounded-xl p-4 font-mono text-2xl font-bold text-white mt-4">${assignedKey}</div>`;
         actionsArea.innerHTML = `
@@ -339,15 +336,11 @@
     }
 
     window.claimKey = async (keyDocId, key, keyNum) => {
-        // Mark as used in Firestore
         try {
             await keysColl.doc(keyDocId).set({ used: true, key: key, claimedAt: firebase.firestore.FieldValue.serverTimestamp() });
         } catch(e) { showToast('⚠️ Failed to claim key.'); return; }
-        // Mark locally
         addUsedKey(key);
-        // Copy to clipboard
         navigator.clipboard.writeText(key).then(() => showToast('🔑 Key copied & claimed!'));
-        // Refresh UI
         const slug = location.pathname.match(/^\/([a-z0-9-]+)\/key/)?.[1] || 'aizen';
         openKeySystem(slug, keyNum);
     };
