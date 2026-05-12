@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>RobloxGlop | AAA Ultra Secure Access</title>
 
-    <!-- Google AdSense Ana Script -->
+    <!-- Google AdSense Ana Script (sadece bir kez) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7036109597530319" crossorigin="anonymous"></script>
-
-    <!-- AMP Otomatik Reklamlar -->
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -351,9 +348,6 @@
 </head>
 <body class="antialiased" oncontextmenu="return false">
 
-<!-- AMP Otomatik Reklamlar -->
-<amp-auto-ads type="adsense" data-ad-client="ca-pub-7036109597530319"></amp-auto-ads>
-
 <!-- Navigasyon -->
 <nav class="sticky top-0 z-[100] bg-slate-950/80 backdrop-blur-2xl border-b border-slate-800/60 px-4 md:px-8 py-4">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -501,7 +495,7 @@
 
 <script>
     (function() {
-        // ========== FIREBASE CONFIG (KENDİ BİLGİLERİN) ==========
+        // ========== FIREBASE CONFIG ==========
         const firebaseConfig = {
             apiKey: "AIzaSyBhuzEF0gg6CfiddF33hUlm9pWMJQexNWw",
             authDomain: "robloxglop.firebaseapp.com",
@@ -556,11 +550,18 @@
         const toastMsg = document.getElementById('toastMsg');
         const scriptGrid = document.getElementById('scriptGrid');
 
+        // Yenilenen reklam push fonksiyonu
         function refreshAds() {
             try {
-                document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status="done"])')
-                    .forEach(el => (window.adsbygoogle = window.adsbygoogle || []).push({}));
-            } catch(e) {}
+                const adElements = document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status="done"])');
+                if (adElements.length > 0) {
+                    adElements.forEach(el => {
+                        (window.adsbygoogle = window.adsbygoogle || []).push({});
+                    });
+                }
+            } catch(e) {
+                console.warn("AdSense push error:", e);
+            }
         }
 
         function extractYouTubeID(url) {
@@ -630,7 +631,8 @@
                     </button>
                 </div>`;
             }).join('');
-            refreshAds();
+            // Kartlar renderlandıktan sonra reklamları tazele
+            setTimeout(refreshAds, 200);
         }
 
         window.copyToClipboard = function(text) {
@@ -708,7 +710,9 @@
                     <div class="ad-spot active-highlight"><span class="ad-label">PREMIUM AD</span><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto"></ins></div>
                     <div class="ad-spot"><span class="ad-label">SECONDARY</span><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7036109597530319" data-ad-slot="7169204305" data-ad-format="auto"></ins></div>
                 </div>`;
-            adGate.scrollTop=0; setTimeout(refreshAds,150); advanceToSubStep(1);
+            adGate.scrollTop=0;
+            setTimeout(refreshAds, 200);
+            advanceToSubStep(1);
         }
 
         function renderSubStepItem(i,text,icon){ return `<div id="substep-${i}" class="substep-item"><i class="fas ${icon}"></i><span>${text}</span></div>`; }
@@ -798,10 +802,14 @@
             }
         });
 
+        // Sayfa tamamen yüklendiğinde reklamları zorla
         window.addEventListener('load', async () => {
             await loadScripts();
             await handleUrlParams();
-            setTimeout(refreshAds, 500);
+            // İlk yükleme sonrası tüm reklamları tara
+            refreshAds();
+            // Bir saniye sonra tekrar dene (bazı tarayıcılar için)
+            setTimeout(refreshAds, 1500);
         });
 
         window.addEventListener('popstate', () => {
@@ -822,11 +830,6 @@
             return String(str).replace(/[&<>"']/g, '');
         }
     })();
-</script>
-
-<!-- Reklamları yükle -->
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </body>
 </html>
