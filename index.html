@@ -41,8 +41,8 @@
 <!-- ANA SAYFA -->
 <main id="mainPage" class="max-w-7xl mx-auto px-4 md:px-8 py-16">
     <div class="text-center mb-14">
-        <h1 class="text-5xl md:text-8xl font-black mb-6 font-manrope"><span class="bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500 bg-clip-text text-transparent animate-pulse">Access the Unreachable.</span></h1>
-        <p class="text-slate-400 max-w-2xl mx-auto text-xl md:text-2xl">Multi‑layer AAA security. Zero keys, pure verification velocity.</p>
+        <h1 class="text-5xl md:text-8xl font-black mb-6 font-manrope"><span class="bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500 bg-clip-text text-transparent animate-pulse"><i class="fas fa-lock-open mr-3"></i>Access the Unreachable.</span></h1>
+        <p class="text-slate-400 max-w-2xl mx-auto text-xl md:text-2xl"><i class="fas fa-shield-alt mr-2"></i>Multi‑layer AAA security. Zero keys, pure verification velocity.</p>
     </div>
     <div class="max-w-xl mx-auto mb-12"><input id="homeSearch" type="text" placeholder="🔍 Search scripts..." class="input-elite text-center" oninput="filterHomeScripts()"></div>
     <div class="ad-container max-w-2xl mx-auto"><span class="ad-label"><i class="fas fa-ad"></i> SPONSORED</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
@@ -64,12 +64,12 @@
     <div class="text-center"><a href="/" class="btn-premium" onclick="event.preventDefault();goHome()"><i class="fas fa-home"></i> BACK HOME</a></div>
 </div>
 
-<!-- KEY SYSTEM PAGE (hidden, only via /<slug>/<num>) -->
+<!-- KEY SYSTEM PAGE (hidden, only via /<slug>/<num> or /<slug>/key<num>) -->
 <div id="keyPage" class="min-h-screen flex items-center justify-center px-4">
     <div class="glass-card p-8 w-full max-w-xl text-center relative animate-fade-in">
-        <button onclick="goHome()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">&times;</button>
-        <h2 class="text-3xl font-black font-manrope bg-gradient-to-r from-purple-400 to-fuchsia-500 bg-clip-text text-transparent mb-1">AAA KEY SYSTEM</h2>
-        <p class="text-sm text-slate-400 mb-4">Complete the 2‑step verification to reveal your key.</p>
+        <button onclick="goHome()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl"><i class="fas fa-times"></i></button>
+        <h2 class="text-3xl font-black font-manrope bg-gradient-to-r from-purple-400 to-fuchsia-500 bg-clip-text text-transparent mb-1"><i class="fas fa-key mr-2"></i>AAA KEY SYSTEM</h2>
+        <p class="text-sm text-slate-400 mb-4"><i class="fas fa-lock mr-1"></i>Complete the 2‑step verification to reveal your key.</p>
         <div id="keyActionArea" class="mb-6"></div>
         <div id="keyResult" class="hidden">
             <div class="bg-black border border-purple-500 rounded-xl p-4 font-mono text-2xl font-bold text-white mb-4" id="keyDisplay"></div>
@@ -81,8 +81,8 @@
 <!-- AD GATE (5 steps) -->
 <div id="adGate" class="hidden fixed inset-0 z-[200] bg-[#0b0f19] overflow-y-auto">
     <header class="sticky top-0 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800 px-4 md:px-8 py-4 z-[210] flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center gap-3"><span class="bg-purple-600 text-white text-xs font-black px-4 py-2 rounded-xl">STEP <span id="curStep">1</span>/5</span><h3 id="stepTitle" class="font-bold text-sm text-slate-300">AAA SECURE LAYER</h3></div>
-        <button id="nextBtn" disabled class="btn-premium px-8 py-3 text-sm">CONTINUE <i class="fas fa-arrow-right"></i></button>
+        <div class="flex items-center gap-3"><span class="bg-purple-600 text-white text-xs font-black px-4 py-2 rounded-xl"><i class="fas fa-shield-alt mr-1"></i>STEP <span id="curStep">1</span>/5</span><h3 id="stepTitle" class="font-bold text-sm text-slate-300"><i class="fas fa-lock mr-1"></i>AAA SECURE LAYER</h3></div>
+        <button id="nextBtn" disabled class="btn-premium px-8 py-3 text-sm"><i class="fas fa-arrow-right"></i> CONTINUE</button>
     </header>
     <div class="progress-indicator"><div id="pBar" class="progress-fill"></div></div>
     <div class="max-w-4xl mx-auto py-12 px-4 md:px-8"><div id="contentArea" class="space-y-10"></div><div class="h-[15vh]"></div></div>
@@ -91,10 +91,10 @@
 <!-- UPLOAD MODAL -->
 <div id="uploadModal" class="fixed inset-0 z-[300] hidden items-center justify-center p-4 modal-overlay">
     <div class="glass-card p-8 md:p-10 w-full max-w-lg border-purple-500/20 animate-fade-in relative">
-        <button onclick="toggleUploadModal(false)" class="absolute top-3 right-3 text-slate-400 hover:text-white text-2xl">&times;</button>
+        <button onclick="toggleUploadModal(false)" class="absolute top-3 right-3 text-slate-400 hover:text-white text-2xl"><i class="fas fa-times"></i></button>
         <h2 class="text-3xl font-black mb-6"><i class="fas fa-upload text-purple-400"></i> UPLOAD</h2>
         <input id="upName" placeholder="Script Name" class="input-elite mb-3"><input id="upDesc" placeholder="Description" class="input-elite mb-3"><input id="upPastefy" placeholder="Pastefy.app URL (reward)" class="input-elite mb-3"><input id="upTikTok" placeholder="TikTok Video URL" class="input-elite mb-3"><input id="upImgur" placeholder="Imgur URL" class="input-elite mb-3">
-        <button onclick="handleUpload()" class="btn-premium w-full">SUBMIT</button>
+        <button onclick="handleUpload()" class="btn-premium w-full"><i class="fas fa-check"></i> SUBMIT</button>
     </div>
 </div>
 
@@ -102,9 +102,9 @@
 <div id="finalModal" class="fixed inset-0 z-[400] hidden flex flex-col items-center justify-center p-4 bg-[#0b0f19]/90 backdrop-blur-xl">
     <div class="glass-card p-10 text-center max-w-2xl w-full border-purple-500/30 animate-fade-in">
         <div class="w-20 h-20 bg-gradient-to-br from-purple-600 to-fuchsia-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl shadow-2xl animate-bounce"><i class="fas fa-check icon-glow"></i></div>
-        <h2 class="text-3xl font-black mb-2 font-manrope">ACCESS GRANTED</h2><p class="text-slate-400 mb-4">Your Pastefy.app reward:</p>
+        <h2 class="text-3xl font-black mb-2 font-manrope"><i class="fas fa-unlock-alt mr-2"></i>ACCESS GRANTED</h2><p class="text-slate-400 mb-4">Your Pastefy.app reward:</p>
         <div id="pastefyEmbed" class="pastefy-container mb-4"></div><a id="pastefyBtn" href="#" target="_blank" class="btn-premium w-full mb-3"><i class="fas fa-external-link-alt"></i> OPEN PASTEFY</a><button id="copyPastefyBtn" class="btn-copy w-full py-3 text-lg mb-4"><i class="fas fa-copy"></i> COPY LINK</button>
-        <button onclick="location.reload()" class="text-slate-400 text-xs uppercase hover:text-purple-300">New Session</button>
+        <button onclick="location.reload()" class="text-slate-400 text-xs uppercase hover:text-purple-300"><i class="fas fa-redo-alt mr-1"></i>New Session</button>
     </div>
 </div>
 
@@ -163,8 +163,8 @@
         const slug = s.slug || slugify(s.name);
         return `<div class="glass-card p-4 md:p-6 flex flex-col">
             <div class="flex justify-between items-start mb-4"><div class="p-3 bg-gradient-to-br from-purple-600/20 to-fuchsia-600/20 rounded-xl text-purple-400"><i class="fas fa-file-code text-xl icon-glow"></i></div><span class="badge badge-success"><i class="fas fa-check-circle"></i> Verified</span></div>
-            <h3 class="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors">${escHtml(s.name)}</h3>
-            <p class="text-slate-400 text-sm mb-4 flex-grow">${escHtml(s.desc || '')}</p>
+            <h3 class="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors"><i class="fas fa-code mr-1"></i>${escHtml(s.name)}</h3>
+            <p class="text-slate-400 text-sm mb-4 flex-grow"><i class="fas fa-info-circle mr-1"></i>${escHtml(s.desc || '')}</p>
             ${tiktokID ? `<div class="tiktok-container"><iframe src="https://www.tiktok.com/embed/v2/${tiktokID}" allowfullscreen></iframe></div>` : ''}
             <button onclick="startFlow('${escAttr(s.id)}', '${escAttr(s.pastefy || '')}', '${escAttr(slug)}')" class="btn-premium w-full py-4 text-sm mt-4"><i class="fas fa-lock-open"></i> ACCESS</button>
         </div>`;
@@ -182,13 +182,13 @@
         const grid = document.getElementById('homeScriptGrid'); if (!grid) return;
         let list = allScripts.slice(0, 6);
         if (filter) list = list.filter(s => s.name.toLowerCase().includes(filter) || (s.desc || '').toLowerCase().includes(filter));
-        grid.innerHTML = list.map(s => renderScriptCard(s)).join('') || '<p class="text-slate-400 col-span-full text-center">No results found.</p>';
+        grid.innerHTML = list.map(s => renderScriptCard(s)).join('') || '<p class="text-slate-400 col-span-full text-center"><i class="fas fa-exclamation-triangle mr-2"></i>No results found.</p>';
     }
     function renderArchiveScripts(filter = '') {
         const grid = document.getElementById('archiveScriptGrid'); if (!grid) return;
         let list = [...allScripts].sort((a, b) => (a.name || '').localeCompare(b.name || ''));
         if (filter) list = list.filter(s => s.name.toLowerCase().includes(filter) || (s.desc || '').toLowerCase().includes(filter));
-        grid.innerHTML = list.map(s => renderScriptCard(s)).join('') || '<p class="text-slate-400 col-span-full text-center">No results found.</p>';
+        grid.innerHTML = list.map(s => renderScriptCard(s)).join('') || '<p class="text-slate-400 col-span-full text-center"><i class="fas fa-exclamation-triangle mr-2"></i>No results found.</p>';
     }
     window.filterHomeScripts = () => renderHomeScripts(document.getElementById('homeSearch')?.value?.toLowerCase() || '');
     window.filterArchiveScripts = () => renderArchiveScripts(document.getElementById('archiveSearch')?.value?.toLowerCase() || '');
@@ -223,7 +223,7 @@
         state.subStep=0; state.subStepCompleted=[]; state.captchaSolved=false; clearTimer(); nextBtn.disabled=true;
         curStepSpan.textContent=state.step; pBar.style.width=`${(state.step/5)*100}%`; stepTitle.textContent=titles[(state.step-1)%5].toUpperCase();
         const a=Math.floor(Math.random()*20)+1, b=Math.floor(Math.random()*20)+1; state.captchaAnswer=a+b;
-        contentArea.innerHTML=`<div class="animate-fade-in space-y-10"><div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8"><h2 class="text-3xl font-black mb-4 bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent font-manrope">${titles[(state.step-1)%5]}</h2><p class="text-slate-300 text-lg">Complete all sub-verifications.</p></div><div class="substep-list" id="substepContainer">${sub(1,'Wait 5 seconds','fa-clock')}${sub(2,'Scroll to bottom','fa-arrow-down')}${sub(3,'Wait 15 seconds','fa-hourglass-half')}${sub(4,'Confirm ad view','fa-mouse-pointer')}${sub(5,'Wait 5 seconds','fa-clock')}${sub(6,'Solve Captcha','fa-shield-alt')}</div><div id="actionArea" class="mt-6"></div><div class="ad-container"><span class="ad-label">AD</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto"></ins></div></div>`;
+        contentArea.innerHTML=`<div class="animate-fade-in space-y-10"><div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8"><h2 class="text-3xl font-black mb-4 bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent font-manrope"><i class="fas fa-shield-alt mr-2"></i>${titles[(state.step-1)%5]}</h2><p class="text-slate-300 text-lg"><i class="fas fa-check-circle mr-1"></i>Complete all sub-verifications.</p></div><div class="substep-list" id="substepContainer">${sub(1,'Wait 5 seconds','fa-clock')}${sub(2,'Scroll to bottom','fa-arrow-down')}${sub(3,'Wait 15 seconds','fa-hourglass-half')}${sub(4,'Confirm ad view','fa-mouse-pointer')}${sub(5,'Wait 5 seconds','fa-clock')}${sub(6,'Solve Captcha','fa-shield-alt')}</div><div id="actionArea" class="mt-6"></div><div class="ad-container"><span class="ad-label"><i class="fas fa-ad"></i> AD</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto"></ins></div></div>`;
         adGate.scrollTop=0; setTimeout(pushAds,300); advanceToSubStep(1);
     }
     function sub(i,t,ic){return `<div id="substep-${i}" class="substep-item"><i class="fas ${ic}"></i><span>${t}</span></div>`}
@@ -233,19 +233,19 @@
         const a=document.getElementById('actionArea');if(!a)return;
         switch(i){
             case 1:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Wait 5 seconds</p><div id="timerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div></div>`;startTimer(5,()=>{a.innerHTML='';advanceToSubStep(2)});break;
-            case 2:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-arrow-down text-fuchsia-400 icon-glow"></i> Scroll to the very bottom</p><div class="scroll-prompt">⬇️</div></div>`;const h=()=>{if(adGate.scrollTop+adGate.clientHeight>=adGate.scrollHeight-60){adGate.removeEventListener('scroll',h);a.innerHTML='<p class="text-green-400 font-bold text-center text-xl">✅ Scroll detected!</p>';setTimeout(()=>{a.innerHTML='';advanceToSubStep(3)},800)}};adGate.addEventListener('scroll',h,{passive:true});break;
+            case 2:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-arrow-down text-fuchsia-400 icon-glow"></i> Scroll to the very bottom</p><div class="scroll-prompt">⬇️</div></div>`;const h=()=>{if(adGate.scrollTop+adGate.clientHeight>=adGate.scrollHeight-60){adGate.removeEventListener('scroll',h);a.innerHTML='<p class="text-green-400 font-bold text-center text-xl"><i class="fas fa-check-circle mr-1"></i>Scroll detected!</p>';setTimeout(()=>{a.innerHTML='';advanceToSubStep(3)},800)}};adGate.addEventListener('scroll',h,{passive:true});break;
             case 3:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="fas fa-hourglass-half text-pink-400 icon-glow"></i> Wait 15 seconds</p><div id="timerDisplay" class="text-5xl font-mono font-black text-pink-400">15s</div></div>`;startTimer(15,()=>{a.innerHTML='';advanceToSubStep(4)});break;
-            case 4:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-mouse-pointer text-indigo-400 icon-glow"></i> Confirm you viewed the ad</p><button id="confirmAdBtn" class="btn-premium py-4 px-10 text-lg">I VIEWED IT</button></div>`;document.getElementById('confirmAdBtn').addEventListener('click',()=>{a.innerHTML='<p class="text-green-400 font-bold text-center text-xl">✅ Confirmed.</p>';setTimeout(()=>{a.innerHTML='';advanceToSubStep(5)},600)});break;
+            case 4:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-mouse-pointer text-indigo-400 icon-glow"></i> Confirm you viewed the ad</p><button id="confirmAdBtn" class="btn-premium py-4 px-10 text-lg"><i class="fas fa-check mr-2"></i>I VIEWED IT</button></div>`;document.getElementById('confirmAdBtn').addEventListener('click',()=>{a.innerHTML='<p class="text-green-400 font-bold text-center text-xl"><i class="fas fa-check-circle mr-1"></i>Confirmed.</p>';setTimeout(()=>{a.innerHTML='';advanceToSubStep(5)},600)});break;
             case 5:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Finalizing... 5s</p><div id="timerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div></div>`;startTimer(5,()=>{a.innerHTML='';advanceToSubStep(6)});break;
-            case 6:a.innerHTML=`<div class="captcha-box text-center"><i class="fas fa-shield-alt text-5xl text-purple-400 icon-glow mb-4"></i><h3 class="text-2xl font-black mb-3 font-manrope">AAA CAPTCHA</h3><p class="text-slate-300 mb-4">Solve: <span class="font-mono text-3xl font-bold text-white">${state.captchaAnswer} = ?</span></p><div class="flex gap-3 justify-center"><input type="number" id="captchaInput" class="input-elite w-28 text-center text-xl" placeholder="?"><button id="captchaSubmit" class="btn-premium py-2 px-6">VERIFY</button></div><p id="captchaError" class="text-red-400 text-sm mt-3 hidden">Incorrect.</p></div>`;
-            document.getElementById('captchaSubmit').addEventListener('click',()=>{if(parseInt(document.getElementById('captchaInput').value)===state.captchaAnswer){state.captchaSolved=true;state.subStepCompleted[6]=true;updateSub(6,'completed');a.innerHTML='<p class="text-green-400 font-bold text-center text-2xl">✅ All verifications passed!</p>';nextBtn.disabled=false;showToast('🎉 Step complete!')}else{document.getElementById('captchaError').classList.remove('hidden');document.getElementById('captchaInput').value=''}});break;
+            case 6:a.innerHTML=`<div class="captcha-box text-center"><i class="fas fa-shield-alt text-5xl text-purple-400 icon-glow mb-4"></i><h3 class="text-2xl font-black mb-3 font-manrope"><i class="fas fa-lock mr-2"></i>AAA CAPTCHA</h3><p class="text-slate-300 mb-4"><i class="fas fa-question-circle mr-1"></i>Solve: <span class="font-mono text-3xl font-bold text-white">${state.captchaAnswer} = ?</span></p><div class="flex gap-3 justify-center"><input type="number" id="captchaInput" class="input-elite w-28 text-center text-xl" placeholder="?"><button id="captchaSubmit" class="btn-premium py-2 px-6"><i class="fas fa-check mr-1"></i>VERIFY</button></div><p id="captchaError" class="text-red-400 text-sm mt-3 hidden"><i class="fas fa-times-circle mr-1"></i>Incorrect.</p></div>`;
+            document.getElementById('captchaSubmit').addEventListener('click',()=>{if(parseInt(document.getElementById('captchaInput').value)===state.captchaAnswer){state.captchaSolved=true;state.subStepCompleted[6]=true;updateSub(6,'completed');a.innerHTML='<p class="text-green-400 font-bold text-center text-2xl"><i class="fas fa-check-circle mr-2"></i>All verifications passed!</p>';nextBtn.disabled=false;showToast('🎉 Step complete!')}else{document.getElementById('captchaError').classList.remove('hidden');document.getElementById('captchaInput').value=''}});break;
         }
     }
     function startTimer(s,cb){clearTimer();state.timerSeconds=s;const d=document.getElementById('timerDisplay');if(d)d.textContent=`${s}s`;state.timerInterval=setInterval(()=>{state.timerSeconds--;if(d)d.textContent=`${state.timerSeconds}s`;if(state.timerSeconds<=0){clearTimer();if(cb)cb()}},1000)}
     function clearTimer(){if(state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null}}
     nextBtn.addEventListener('click',()=>{if(nextBtn.disabled)return;if(state.step<5){state.step++;loadStep()}else{adGate.classList.add('hidden');document.body.style.overflow='';const pastefyID=extractPastefyID(state.pastefyUrl);pastefyBtn.href=state.pastefyUrl;pastefyEmbed.innerHTML=pastefyID?`<iframe src="https://pastefy.app/${pastefyID}/embed" allowfullscreen></iframe>`:'';copyPastefyBtn.onclick=()=>{navigator.clipboard.writeText(state.pastefyUrl);showToast('📋 Pastefy link copied!')};finalModal.classList.remove('hidden');clearTimer()}});
 
-    // ========== KEY SYSTEM (2-step, static, reusable, hidden, /<slug>/<num>) ==========
+    // ========== KEY SYSTEM (2-step, static, reusable, hidden, /<slug>/<num> OR /<slug>/key<num>) ==========
     let keyVerificationState = { step: 0, timerInterval: null, captchaAnswer: null };
 
     function openKeySystem(slug, keyNum) {
@@ -257,7 +257,7 @@
 
         const keyIndex = keyNum - 1;
         if (keyIndex < 0 || keyIndex >= STATIC_KEYS.length) {
-            document.getElementById('keyActionArea').innerHTML = '<p class="text-red-400">Invalid key number. Must be between 1 and 50.</p>';
+            document.getElementById('keyActionArea').innerHTML = '<p class="text-red-400"><i class="fas fa-exclamation-circle mr-1"></i>Invalid key number. Must be between 1 and 50.</p>';
             return;
         }
 
@@ -276,12 +276,12 @@
         } else if (keyVerificationState.step === 2) {
             const captchaAnswer = Math.floor(Math.random() * 20) + 1;
             keyVerificationState.captchaAnswer = captchaAnswer;
-            area.innerHTML = `<p class="text-lg font-bold mb-3">🔐 Solve Captcha</p><p class="mb-2">What is <span class="font-mono text-2xl font-bold">${captchaAnswer} = ?</span></p><input type="number" id="keyCaptchaInput" class="input-elite text-center text-lg" placeholder="Answer"><button id="keyCaptchaBtn" class="btn-premium mt-3 w-full">VERIFY</button><p id="keyCaptchaError" class="text-red-400 text-sm mt-2 hidden">Incorrect answer.</p>`;
+            area.innerHTML = `<p class="text-lg font-bold mb-3"><i class="fas fa-shield-alt text-purple-400"></i> Solve Captcha</p><p class="mb-2"><i class="fas fa-question-circle mr-1"></i>What is <span class="font-mono text-2xl font-bold">${captchaAnswer} = ?</span></p><input type="number" id="keyCaptchaInput" class="input-elite text-center text-lg" placeholder="Answer"><button id="keyCaptchaBtn" class="btn-premium mt-3 w-full"><i class="fas fa-check mr-1"></i>VERIFY</button><p id="keyCaptchaError" class="text-red-400 text-sm mt-2 hidden"><i class="fas fa-times-circle mr-1"></i>Incorrect answer.</p>`;
             document.getElementById('keyCaptchaBtn').addEventListener('click', () => {
                 if (parseInt(document.getElementById('keyCaptchaInput').value) === captchaAnswer) {
                     document.getElementById('keyDisplay').textContent = STATIC_KEYS[keyIndex];
                     document.getElementById('keyResult').classList.remove('hidden');
-                    area.innerHTML = '<p class="text-green-400 font-bold">✅ Verification passed! Your key is below.</p>';
+                    area.innerHTML = '<p class="text-green-400 font-bold"><i class="fas fa-check-circle mr-1"></i> Verification passed! Your key is below.</p>';
                 } else {
                     document.getElementById('keyCaptchaError').classList.remove('hidden');
                     document.getElementById('keyCaptchaInput').value = '';
@@ -311,13 +311,18 @@
         if (key) navigator.clipboard.writeText(key).then(() => showToast('🔑 Key copied!'));
     };
 
-    // ========== PATH ROUTING ==========
+    // ========== PATH ROUTING (supports both /aizen/31 and /aizen/key31) ==========
     async function handleRouting() {
         const path = location.pathname;
-        // /<slug>/<num> → key page
-        const keyMatch = path.match(/^\/([a-z0-9-]+)\/(\d{1,2})\/?$/);
-        if (keyMatch) { openKeySystem(keyMatch[1], parseInt(keyMatch[2])); return; }
-        // /<slug>/script/<id>
+        // Accepts /<slug>/key<num> and /<slug>/<num>
+        let keyMatch = path.match(/^\/([a-z0-9-]+)\/key(\d+)\/?$/);
+        if (!keyMatch) {
+            keyMatch = path.match(/^\/([a-z0-9-]+)\/(\d{1,2})\/?$/);
+        }
+        if (keyMatch) {
+            openKeySystem(keyMatch[1], parseInt(keyMatch[2]));
+            return;
+        }
         const scriptMatch = path.match(/^\/([a-z0-9-]+)\/script\/([a-zA-Z0-9]+)\/?$/);
         if (scriptMatch) {
             try { const doc = await scriptsColl.doc(scriptMatch[2]).get(); if (doc.exists) { const s = doc.data(); if (s.pastefy) startFlow(scriptMatch[2], s.pastefy, scriptMatch[1]); else showToast('No Pastefy link'); } else showToast('Script not found'); } catch (e) { showToast('Error'); }
