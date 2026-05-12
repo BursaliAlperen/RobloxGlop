@@ -124,18 +124,17 @@
     setTheme((localStorage.getItem('theme') || 'dark') === 'dark');
 
     // ========== CONSTANTS ==========
-    // 50 unique complex keys (same for all scripts)
     const STATIC_KEYS = [
-        "FREE01XPL1","BRAV02YQK2","CHAM03ZWR3","DURA04XVS4","ELIT05BQT5",
-        "FURY06CMR6","GLAD07DNS7","HONO08EPT8","IRON09FQU9","JADE10GRV10",
-        "KEEP11HSW11","LION12ITX12","MAGE13JUY13","NOVA14KVZ14","OMEN15LWA15",
-        "PACT16MXB16","QUAD17NYC17","RIFT18OZD18","SAGE19PAE19","TIDE20QBF20",
-        "UNIT21RCG21","VIBE22SDH22","WAVE23TEI23","XERO24UFJ24","YARN25VGK25",
-        "ZETA26WHL26","ALTA27XIM27","BETA28YJN28","CORE29ZKO29","DEEP30ALP30",
-        "ECHO31BMR31","FLUX32CNS32","GRIP33DOT33","HIVE34EPU34","IDEA35FQV35",
-        "JOLT36GRW36","KNIT37HSX37","LACE38ITY38","MELD39JUZ39","NODE40KVA40",
-        "OVAL41LWB41","PLUS42MXC42","QUIZ43NYD43","RUSH44OZE44","SLAM45PAF45",
-        "TRIP46QBG46","URGE47RCH47","VOID48SDI48","WARP49TEJ49","ZONE50UFK50"
+        "KEY1-X7K2MP","KEY2-Q9L3NR","KEY3-W5T8VS","KEY4-R1Y6UB","KEY5-A8C4DW",
+        "KEY6-M3F9EJ","KEY7-P2H6KT","KEY8-Z4J7LM","KEY9-N5V1QR","KEY10-B8X3SW",
+        "KEY11-G2Y9TR","KEY12-K6M4UZ","KEY13-D1P5WA","KEY14-L7R2CV","KEY15-E3S8BX",
+        "KEY16-F9T1NY","KEY17-J4U6HD","KEY18-O2V5JG","KEY19-C6W3KQ","KEY20-T8Z7LP",
+        "KEY21-V1A5MR","KEY22-W4B8NS","KEY23-X9C2PT","KEY24-Y2D6QU","KEY25-Z7E3RV",
+        "KEY26-A3F5SW","KEY27-B6G8TX","KEY28-C1H4UY","KEY29-D5I7VZ","KEY30-E8J2WA",
+        "KEY31-F4K9XB","KEY32-G7L1YC","KEY33-H2M5ZD","KEY34-I6N8AE","KEY35-J3P2BF",
+        "KEY36-K9Q4CG","KEY37-L1R7DH","KEY38-M5S3EI","KEY39-N8T6FJ","KEY40-O2U9GK",
+        "KEY41-P6V1HL","KEY42-Q3W4IM","KEY43-R7X8JN","KEY44-S1Y5KO","KEY45-T4Z2LP",
+        "KEY46-U8A9MQ","KEY47-V2B3NR","KEY48-W6C7OS","KEY49-X9D1PT","KEY50-Y3E5QU"
     ];
 
     // ========== FIREBASE ==========
@@ -159,7 +158,7 @@
     function extractTikTokID(u) { const m = u?.match(/(?:tiktok\.com\/@[\w.-]+\/video\/|tiktok\.com\/t\/|vm\.tiktok\.com\/|tiktok\.com\/embed\/v2\/)([\w]+)/); return m ? m[1] : null; }
     function extractPastefyID(u) { const m = u?.match(/pastefy\.app\/([a-zA-Z0-9]+)/); return m ? m[1] : null; }
 
-    // ========== RENDER SCRIPTS (simple, only ACCESS button) ==========
+    // ========== RENDER SCRIPTS ==========
     function renderScriptCard(s) {
         const tiktokID = s.tiktok ? extractTikTokID(s.tiktok) : null;
         const slug = s.slug || slugify(s.name);
@@ -255,7 +254,6 @@
         document.getElementById('keyPage').style.display = 'flex';
         document.getElementById('keyResult').classList.add('hidden');
         document.getElementById('keyActionArea').innerHTML = '';
-        // Show 3 dots
         const dotsDiv = document.getElementById('keyDots');
         dotsDiv.innerHTML = '';
         for (let i = 0; i < 3; i++) {
@@ -290,14 +288,12 @@
         const area = document.getElementById('keyActionArea');
         updateKeyDots(keyState.step);
         if (keyState.step === 1) {
-            // Step 1: Wait 5 seconds
             area.innerHTML = `<p class="text-lg font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Please wait 5 seconds...</p><div id="keyTimerDisplay" class="text-4xl font-mono font-black text-purple-400">5s</div>`;
             startKeyTimer(5, () => {
                 keyState.step = 2;
                 runKeyStep(keyIndex);
             });
         } else if (keyState.step === 2) {
-            // Step 2: Scroll to bottom
             area.innerHTML = `<p class="text-lg font-bold mb-4"><i class="fas fa-arrow-down text-fuchsia-400 icon-glow"></i> Scroll to the very bottom of this page</p><div class="scroll-prompt">⬇️</div>`;
             const scrollHandler = () => {
                 if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 20) {
@@ -311,7 +307,6 @@
             };
             window.addEventListener('scroll', scrollHandler, { passive: true });
         } else if (keyState.step === 3) {
-            // Step 3: Captcha
             const captchaAnswer = Math.floor(Math.random() * 20) + 1;
             keyState.captchaAnswer = captchaAnswer;
             area.innerHTML = `<div class="captcha-box text-center"><i class="fas fa-shield-alt text-5xl text-purple-400 icon-glow mb-4"></i><h3 class="text-2xl font-black mb-3 font-manrope"><i class="fas fa-lock mr-2"></i>AAA CAPTCHA</h3><p class="text-slate-300 mb-4"><i class="fas fa-question-circle mr-1"></i>Solve: <span class="font-mono text-3xl font-bold text-white">${captchaAnswer} = ?</span></p><div class="flex gap-3 justify-center"><input type="number" id="keyCaptchaInput" class="input-elite w-28 text-center text-xl" placeholder="?"><button id="keyCaptchaBtn" class="btn-premium py-2 px-6"><i class="fas fa-check mr-1"></i>VERIFY</button></div><p id="keyCaptchaError" class="text-red-400 text-sm mt-3 hidden"><i class="fas fa-times-circle mr-1"></i>Incorrect answer.</p></div>`;
