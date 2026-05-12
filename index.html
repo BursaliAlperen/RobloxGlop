@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>RobloxGlop | AAA Ultra Secure Access</title>
 
-    <!-- Google AdSense -->
+    <!-- Google AdSense Ana Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7036109597530319" crossorigin="anonymous"></script>
+
+    <!-- AMP Otomatik Reklamlar -->
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,6 +17,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -149,10 +156,7 @@
             gap: 0.4rem;
         }
 
-        .btn-copy:hover {
-            background: rgba(139, 92, 246, 0.25);
-            color: white;
-        }
+        .btn-copy:hover { background: rgba(139, 92, 246, 0.25); color: white; }
 
         .ad-spot {
             background: rgba(15, 20, 32, 0.6);
@@ -258,7 +262,6 @@
         }
 
         .badge-success { background: rgba(5, 150, 105, 0.2); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
-        .badge-warning { background: rgba(180, 83, 9, 0.2); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
 
         .toast-pop {
             position: fixed;
@@ -328,9 +331,28 @@
             backdrop-filter: blur(16px);
             box-shadow: 0 10px 30px -10px rgba(139,92,246,0.2);
         }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body class="antialiased" oncontextmenu="return false">
+
+<!-- AMP Otomatik Reklamlar -->
+<amp-auto-ads type="adsense" data-ad-client="ca-pub-7036109597530319"></amp-auto-ads>
 
 <!-- Navigasyon -->
 <nav class="sticky top-0 z-[100] bg-slate-950/80 backdrop-blur-2xl border-b border-slate-800/60 px-4 md:px-8 py-4">
@@ -360,47 +382,54 @@
         </p>
     </div>
 
+    <!-- Görüntülü Reklam 1 -->
     <div class="ad-spot mb-16 max-w-2xl mx-auto">
         <span class="ad-label"><i class="fas fa-ad"></i> SPONSORED</span>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7036109597530319"
+             data-ad-slot="6017950337"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
     </div>
 
+    <!-- Script Kartları Grid -->
     <h2 class="text-4xl font-black mb-10 text-center flex items-center justify-center gap-3">
         <i class="fas fa-fire text-fuchsia-500 icon-glow"></i> FEATURED SCRIPTS
     </h2>
     <div id="scriptGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-        <!-- JS dolduruyor -->
+        <!-- JS tarafından doldurulacak -->
     </div>
 
+    <!-- Multiplex Reklam -->
     <div class="ad-spot mb-24 max-w-2xl mx-auto">
         <span class="ad-label"><i class="fas fa-star"></i> PREMIUM AD</span>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7036109597530319" data-ad-slot="7169204305" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-format="autorelaxed"
+             data-ad-client="ca-pub-7036109597530319"
+             data-ad-slot="8023120978"></ins>
     </div>
 
-    <section class="mb-24">
-        <h2 class="text-4xl font-black mb-12 text-center"><i class="fas fa-shield-haltered text-purple-400 icon-glow"></i> HOW IT WORKS</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="glass-card p-8 text-center group">
-                <i class="fas fa-clock text-5xl text-purple-400 mb-6 icon-glow group-hover:scale-110 transition-transform"></i>
-                <h3 class="font-bold text-2xl mb-3">Timed Steps</h3>
-                <p class="text-slate-400">Each layer requires patience to prove you're human.</p>
-            </div>
-            <div class="glass-card p-8 text-center group">
-                <i class="fas fa-arrow-down text-5xl text-fuchsia-400 mb-6 icon-glow group-hover:scale-110 transition-transform"></i>
-                <h3 class="font-bold text-2xl mb-3">Scroll Interaction</h3>
-                <p class="text-slate-400">Physical scroll demonstrates genuine engagement.</p>
-            </div>
-            <div class="glass-card p-8 text-center group">
-                <i class="fas fa-ad text-5xl text-pink-400 mb-6 icon-glow group-hover:scale-110 transition-transform"></i>
-                <h3 class="font-bold text-2xl mb-3">Ad Support</h3>
-                <p class="text-slate-400">Ads keep the platform free. Confirm view to proceed.</p>
-            </div>
-        </div>
-    </section>
+    <!-- Yazı İçi Reklam -->
+    <div class="max-w-4xl mx-auto mb-24">
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-7036109597530319"
+             data-ad-slot="9219213187"></ins>
+    </div>
 
+    <!-- Feed İçi Reklam -->
     <div class="ad-spot mb-10 max-w-2xl mx-auto">
-        <span class="ad-label"><i class="fas fa-crown"></i> ROYAL AD</span>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <span class="ad-label"><i class="fas fa-stream"></i> FEED AD</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-format="fluid"
+             data-ad-layout-key="-6t+ed+2i-1n-4w"
+             data-ad-client="ca-pub-7036109597530319"
+             data-ad-slot="7169204305"></ins>
     </div>
 </main>
 
@@ -408,7 +437,7 @@
     <p>© 2025 RobloxGlop. Not affiliated with Roblox Corporation.</p>
 </footer>
 
-<!-- AD GATE (doğrulama) -->
+<!-- AD GATE -->
 <div id="adGate" class="hidden fixed inset-0 z-[200] bg-[#0b0f19] overflow-y-auto">
     <header class="sticky top-0 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800 px-4 md:px-8 py-4 z-[210] flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center gap-3">
@@ -439,30 +468,31 @@
         <div class="space-y-4">
             <input id="upName" type="text" placeholder="Script Name (Başlık)" class="input-elite">
             <input id="upDesc" type="text" placeholder="Short Description (Açıklama)" class="input-elite">
-            <input id="upPastebin" type="text" placeholder="Pastebin Link" class="input-elite">
-            <input id="upYoutube" type="text" placeholder="YouTube Video Link (optional)" class="input-elite">
+            <input id="upPastebin" type="text" placeholder="Pastebin URL (ödül)" class="input-elite">
+            <input id="upYoutube" type="text" placeholder="YouTube Video URL" class="input-elite">
+            <input id="upImgur" type="text" placeholder="Imgur Image URL" class="input-elite">
             <button onclick="handleUpload()" class="btn-premium w-full py-4 mt-4">SUBMIT</button>
         </div>
     </div>
 </div>
 
-<!-- Başarı Modalı -->
+<!-- Başarı Modalı (Sadece Pastebin Ödül) -->
 <div id="finalModal" class="fixed inset-0 z-[400] hidden flex flex-col items-center justify-center p-4 bg-[#0b0f19]/90 backdrop-blur-xl">
     <div class="glass-card p-10 md:p-14 text-center max-w-md w-full border-purple-500/30 animate-fade-in">
         <div class="w-24 h-24 bg-gradient-to-br from-purple-600 to-fuchsia-600 rounded-full flex items-center justify-center mx-auto mb-8 text-4xl shadow-2xl shadow-purple-500/40 animate-bounce">
             <i class="fas fa-check icon-glow"></i>
         </div>
         <h2 class="text-4xl font-black mb-3">ACCESS GRANTED</h2>
-        <p class="text-slate-400 mb-8">All AAA security layers bypassed.</p>
+        <p class="text-slate-400 mb-4">All AAA layers passed! Your Pastebin reward is ready.</p>
         <div class="space-y-4">
-            <a id="downloadLink" href="#" target="_blank" class="block w-full btn-premium py-4 text-lg">
+            <a id="pastebinBtn" href="#" target="_blank" class="block w-full btn-premium py-5 text-xl">
                 <i class="fas fa-external-link-alt"></i> OPEN PASTEBIN
             </a>
-            <button id="copyFinalLink" class="btn-copy w-full py-3 text-lg">
-                <i class="fas fa-copy"></i> COPY LINK
+            <button id="copyPastebinBtn" class="btn-copy w-full py-3 text-lg">
+                <i class="fas fa-copy"></i> COPY PASTEBIN LINK
             </button>
         </div>
-        <button onclick="location.reload()" class="text-slate-400 font-bold uppercase text-xs hover:text-purple-300 transition mt-6">New Session</button>
+        <button onclick="location.reload()" class="text-slate-400 font-bold uppercase text-xs hover:text-purple-300 transition mt-8">New Session</button>
     </div>
 </div>
 
@@ -471,7 +501,22 @@
 
 <script>
     (function() {
-        // Sağ tık & inceleme engeli
+        // ========== FIREBASE CONFIG (KENDİ BİLGİLERİN) ==========
+        const firebaseConfig = {
+            apiKey: "AIzaSyBhuzEF0gg6CfiddF33hUlm9pWMJQexNWw",
+            authDomain: "robloxglop.firebaseapp.com",
+            projectId: "robloxglop",
+            storageBucket: "robloxglop.firebasestorage.app",
+            messagingSenderId: "956125985175",
+            appId: "1:956125985175:web:1fe8437a767d8107506cd2",
+            measurementId: "G-R0J1QSG6HM"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const scriptsCollection = db.collection("scripts");
+
+        // Güvenlik engelleri
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F12' || e.keyCode === 123 ||
@@ -484,15 +529,12 @@
             }
         }, false);
 
-        // Veritabanı
-        let scripts = JSON.parse(localStorage.getItem('glop_ultra_v5')) || [
-            { id: '1', name: 'Blox Fruits Auto-Farm', desc: 'Fastest auto-farm with anti-ban.', pastebin: 'https://pastebin.com/raw/bloxfruits', youtube: 'https://youtube.com/watch?v=example1' },
-            { id: '2', name: 'Pet Simulator 99 Hub', desc: 'Auto-hatch, auto-farm and trades.', pastebin: 'https://pastebin.com/raw/petsim', youtube: 'https://youtube.com/watch?v=example2' }
-        ];
-
+        let allScripts = [];
         const state = {
             step: 1,
-            targetUrl: "",
+            pastebinUrl: "",
+            youtubeUrl: "",
+            imgurUrl: "",
             subStep: 0,
             subStepCompleted: [false, false, false, false, false, false],
             timerInterval: null,
@@ -508,67 +550,137 @@
         const curStepSpan = document.getElementById('curStep');
         const stepTitle = document.getElementById('stepTitle');
         const finalModal = document.getElementById('finalModal');
-        const downloadLink = document.getElementById('downloadLink');
-        const copyFinalLink = document.getElementById('copyFinalLink');
+        const pastebinBtn = document.getElementById('pastebinBtn');
+        const copyPastebinBtn = document.getElementById('copyPastebinBtn');
         const toastEl = document.getElementById('toast');
         const toastMsg = document.getElementById('toastMsg');
+        const scriptGrid = document.getElementById('scriptGrid');
 
         function refreshAds() {
             try {
                 document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status="done"])')
                     .forEach(el => (window.adsbygoogle = window.adsbygoogle || []).push({}));
-            } catch(e){}
+            } catch(e) {}
+        }
+
+        function extractYouTubeID(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+
+        function getDirectImgurURL(url) {
+            if (!url) return '';
+            if (url.includes('i.imgur.com')) return url;
+            const match = url.match(/imgur\.com\/([a-zA-Z0-9]+)$/);
+            if (match) return `https://i.imgur.com/${match[1]}.png`;
+            return url;
+        }
+
+        function getScriptPageUrl(scriptId) {
+            const base = window.location.origin + window.location.pathname;
+            return `${base}?script=${scriptId}`;
+        }
+
+        async function loadScripts() {
+            try {
+                const snapshot = await scriptsCollection.orderBy("createdAt", "desc").get();
+                allScripts = [];
+                snapshot.forEach(doc => {
+                    allScripts.push({ id: doc.id, ...doc.data() });
+                });
+                renderScripts();
+            } catch (error) {
+                console.error("Firestore yükleme hatası:", error);
+                showToast("⚠️ Veriler yüklenirken hata oluştu.");
+                renderScripts();
+            }
         }
 
         function renderScripts() {
-            const grid = document.getElementById('scriptGrid');
-            if (!grid) return;
-            grid.innerHTML = scripts.map(s => `
-                <div class="glass-card p-6 md:p-8 transition-all duration-300 group">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="p-4 bg-gradient-to-br from-purple-600/20 to-fuchsia-600/20 rounded-2xl text-purple-400">
-                            <i class="fas fa-file-code text-2xl icon-glow"></i>
+            if (!scriptGrid) return;
+            scriptGrid.innerHTML = allScripts.map(s => {
+                const youtubeID = s.youtube ? extractYouTubeID(s.youtube) : null;
+                const imgurDirect = s.imgur ? getDirectImgurURL(s.imgur) : null;
+                return `
+                <div class="glass-card p-4 md:p-6 transition-all duration-300 group flex flex-col">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-gradient-to-br from-purple-600/20 to-fuchsia-600/20 rounded-xl text-purple-400">
+                            <i class="fas fa-file-code text-xl icon-glow"></i>
                         </div>
                         <span class="badge badge-success"><i class="fas fa-check-circle"></i> Verified</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2 group-hover:text-purple-300 transition-colors">${escapeHTML(s.name)}</h3>
-                    <p class="text-slate-400 text-sm mb-4">${escapeHTML(s.desc || 'No description.')}</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        ${s.pastebin ? `<button onclick="copyToClipboard('${escapeAttr(s.pastebin)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> Pastebin</button>` : ''}
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors">${escapeHTML(s.name)}</h3>
+                    <p class="text-slate-400 text-sm mb-4 flex-grow">${escapeHTML(s.desc || 'No description.')}</p>
+                    ${youtubeID ? `
+                    <div class="video-container mb-4">
+                        <iframe src="https://www.youtube.com/embed/${youtubeID}" allowfullscreen></iframe>
+                    </div>` : ''}
+                    ${imgurDirect ? `
+                    <div class="mb-4 rounded-xl overflow-hidden">
+                        <img src="${imgurDirect}" alt="Script image" class="w-full h-auto object-cover" style="max-height:200px;" onerror="this.style.display='none'">
+                    </div>` : ''}
+                    <div class="flex flex-wrap gap-2 mt-auto">
                         ${s.youtube ? `<button onclick="copyToClipboard('${escapeAttr(s.youtube)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> YouTube</button>` : ''}
+                        ${s.imgur ? `<button onclick="copyToClipboard('${escapeAttr(getDirectImgurURL(s.imgur))}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> Imgur</button>` : ''}
+                        <button onclick="copyToClipboard('${escapeAttr(getScriptPageUrl(s.id))}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-link"></i> Link</button>
                     </div>
-                    <button onclick="startFlow('${escapeAttr(s.pastebin || s.url || '')}')" class="w-full btn-premium py-4 text-sm">
+                    <button onclick="startFlow('${escapeAttr(s.id)}', '${escapeAttr(s.pastebin || '')}', '${escapeAttr(s.youtube || '')}', '${escapeAttr(s.imgur || '')}')" class="w-full btn-premium py-4 text-sm mt-4">
                         <i class="fas fa-lock-open"></i> ACCESS
                     </button>
-                </div>
-            `).join('');
+                </div>`;
+            }).join('');
+            refreshAds();
         }
-
-        function escapeHTML(str){ return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
-        function escapeAttr(str){ return String(str).replace(/[&<>"']/g, ''); }
 
         window.copyToClipboard = function(text) {
             navigator.clipboard.writeText(text).then(() => showToast('📋 Link copied!'));
         };
 
         window.toggleUploadModal = (show) => document.getElementById('uploadModal').style.display = show ? 'flex' : 'none';
-        window.handleUpload = () => {
-            const n = document.getElementById('upName').value.trim();
-            const d = document.getElementById('upDesc').value.trim();
-            const p = document.getElementById('upPastebin').value.trim();
-            const y = document.getElementById('upYoutube').value.trim();
-            if (!n || !p) return showToast('Fill required fields.');
-            scripts.push({ id: Date.now().toString(), name: n, desc: d, pastebin: p, youtube: y });
-            localStorage.setItem('glop_ultra_v5', JSON.stringify(scripts));
-            renderScripts(); window.toggleUploadModal(false);
-            document.querySelectorAll('#upName, #upDesc, #upPastebin, #upYoutube').forEach(el => el.value = '');
-            showToast('✅ Script uploaded!');
+
+        window.handleUpload = async () => {
+            const name = document.getElementById('upName').value.trim();
+            const desc = document.getElementById('upDesc').value.trim();
+            const pastebin = document.getElementById('upPastebin').value.trim();
+            const youtube = document.getElementById('upYoutube').value.trim();
+            const imgur = document.getElementById('upImgur').value.trim();
+            if (!name || !pastebin) return showToast('Please fill at least name and Pastebin URL.');
+
+            try {
+                await scriptsCollection.add({
+                    name: name,
+                    desc: desc,
+                    pastebin: pastebin,
+                    youtube: youtube,
+                    imgur: imgur,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                showToast('✅ Script uploaded!');
+                window.toggleUploadModal(false);
+                document.querySelectorAll('#upName, #upDesc, #upPastebin, #upYoutube, #upImgur').forEach(el => el.value = '');
+                loadScripts();
+            } catch (error) {
+                console.error("Upload error:", error);
+                showToast("⚠️ Upload failed. Check Firestore rules.");
+            }
         };
 
-        window.startFlow = (url) => {
-            state.targetUrl = url;
-            state.step = 1; state.subStep = 0; state.subStepCompleted = [false,false,false,false,false,false]; state.captchaSolved = false;
-            clearTimer(); adGate.classList.remove('hidden'); document.body.style.overflow = 'hidden';
+        window.startFlow = function(scriptId, pastebinUrl, youtubeUrl, imgurUrl) {
+            state.pastebinUrl = pastebinUrl || '';
+            state.youtubeUrl = youtubeUrl || '';
+            state.imgurUrl = imgurUrl || '';
+            state.step = 1;
+            state.subStep = 0;
+            state.subStepCompleted = [false, false, false, false, false, false];
+            state.captchaSolved = false;
+            clearTimer();
+            adGate.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            if (scriptId) {
+                const newUrl = getScriptPageUrl(scriptId);
+                window.history.pushState({ scriptId }, '', newUrl);
+            }
             loadStep();
         };
 
@@ -641,19 +753,80 @@
             if(nextBtn.disabled) return;
             if(state.step<5){ state.step++; loadStep(); }
             else {
-                adGate.classList.add('hidden'); document.body.style.overflow='';
-                downloadLink.href = state.targetUrl;
-                finalModal.classList.remove('hidden'); clearTimer();
-                // Kopyalama dinleyicisi
-                copyFinalLink.onclick = () => { navigator.clipboard.writeText(state.targetUrl); showToast('📋 Link copied!'); };
+                adGate.classList.add('hidden');
+                document.body.style.overflow='';
+                pastebinBtn.href = state.pastebinUrl;
+                copyPastebinBtn.onclick = () => {
+                    navigator.clipboard.writeText(state.pastebinUrl);
+                    showToast('📋 Pastebin link copied!');
+                };
+                finalModal.classList.remove('hidden');
+                clearTimer();
             }
         });
 
         function showToast(m){ toastMsg.textContent=m; toastEl.style.display='flex'; setTimeout(()=>toastEl.style.display='none',3000); }
-        window.addEventListener('click',(e)=>{ if(e.target===finalModal){ finalModal.classList.add('hidden'); location.reload(); } });
-        window.addEventListener('load',()=>{ renderScripts(); setTimeout(refreshAds,300); });
+
+        async function handleUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            const scriptId = params.get('script');
+            if (scriptId) {
+                try {
+                    const doc = await scriptsCollection.doc(scriptId).get();
+                    if (doc.exists) {
+                        const scriptData = doc.data();
+                        if (scriptData.pastebin) {
+                            window.startFlow(scriptId, scriptData.pastebin, scriptData.youtube, scriptData.imgur);
+                        } else {
+                            showToast("This script doesn't have a Pastebin link.");
+                            window.history.replaceState({}, '', window.location.pathname);
+                        }
+                    } else {
+                        showToast("Script not found.");
+                        window.history.replaceState({}, '', window.location.pathname);
+                    }
+                } catch (error) {
+                    console.error("Script yüklenemedi:", error);
+                }
+            }
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === finalModal) {
+                finalModal.classList.add('hidden');
+                location.reload();
+            }
+        });
+
+        window.addEventListener('load', async () => {
+            await loadScripts();
+            await handleUrlParams();
+            setTimeout(refreshAds, 500);
+        });
+
+        window.addEventListener('popstate', () => {
+            if (adGate && !adGate.classList.contains('hidden')) {
+                adGate.classList.add('hidden');
+                document.body.style.overflow = '';
+                clearTimer();
+            }
+            handleUrlParams();
+        });
+
         window.showToast = showToast;
+
+        function escapeHTML(str) {
+            return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+        }
+        function escapeAttr(str) {
+            return String(str).replace(/[&<>"']/g, '');
+        }
     })();
+</script>
+
+<!-- Reklamları yükle -->
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </body>
 </html>
