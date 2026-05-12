@@ -5,294 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>RobloxGlop | AAA Ultra Secure Access</title>
 
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7036109597530319" crossorigin="anonymous"></script>
-    <!-- RichAds Inpage -->
-    <script src="https://richinfo.co/richpartners/in-page/js/richads-ob.js?pubid=988708&siteid=396627" async></script>
-    <!-- Adsterra Popunder -->
-    <script src="https://pl29428061.profitablecpmratenetwork.com/49/e3/b8/49e3b8ee46ff62b0baf2e2d1815f51ca.js"></script>
-    <!-- Adsterra Smartlink -->
-    <script src="https://www.profitablecpmratenetwork.com/zbnwjiuy0?key=e6edc75eb8d9b0dd37a361d6702ace82"></script>
+    <!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7036109597530319" crossorigin="anonymous"></script>
+    <!-- RichAds Inpage --><script src="https://richinfo.co/richpartners/in-page/js/richads-ob.js?pubid=988708&siteid=396627" async></script>
+    <!-- Adsterra Popunder --><script src="https://pl29428061.profitablecpmratenetwork.com/49/e3/b8/49e3b8ee46ff62b0baf2e2d1815f51ca.js"></script>
+    <!-- Adsterra Smartlink --><script src="https://www.profitablecpmratenetwork.com/zbnwjiuy0?key=e6edc75eb8d9b0dd37a361d6702ace82"></script>
 
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { manrope: ['Manrope', 'sans-serif'] } } } };
-    </script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@700&family=Manrope:wght@800&display=swap" rel="stylesheet" />
+    <!-- Tailwind --><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{manrope:['Manrope','sans-serif']}}}}</script>
+    <!-- Font Awesome --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts --><link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@700&family=Manrope:wght@800&display=swap" rel="stylesheet">
 
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <!-- Firebase --><script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --glass-bg: rgba(17,24,39,0.65);
-            --glass-border: rgba(255,255,255,0.08);
-            --glass-shadow: 0 20px 50px -15px rgba(0,0,0,0.7);
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --bg-deep: #0b0f19;
-            --surface: #111827;
-            --ad-bg: rgba(15,20,32,0.6);
-            --ad-border: rgba(255,255,255,0.05);
-            --substep-bg: rgba(30,41,59,0.45);
-            --input-bg: rgba(15,23,42,0.8);
-            --input-border: #1e293b;
-        }
-        .light {
-            --glass-bg: rgba(255,255,255,0.75);
-            --glass-border: rgba(0,0,0,0.05);
-            --glass-shadow: 0 20px 50px -15px rgba(0,0,0,0.1);
-            --text-primary: #1e293b;
-            --text-secondary: #475569;
-            --bg-deep: #f8fafc;
-            --surface: #ffffff;
-            --ad-bg: rgba(255,255,255,0.7);
-            --ad-border: rgba(0,0,0,0.08);
-            --substep-bg: rgba(241,245,249,0.7);
-            --input-bg: rgba(255,255,255,0.9);
-            --input-border: #cbd5e1;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            transition: background-color 0.4s, color 0.4s;
-        }
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(139,92,246,0.12) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(217,70,239,0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 10% 20%, rgba(99,102,241,0.09) 0%, transparent 50%);
-            animation: bgRotate 25s linear infinite;
-            z-index: -2;
-        }
-        @keyframes bgRotate {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 2rem;
-            box-shadow: var(--glass-shadow);
-            transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
-            color: var(--text-primary);
-        }
-        .glass-card:hover {
-            border-color: rgba(139,92,246,0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 30px 60px -20px rgba(139,92,246,0.3);
-        }
-        .btn-premium {
-            background: linear-gradient(135deg, #5b21b6 0%, #a855f7 50%, #d946ef 100%);
-            background-size: 200% 200%;
-            color: #fff;
-            font-weight: 700;
-            border-radius: 1rem;
-            padding: 0.9rem 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            box-shadow: 0 8px 24px -6px rgba(139,92,246,0.5);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            border: none;
-            cursor: pointer;
-            animation: gradientShift 5s ease infinite;
-            white-space: nowrap;
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .btn-premium:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 12px 32px -8px rgba(139,92,246,0.6); }
-        .btn-premium:disabled { opacity: 0.4; cursor: not-allowed; filter: grayscale(0.7); animation: none; }
-        .btn-copy {
-            background: rgba(139,92,246,0.12);
-            border: 1px solid rgba(139,92,246,0.3);
-            color: #c4b5fd;
-            border-radius: 0.8rem;
-            padding: 0.5rem 1rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        .btn-copy:hover { background: rgba(139,92,246,0.25); color: white; }
-        .ad-container {
-            position: relative;
-            width: 100%;
-            min-height: 280px;
-            background: var(--ad-bg);
-            border: 1px solid var(--ad-border);
-            border-radius: 1.5rem;
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            transition: border-color 0.4s;
-            margin: 1.5rem 0;
-        }
-        .ad-label {
-            position: absolute;
-            top: 12px; left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #a78bfa;
-            background: rgba(15,20,32,0.9);
-            padding: 0.3rem 1.2rem;
-            border-radius: 30px;
-            border: 1px solid rgba(139,92,246,0.3);
-            backdrop-filter: blur(12px);
-            z-index: 1;
-            white-space: nowrap;
-        }
-        .ad-container ins.adsbygoogle { display: block; width: 100%; min-height: 250px; }
-        .progress-indicator {
-            height: 4px;
-            background: #1e293b;
-            position: fixed;
-            top: 72px; left: 0; right: 0;
-            z-index: 10000;
-        }
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #5b21b6, #d946ef, #8b5cf6);
-            background-size: 200% auto;
-            width: 0%;
-            transition: width 0.6s;
-            box-shadow: 0 0 15px #a855f7;
-            animation: progressShine 2s linear infinite;
-        }
-        @keyframes progressShine { 0% { background-position: 0% center; } 100% { background-position: -200% center; } }
-        .modal-overlay { background: rgba(8,10,20,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
-        .input-elite {
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            color: var(--text-primary);
-            padding: 0.9rem 1.2rem;
-            border-radius: 14px;
-            width: 100%;
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .input-elite:focus { border-color: #8b5cf6; box-shadow: 0 0 0 4px rgba(139,92,246,0.25); }
-        .badge {
-            font-size: 0.7rem; font-weight: 700;
-            padding: 0.3rem 1rem;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            backdrop-filter: blur(10px);
-        }
-        .badge-success { background: rgba(5,150,105,0.2); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
-        .toast-pop {
-            position: fixed;
-            bottom: 30px; left: 50%;
-            transform: translateX(-50%);
-            background: rgba(30,27,75,0.95);
-            backdrop-filter: blur(20px);
-            color: #e0e7ff;
-            padding: 0.9rem 2.2rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.8);
-            z-index: 99999;
-            display: none;
-            align-items: center;
-            gap: 0.6rem;
-            animation: slideUp 0.3s ease-out;
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-        .substep-list { display: flex; flex-direction: column; gap: 0.65rem; margin: 1.2rem 0; }
-        .substep-item {
-            display: flex; align-items: center; gap: 0.7rem;
-            padding: 0.7rem 1.2rem;
-            background: var(--substep-bg);
-            backdrop-filter: blur(8px);
-            border-radius: 14px;
-            font-size: 0.9rem; font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.04);
-            transition: all 0.3s;
-        }
-        .substep-item.completed { border-color: #34d399; color: #34d399; background: rgba(5,150,105,0.1); }
-        .substep-item.active { border-color: #8b5cf6; color: #c4b5fd; background: rgba(139,92,246,0.1); box-shadow: 0 0 15px -3px rgba(139,92,246,0.2); }
-        .scroll-prompt {
-            display: inline-block;
-            animation: bounceDown 1.2s infinite;
-            font-size: 2rem;
-            color: #a78bfa;
-            filter: drop-shadow(0 4px 6px rgba(139,92,246,0.5));
-        }
-        @keyframes bounceDown { 0%,100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
-        .icon-glow { text-shadow: 0 0 12px currentColor; }
-        .captcha-box {
-            background: rgba(15,23,42,0.7);
-            border: 1px solid rgba(139,92,246,0.3);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 10px 30px -10px rgba(139,92,246,0.2);
-        }
-        .theme-toggle {
-            cursor: pointer;
-            width: 42px; height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            transition: transform 0.3s, background 0.3s;
-        }
-        .theme-toggle:hover { transform: scale(1.1); background: rgba(255,255,255,0.2); }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in { animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
-        #keyPage { display: none; }
-        .tiktok-container {
-            position: relative;
-            width: 100%;
-            max-width: 325px;
-            margin: 0 auto 1rem;
-            border-radius: 1rem;
-            overflow: hidden;
-        }
-        .tiktok-container iframe {
-            width: 100%;
-            height: 580px;
-            border: none;
-        }
+        *{margin:0;padding:0;box-sizing:border-box}:root{--glass-bg:rgba(17,24,39,0.65);--glass-border:rgba(255,255,255,0.08);--glass-shadow:0 20px 50px -15px rgba(0,0,0,0.7);--text-primary:#f1f5f9;--text-secondary:#94a3b8;--bg-deep:#0b0f19;--surface:#111827;--ad-bg:rgba(15,20,32,0.6);--ad-border:rgba(255,255,255,0.05);--substep-bg:rgba(30,41,59,0.45);--input-bg:rgba(15,23,42,0.8);--input-border:#1e293b}.light{--glass-bg:rgba(255,255,255,0.75);--glass-border:rgba(0,0,0,0.05);--glass-shadow:0 20px 50px -15px rgba(0,0,0,0.1);--text-primary:#1e293b;--text-secondary:#475569;--bg-deep:#f8fafc;--surface:#fff;--ad-bg:rgba(255,255,255,0.7);--ad-border:rgba(0,0,0,0.08);--substep-bg:rgba(241,245,249,0.7);--input-bg:rgba(255,255,255,0.9);--input-border:#cbd5e1}body{font-family:'Inter',sans-serif;background-color:var(--bg-deep);color:var(--text-primary);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background-color 0.4s,color 0.4s}body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 30% 50%,rgba(139,92,246,0.12) 0%,transparent 50%),radial-gradient(circle at 70% 80%,rgba(217,70,239,0.08) 0%,transparent 50%),radial-gradient(circle at 10% 20%,rgba(99,102,241,0.09) 0%,transparent 50%);animation:bgRotate 25s linear infinite;z-index:-2}@keyframes bgRotate{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.1)}100%{transform:rotate(360deg) scale(1)}}.glass-card{background:var(--glass-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:2rem;box-shadow:var(--glass-shadow);transition:all 0.3s cubic-bezier(0.16,1,0.3,1);color:var(--text-primary)}.glass-card:hover{border-color:rgba(139,92,246,0.4);transform:translateY(-4px);box-shadow:0 30px 60px -20px rgba(139,92,246,0.3)}.btn-premium{background:linear-gradient(135deg,#5b21b6 0%,#a855f7 50%,#d946ef 100%);background-size:200% 200%;color:#fff;font-weight:700;border-radius:1rem;padding:0.9rem 1.8rem;text-transform:uppercase;letter-spacing:0.06em;box-shadow:0 8px 24px -6px rgba(139,92,246,0.5);display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;border:none;cursor:pointer;animation:gradientShift 5s ease infinite;white-space:nowrap}@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}.btn-premium:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 12px 32px -8px rgba(139,92,246,0.6)}.btn-premium:disabled{opacity:0.4;cursor:not-allowed;filter:grayscale(0.7);animation:none}.btn-copy{background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);color:#c4b5fd;border-radius:0.8rem;padding:0.5rem 1rem;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.4rem}.btn-copy:hover{background:rgba(139,92,246,0.25);color:#fff}.ad-container{position:relative;width:100%;min-height:280px;background:var(--ad-bg);border:1px solid var(--ad-border);border-radius:1.5rem;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;overflow:hidden;transition:border-color 0.4s;margin:1.5rem 0}.ad-label{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-size:0.7rem;font-weight:700;color:#a78bfa;background:rgba(15,20,32,0.9);padding:0.3rem 1.2rem;border-radius:30px;border:1px solid rgba(139,92,246,0.3);backdrop-filter:blur(12px);z-index:1;white-space:nowrap}.ad-container ins.adsbygoogle{display:block;width:100%;min-height:250px}.progress-indicator{height:4px;background:#1e293b;position:fixed;top:72px;left:0;right:0;z-index:10000}.progress-fill{height:100%;background:linear-gradient(90deg,#5b21b6,#d946ef,#8b5cf6);background-size:200% auto;width:0%;transition:width 0.6s;box-shadow:0 0 15px #a855f7;animation:progressShine 2s linear infinite}@keyframes progressShine{0%{background-position:0% center}100%{background-position:-200% center}}.modal-overlay{background:rgba(8,10,20,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.input-elite{background:var(--input-bg);border:1px solid var(--input-border);color:var(--text-primary);padding:0.9rem 1.2rem;border-radius:14px;width:100%;outline:none;transition:border-color 0.2s,box-shadow 0.2s}.input-elite:focus{border-color:#8b5cf6;box-shadow:0 0 0 4px rgba(139,92,246,0.25)}.badge{font-size:0.7rem;font-weight:700;padding:0.3rem 1rem;border-radius:50px;text-transform:uppercase;letter-spacing:0.3px;display:inline-flex;align-items:center;gap:0.35rem;backdrop-filter:blur(10px)}.badge-success{background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(52,211,153,0.3)}.toast-pop{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(30,27,75,0.95);backdrop-filter:blur(20px);color:#e0e7ff;padding:0.9rem 2.2rem;border-radius:60px;font-weight:700;font-size:0.9rem;box-shadow:0 12px 35px rgba(0,0,0,0.8);z-index:99999;display:none;align-items:center;gap:0.6rem;animation:slideUp 0.3s ease-out}@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}.substep-list{display:flex;flex-direction:column;gap:0.65rem;margin:1.2rem 0}.substep-item{display:flex;align-items:center;gap:0.7rem;padding:0.7rem 1.2rem;background:var(--substep-bg);backdrop-filter:blur(8px);border-radius:14px;font-size:0.9rem;font-weight:600;border:1px solid rgba(255,255,255,0.04);transition:all 0.3s}.substep-item.completed{border-color:#34d399;color:#34d399;background:rgba(5,150,105,0.1)}.substep-item.active{border-color:#8b5cf6;color:#c4b5fd;background:rgba(139,92,246,0.1);box-shadow:0 0 15px -3px rgba(139,92,246,0.2)}.scroll-prompt{display:inline-block;animation:bounceDown 1.2s infinite;font-size:2rem;color:#a78bfa;filter:drop-shadow(0 4px 6px rgba(139,92,246,0.5))}@keyframes bounceDown{0%,100%{transform:translateY(0)}50%{transform:translateY(12px)}}.icon-glow{text-shadow:0 0 12px currentColor}.captcha-box{background:rgba(15,23,42,0.7);border:1px solid rgba(139,92,246,0.3);border-radius:1.5rem;padding:2rem;backdrop-filter:blur(16px);box-shadow:0 10px 30px -10px rgba(139,92,246,0.2)}.theme-toggle{cursor:pointer;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.1);transition:transform 0.3s,background 0.3s}.theme-toggle:hover{transform:scale(1.1);background:rgba(255,255,255,0.2)}@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}.animate-fade-in{animation:fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards}#keyPage{display:none}.pastefy-container,.tiktok-container{position:relative;width:100%;max-width:100%;margin:0 auto 1rem;border-radius:1rem;overflow:hidden}.pastefy-container{min-height:400px}.pastefy-container iframe{width:100%;height:500px;border:none}.tiktok-container{max-width:325px}.tiktok-container iframe{width:100%;height:580px;border:none}.step-dot{width:28px;height:28px;border-radius:50%;background:#1e293b;border:2px solid #334155;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#64748b;transition:all 0.3s;z-index:1}.step-dot.active{background:#a855f7;border-color:#a855f7;color:#fff;box-shadow:0 0 15px #a855f7}.step-dot.done{background:#34d399;border-color:#34d399;color:#fff}
     </style>
 </head>
 <body class="antialiased" oncontextmenu="return false">
@@ -323,15 +48,16 @@
     <div class="ad-container max-w-2xl mx-auto"><span class="ad-label"><i class="fas fa-star"></i> PREMIUM</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-format="autorelaxed" data-ad-client="ca-pub-7036109597530319" data-ad-slot="8023120978"></ins></div>
 </main>
 
-<!-- KEY SYSTEM PAGE (?key) -->
+<!-- KEY SYSTEM PAGE (dinamik /<slug>/key) -->
 <div id="keyPage" class="min-h-screen flex items-center justify-center px-4">
     <div class="glass-card p-8 w-full max-w-xl text-center relative animate-fade-in">
-        <button onclick="closeKeySystem()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">&times;</button>
-        <h2 class="text-3xl font-black font-manrope bg-gradient-to-r from-purple-400 to-fuchsia-500 bg-clip-text text-transparent mb-4">AAA KEY SYSTEM</h2>
+        <button onclick="goHome()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">&times;</button>
+        <h2 class="text-3xl font-black font-manrope bg-gradient-to-r from-purple-400 to-fuchsia-500 bg-clip-text text-transparent mb-1" id="keyScriptTitle">AAA KEY SYSTEM</h2>
+        <p class="text-sm text-slate-400 mb-4">10 adımı tamamla, 24 saat geçerli anahtarını al</p>
         <div class="flex justify-center gap-2 mb-6" id="keyDots"></div>
         <div id="keyActionArea" class="mb-6"></div>
         <div id="keyResult" class="hidden">
-            <div class="key-display bg-black border border-purple-500 rounded-xl p-4 font-mono text-2xl font-bold text-white mb-4" id="keyDisplay"></div>
+            <div class="bg-black border border-purple-500 rounded-xl p-4 font-mono text-2xl font-bold text-white mb-4" id="keyDisplay"></div>
             <button class="btn-premium w-full mb-2" onclick="copyKey()"><i class="fas fa-copy"></i> COPY KEY</button>
             <p class="text-sm text-yellow-400" id="expireTimer"></p>
         </div>
@@ -339,7 +65,7 @@
     </div>
 </div>
 
-<!-- AD GATE (doğrulama) -->
+<!-- AD GATE (5 adım doğrulama) -->
 <div id="adGate" class="hidden fixed inset-0 z-[200] bg-[#0b0f19] overflow-y-auto">
     <header class="sticky top-0 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800 px-4 md:px-8 py-4 z-[210] flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center gap-3"><span class="bg-purple-600 text-white text-xs font-black px-4 py-2 rounded-xl">STEP <span id="curStep">1</span>/5</span><h3 id="stepTitle" class="font-bold text-sm text-slate-300">AAA SECURE LAYER</h3></div>
@@ -356,317 +82,212 @@
         <h2 class="text-3xl font-black mb-6"><i class="fas fa-upload text-purple-400"></i> UPLOAD</h2>
         <input id="upName" placeholder="Script Adı" class="input-elite mb-3">
         <input id="upDesc" placeholder="Açıklama" class="input-elite mb-3">
-        <input id="upPastebin" placeholder="Pastebin URL (ödül)" class="input-elite mb-3">
+        <input id="upPastefy" placeholder="Pastefy.app URL (ödül)" class="input-elite mb-3">
         <input id="upTikTok" placeholder="TikTok Video URL" class="input-elite mb-3">
         <input id="upImgur" placeholder="Imgur URL" class="input-elite mb-3">
         <button onclick="handleUpload()" class="btn-premium w-full">SUBMIT</button>
     </div>
 </div>
 
-<!-- PASTEBIN ÖDÜL MODAL -->
+<!-- PASTEFY ÖDÜL MODAL -->
 <div id="finalModal" class="fixed inset-0 z-[400] hidden flex flex-col items-center justify-center p-4 bg-[#0b0f19]/90 backdrop-blur-xl">
-    <div class="glass-card p-10 text-center max-w-md w-full border-purple-500/30 animate-fade-in">
+    <div class="glass-card p-10 text-center max-w-2xl w-full border-purple-500/30 animate-fade-in">
         <div class="w-20 h-20 bg-gradient-to-br from-purple-600 to-fuchsia-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl shadow-2xl animate-bounce"><i class="fas fa-check icon-glow"></i></div>
         <h2 class="text-3xl font-black mb-2 font-manrope">ACCESS GRANTED</h2>
-        <p class="text-slate-400 mb-4">Pastebin ödülün:</p>
-        <a id="pastebinBtn" href="#" target="_blank" class="btn-premium w-full mb-3"><i class="fas fa-external-link-alt"></i> OPEN PASTEBIN</a>
-        <button id="copyPastebinBtn" class="btn-copy w-full py-3 text-lg mb-4"><i class="fas fa-copy"></i> COPY LINK</button>
+        <p class="text-slate-400 mb-4">Pastefy.app ödülün:</p>
+        <div id="pastefyEmbed" class="pastefy-container mb-4"></div>
+        <a id="pastefyBtn" href="#" target="_blank" class="btn-premium w-full mb-3"><i class="fas fa-external-link-alt"></i> OPEN PASTEFY</a>
+        <button id="copyPastefyBtn" class="btn-copy w-full py-3 text-lg mb-4"><i class="fas fa-copy"></i> COPY LINK</button>
         <button onclick="location.reload()" class="text-slate-400 text-xs uppercase hover:text-purple-300">New Session</button>
     </div>
 </div>
 
 <div id="toast" class="toast-pop"><i class="fas fa-info-circle text-purple-300"></i> <span id="toastMsg"></span></div>
 
-<!-- RichAds Pops+Push -->
 <script src="https://richinfo.co/richpartners/pops/js/richads-pu-ob.js" data-pubid="988708" data-siteid="396626" async data-cfasync="false"></script>
 <script type="module" src="https://richinfo.co/richpartners/push/js/rp-cl-ob.js?pubid=988708&siteid=396625&niche=33" async data-cfasync="false"></script>
-<!-- Adsterra Social Bar -->
 <script src="https://pl29428073.profitablecpmratenetwork.com/61/bf/d3/61bfd3c36e30774bca7e152cd94e15aa.js"></script>
 
 <script>
-    (function() {
-        // ========== TEMA ==========
-        const html = document.documentElement;
-        const themeIcon = document.getElementById('themeIcon');
-        function setTheme(isDark) {
-            if (isDark) {
-                html.classList.add('dark');
-                html.classList.remove('light');
-                if (themeIcon) themeIcon.className = 'fas fa-moon text-white text-lg';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                html.classList.remove('dark');
-                html.classList.add('light');
-                if (themeIcon) themeIcon.className = 'fas fa-sun text-yellow-400 text-lg';
-                localStorage.setItem('theme', 'light');
-            }
+(function() {
+    // ========== TEMA ==========
+    const html = document.documentElement, themeIcon = document.getElementById('themeIcon');
+    function setTheme(d) {
+        if (d) { html.classList.add('dark'); html.classList.remove('light'); if (themeIcon) themeIcon.className = 'fas fa-moon text-white text-lg'; localStorage.setItem('theme', 'dark'); }
+        else { html.classList.remove('dark'); html.classList.add('light'); if (themeIcon) themeIcon.className = 'fas fa-sun text-yellow-400 text-lg'; localStorage.setItem('theme', 'light'); }
+    }
+    window.toggleTheme = () => setTheme(!html.classList.contains('dark'));
+    setTheme((localStorage.getItem('theme') || 'dark') === 'dark');
+
+    // ========== FIREBASE ==========
+    firebase.initializeApp({ apiKey: "AIzaSyBhuzEF0gg6CfiddF33hUlm9pWMJQexNWw", authDomain: "robloxglop.firebaseapp.com", projectId: "robloxglop", storageBucket: "robloxglop.firebasestorage.app", messagingSenderId: "956125985175", appId: "1:956125985175:web:1fe8437a767d8107506cd2" });
+    const db = firebase.firestore(), scriptsColl = db.collection("scripts");
+
+    // ========== GÜVENLİK ==========
+    document.oncontextmenu = () => false;
+    document.onkeydown = e => { if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J'].includes(e.key)) || (e.ctrlKey && e.key === 'u')) { e.preventDefault(); return false; } };
+
+    // ========== REKLAM ==========
+    function pushAds() { requestAnimationFrame(() => { document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status="done"])').forEach(el => { try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {} }); }); }
+    window.addEventListener('load', () => { pushAds(); setTimeout(pushAds, 800); setTimeout(pushAds, 2000); });
+
+    // ========== YARDIMCI ==========
+    function escHtml(s) { return String(s).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m])); }
+    function escAttr(s) { return String(s).replace(/[&<>"']/g, ''); }
+    function showToast(m) { const t = document.getElementById('toast'), tm = document.getElementById('toastMsg'); tm.textContent = m; t.style.display = 'flex'; setTimeout(() => t.style.display = 'none', 3000); }
+    function slugify(text) { return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+    function extractTikTokID(u) { const m = u?.match(/(?:tiktok\.com\/@[\w.-]+\/video\/|tiktok\.com\/t\/|vm\.tiktok\.com\/|tiktok\.com\/embed\/v2\/)([\w]+)/); return m ? m[1] : null; }
+    function extractPastefyID(u) { const m = u?.match(/pastefy\.app\/([a-zA-Z0-9]+)/); return m ? m[1] : null; }
+    function getDirectImgurURL(u) { if (!u) return ''; if (u.includes('i.imgur.com')) return u; const m = u.match(/imgur\.com\/([a-zA-Z0-9]+)$/); return m ? `https://i.imgur.com/${m[1]}.png` : u; }
+
+    // ========== SCRIPT LİSTELEME ==========
+    let allScripts = [];
+    async function loadScripts() {
+        try { const snap = await scriptsColl.orderBy("createdAt", "desc").get(); allScripts = []; snap.forEach(d => allScripts.push({ id: d.id, ...d.data() })); renderScripts(); }
+        catch (e) { showToast("⚠️ Veriler yüklenemedi."); }
+    }
+    function renderScripts() {
+        const grid = document.getElementById('scriptGrid'); if (!grid) return;
+        grid.innerHTML = allScripts.map(s => {
+            const tiktokID = s.tiktok ? extractTikTokID(s.tiktok) : null, pastefyID = s.pastefy ? extractPastefyID(s.pastefy) : null, imgDirect = s.imgur ? getDirectImgurURL(s.imgur) : null;
+            const slug = s.slug || slugify(s.name);
+            const scriptPageUrl = `${location.origin}/${slug}/script/${s.id}`;
+            const keyPageUrl = `${location.origin}/${slug}/key`;
+            return `<div class="glass-card p-4 md:p-6 flex flex-col">
+                <div class="flex justify-between items-start mb-4"><div class="p-3 bg-gradient-to-br from-purple-600/20 to-fuchsia-600/20 rounded-xl text-purple-400"><i class="fas fa-file-code text-xl icon-glow"></i></div><span class="badge badge-success"><i class="fas fa-check-circle"></i> Verified</span></div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors">${escHtml(s.name)}</h3>
+                <p class="text-slate-400 text-sm mb-4 flex-grow">${escHtml(s.desc || '')}</p>
+                ${tiktokID ? `<div class="tiktok-container"><iframe src="https://www.tiktok.com/embed/v2/${tiktokID}" allowfullscreen></iframe></div>` : ''}
+                ${pastefyID ? `<div class="pastefy-container" style="max-height:300px;"><iframe src="https://pastefy.app/${pastefyID}/embed" allowfullscreen></iframe></div>` : ''}
+                ${imgDirect ? `<div class="mb-4 rounded-xl overflow-hidden"><img src="${imgDirect}" class="w-full h-auto object-cover" style="max-height:200px" onerror="this.style.display='none'"></div>` : ''}
+                <div class="flex flex-wrap gap-2 mt-auto">
+                    ${s.tiktok ? `<button onclick="copyToClipboard('${escAttr(s.tiktok)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> TikTok</button>` : ''}
+                    ${s.pastefy ? `<button onclick="copyToClipboard('${escAttr(s.pastefy)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> Pastefy</button>` : ''}
+                    ${s.imgur ? `<button onclick="copyToClipboard('${escAttr(imgDirect)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> Imgur</button>` : ''}
+                    <button onclick="copyToClipboard('${escAttr(scriptPageUrl)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-link"></i> Link</button>
+                </div>
+                <button onclick="startFlow('${escAttr(s.id)}', '${escAttr(s.pastefy || '')}', '${escAttr(slug)}')" class="btn-premium w-full py-4 text-sm mt-4"><i class="fas fa-lock-open"></i> ACCESS</button>
+                <button onclick="window.location='${escAttr(keyPageUrl)}'" class="btn-copy w-full py-2 text-xs mt-2 justify-center"><i class="fas fa-key"></i> GET KEY</button>
+            </div>`;
+        }).join('');
+        pushAds();
+    }
+    window.copyToClipboard = t => navigator.clipboard.writeText(t).then(() => showToast('📋 Copied!'));
+
+    // ========== UPLOAD ==========
+    window.toggleUploadModal = show => document.getElementById('uploadModal').style.display = show ? 'flex' : 'none';
+    window.handleUpload = async () => {
+        const name = document.getElementById('upName').value.trim(), desc = document.getElementById('upDesc').value.trim(), pastefy = document.getElementById('upPastefy').value.trim(), tiktok = document.getElementById('upTikTok').value.trim(), imgur = document.getElementById('upImgur').value.trim();
+        if (!name || !pastefy) return showToast('Name & Pastefy URL required.');
+        const slug = slugify(name);
+        await scriptsColl.add({ name, desc, pastefy, tiktok, imgur, slug, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+        showToast('✅ Uploaded!'); window.toggleUploadModal(false);
+        document.querySelectorAll('#upName,#upDesc,#upPastefy,#upTikTok,#upImgur').forEach(e => e.value = '');
+        loadScripts();
+    };
+
+    // ========== 5 ADIM DOĞRULAMA ==========
+    const state = { step: 1, pastefyUrl: "", subStep: 0, subStepCompleted: [], timerInterval: null, timerSeconds: 0, captchaAnswer: null, captchaSolved: false, currentSlug: "" };
+    const adGate = document.getElementById('adGate'), contentArea = document.getElementById('contentArea'), nextBtn = document.getElementById('nextBtn'), pBar = document.getElementById('pBar'), curStepSpan = document.getElementById('curStep'), stepTitle = document.getElementById('stepTitle'), finalModal = document.getElementById('finalModal'), pastefyBtn = document.getElementById('pastefyBtn'), copyPastefyBtn = document.getElementById('copyPastefyBtn'), pastefyEmbed = document.getElementById('pastefyEmbed');
+
+    window.startFlow = (id, pastefyUrl, slug) => {
+        state.pastefyUrl = pastefyUrl; state.step = 1; state.subStep = 0; state.subStepCompleted = []; state.captchaSolved = false; state.currentSlug = slug;
+        clearTimer(); adGate.classList.remove('hidden'); document.body.style.overflow = 'hidden';
+        history.pushState({ scriptId: id, slug }, '', `${location.origin}/${slug}/script/${id}`);
+        loadStep();
+    };
+    const titles = ["Quantum Encryption","Behavioral Matrix","Neural Lace","Temporal Firewall","Dimensional Rift"];
+    function loadStep() {
+        state.subStep=0; state.subStepCompleted=[]; state.captchaSolved=false; clearTimer(); nextBtn.disabled=true;
+        curStepSpan.textContent=state.step; pBar.style.width=`${(state.step/5)*100}%`; stepTitle.textContent=titles[(state.step-1)%5].toUpperCase();
+        const a=Math.floor(Math.random()*20)+1, b=Math.floor(Math.random()*20)+1; state.captchaAnswer=a+b;
+        contentArea.innerHTML=`<div class="animate-fade-in space-y-10"><div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8"><h2 class="text-3xl font-black mb-4 bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent font-manrope">${titles[(state.step-1)%5]}</h2><p class="text-slate-300 text-lg">Complete all sub-verifications.</p></div><div class="substep-list" id="substepContainer">${sub(1,'Wait 5 seconds','fa-clock')}${sub(2,'Scroll to bottom','fa-arrow-down')}${sub(3,'Wait 15 seconds','fa-hourglass-half')}${sub(4,'Confirm ad view','fa-mouse-pointer')}${sub(5,'Wait 5 seconds','fa-clock')}${sub(6,'Solve Captcha','fa-shield-alt')}</div><div id="actionArea" class="mt-6"></div><div class="ad-container"><span class="ad-label">AD</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto"></ins></div></div>`;
+        adGate.scrollTop=0; setTimeout(pushAds,300); advanceToSubStep(1);
+    }
+    function sub(i,t,ic){return `<div id="substep-${i}" class="substep-item"><i class="fas ${ic}"></i><span>${t}</span></div>`}
+    function updateSub(i,s){const el=document.getElementById(`substep-${i}`);if(el){el.classList.remove('completed','active');el.classList.add(s)}}
+    function advanceToSubStep(i){if(i>1){state.subStepCompleted[i-1]=true;updateSub(i-1,'completed')}state.subStep=i;updateSub(i,'active');executeSubStep(i)}
+    function executeSubStep(i){
+        const a=document.getElementById('actionArea');if(!a)return;
+        switch(i){
+            case 1:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Wait 5 seconds</p><div id="timerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div></div>`;startTimer(5,()=>{a.innerHTML='';advanceToSubStep(2)});break;
+            case 2:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-arrow-down text-fuchsia-400 icon-glow"></i> Scroll to the very bottom</p><div class="scroll-prompt">⬇️</div></div>`;const h=()=>{if(adGate.scrollTop+adGate.clientHeight>=adGate.scrollHeight-60){adGate.removeEventListener('scroll',h);a.innerHTML='<p class="text-green-400 font-bold text-center text-xl">✅ Scroll detected!</p>';setTimeout(()=>{a.innerHTML='';advanceToSubStep(3)},800)}};adGate.addEventListener('scroll',h,{passive:true});break;
+            case 3:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="fas fa-hourglass-half text-pink-400 icon-glow"></i> Wait 15 seconds</p><div id="timerDisplay" class="text-5xl font-mono font-black text-pink-400">15s</div></div>`;startTimer(15,()=>{a.innerHTML='';advanceToSubStep(4)});break;
+            case 4:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-mouse-pointer text-indigo-400 icon-glow"></i> Confirm you viewed the ad</p><button id="confirmAdBtn" class="btn-premium py-4 px-10 text-lg">I VIEWED IT</button></div>`;document.getElementById('confirmAdBtn').addEventListener('click',()=>{a.innerHTML='<p class="text-green-400 font-bold text-center text-xl">✅ Confirmed.</p>';setTimeout(()=>{a.innerHTML='';advanceToSubStep(5)},600)});break;
+            case 5:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Finalizing... 5s</p><div id="timerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div></div>`;startTimer(5,()=>{a.innerHTML='';advanceToSubStep(6)});break;
+            case 6:a.innerHTML=`<div class="captcha-box text-center"><i class="fas fa-shield-alt text-5xl text-purple-400 icon-glow mb-4"></i><h3 class="text-2xl font-black mb-3 font-manrope">AAA CAPTCHA</h3><p class="text-slate-300 mb-4">Solve: <span class="font-mono text-3xl font-bold text-white">${state.captchaAnswer} = ?</span></p><div class="flex gap-3 justify-center"><input type="number" id="captchaInput" class="input-elite w-28 text-center text-xl" placeholder="?"><button id="captchaSubmit" class="btn-premium py-2 px-6">VERIFY</button></div><p id="captchaError" class="text-red-400 text-sm mt-3 hidden">Incorrect.</p></div>`;
+            document.getElementById('captchaSubmit').addEventListener('click',()=>{if(parseInt(document.getElementById('captchaInput').value)===state.captchaAnswer){state.captchaSolved=true;state.subStepCompleted[6]=true;updateSub(6,'completed');a.innerHTML='<p class="text-green-400 font-bold text-center text-2xl">✅ All verifications passed!</p>';nextBtn.disabled=false;showToast('🎉 Step complete!')}else{document.getElementById('captchaError').classList.remove('hidden');document.getElementById('captchaInput').value=''}});break;
         }
-        window.toggleTheme = () => setTheme(!html.classList.contains('dark'));
-        setTheme((localStorage.getItem('theme') || 'dark') === 'dark');
+    }
+    function startTimer(s,cb){clearTimer();state.timerSeconds=s;const d=document.getElementById('timerDisplay');if(d)d.textContent=`${s}s`;state.timerInterval=setInterval(()=>{state.timerSeconds--;if(d)d.textContent=`${state.timerSeconds}s`;if(state.timerSeconds<=0){clearTimer();if(cb)cb()}},1000)}
+    function clearTimer(){if(state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null}}
+    nextBtn.addEventListener('click',()=>{if(nextBtn.disabled)return;if(state.step<5){state.step++;loadStep()}else{adGate.classList.add('hidden');document.body.style.overflow='';const pastefyID=extractPastefyID(state.pastefyUrl);pastefyBtn.href=state.pastefyUrl;pastefyEmbed.innerHTML=pastefyID?`<iframe src="https://pastefy.app/${pastefyID}/embed" allowfullscreen></iframe>`:'';copyPastefyBtn.onclick=()=>{navigator.clipboard.writeText(state.pastefyUrl);showToast('📋 Pastefy link copied!')};finalModal.classList.remove('hidden');clearTimer()}});
 
-        // ========== FIREBASE ==========
-        firebase.initializeApp({
-            apiKey: "AIzaSyBhuzEF0gg6CfiddF33hUlm9pWMJQexNWw",
-            authDomain: "robloxglop.firebaseapp.com",
-            projectId: "robloxglop",
-            storageBucket: "robloxglop.firebasestorage.app",
-            messagingSenderId: "956125985175",
-            appId: "1:956125985175:web:1fe8437a767d8107506cd2"
-        });
-        const db = firebase.firestore();
-        const scriptsColl = db.collection("scripts");
+    // ========== KEY SYSTEM (10 ADIM, /<slug>/key) ==========
+    const keyList = ["YOKOSO-AIZEN-01","KYOKA-GLASS-02","HADO90-COFFIN-03","REIATSU-KING-04","RAIKOHO-STORM-05","SHUNPO-BLUR-06","AIZEN-SOUL-07","GOTEI-VOID-08","BANKAI-NONE-09","ULTRA-AIZEN-10"];
+    const keySteps = [{type:'wait',sec:5,text:'⏳ 5 saniye bekle...'},{type:'scroll',text:'📜 Sayfanın en altına kaydır'},{type:'wait',sec:10,text:'⌛ 10 saniye bekle...'},{type:'confirm',text:'🖱️ "Reklamı gördüm" butonuna tıkla'},{type:'wait',sec:7,text:'⏳ 7 saniye bekle...'},{type:'captcha',text:'🔐 Captcha çöz'},{type:'wait',sec:6,text:'⏳ 6 saniye bekle...'},{type:'scroll',text:'📜 Tekrar en alta kaydır'},{type:'confirm',text:'🖱️ "Reklamı onayla" butonuna tıkla'},{type:'wait',sec:8,text:'⏳ Son 8 saniye...'}];
+    let keyStep=0,keyTimer=null,keyCaptcha=0,expireInterval=null;
 
-        // ========== GÜVENLİK ==========
-        document.oncontextmenu = () => false;
-        document.onkeydown = (e) => {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J'].includes(e.key)) || (e.ctrlKey && e.key === 'u')) {
-                e.preventDefault();
-                return false;
-            }
-        };
-
-        // ========== REKLAM PUSH ==========
-        function pushAds() {
-            requestAnimationFrame(() => {
-                document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status="done"])').forEach(el => {
-                    try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
-                });
-            });
+    function openKeySystem(slug) {
+        document.getElementById('mainPage').style.display='none';document.getElementById('keyPage').style.display='flex';
+        document.getElementById('adGate').classList.add('hidden');finalModal.classList.add('hidden');
+        document.getElementById('keyScriptTitle').textContent = (slug ? slug.toUpperCase() : '') + ' KEY SYSTEM';
+        history.pushState({ slug, key: true }, '', `${location.origin}/${slug}/key`);
+        initKeySteps();
+    }
+    window.goHome = () => { document.getElementById('keyPage').style.display='none';document.getElementById('mainPage').style.display='block';document.getElementById('adGate').classList.add('hidden');finalModal.classList.add('hidden');history.pushState({},'','/'); }
+    function initKeySteps() {
+        const dots=document.getElementById('keyDots');dots.innerHTML='';
+        for(let i=0;i<keySteps.length;i++){const d=document.createElement('div');d.className='step-dot';d.id='kdot'+i;d.textContent=i+1;dots.appendChild(d)}
+        document.getElementById('keyResult').classList.add('hidden');document.getElementById('keyNextBtn').style.display='block';keyStep=0;runKeyStep(0);
+    }
+    function updateKeyDots(){for(let i=0;i<keySteps.length;i++){const d=document.getElementById('kdot'+i);if(i<keyStep)d.className='step-dot done';else if(i===keyStep)d.className='step-dot active';else d.className='step-dot'}}
+    function clearKeyTimer(){if(keyTimer){clearInterval(keyTimer);keyTimer=null}}
+    function runKeyStep(idx){
+        if(idx>=keySteps.length){finishKey();return}
+        keyStep=idx;updateKeyDots();document.getElementById('keyNextBtn').disabled=true;
+        const s=keySteps[idx],area=document.getElementById('keyActionArea');
+        switch(s.type){
+            case'wait':area.innerHTML=`<p class="text-lg font-bold mb-3">${s.text}</p><div id="keyTimerDisplay" class="text-4xl font-mono font-black text-purple-400">${s.sec}s</div>`;startKeyTimer(s.sec,()=>{area.innerHTML='<p class="text-green-400 font-bold">✅ Tamamlandı</p>';document.getElementById('keyNextBtn').disabled=false});break;
+            case'scroll':area.innerHTML=`<p class="text-lg font-bold mb-3">${s.text}</p><div class="text-3xl animate-bounce">⬇️</div>`;const h=()=>{if(window.innerHeight+window.scrollY>=document.body.scrollHeight-20){window.removeEventListener('scroll',h);area.innerHTML='<p class="text-green-400 font-bold">✅ Scroll algılandı</p>';document.getElementById('keyNextBtn').disabled=false}};window.addEventListener('scroll',h,{passive:true});break;
+            case'confirm':area.innerHTML=`<p class="text-lg font-bold mb-3">${s.text}</p><button id="kConfirmBtn" class="btn-premium">ONAYLA</button>`;document.getElementById('kConfirmBtn').addEventListener('click',()=>{area.innerHTML='<p class="text-green-400 font-bold">✅ Onaylandı</p>';document.getElementById('keyNextBtn').disabled=false});break;
+            case'captcha':keyCaptcha=Math.floor(Math.random()*20)+1;area.innerHTML=`<p class="text-lg font-bold mb-3">🔐 Captcha</p><p class="mb-2">Soru: <span class="font-mono text-2xl font-bold">${keyCaptcha} = ?</span></p><input type="number" id="kCaptchaInput" class="input-elite text-center text-lg" placeholder="Cevap"><button id="kCaptchaBtn" class="btn-premium mt-3">DOĞRULA</button><p id="kCaptchaError" class="text-red-400 text-sm mt-2 hidden">Yanlış cevap.</p>`;document.getElementById('kCaptchaBtn').addEventListener('click',()=>{if(parseInt(document.getElementById('kCaptchaInput').value)===keyCaptcha){area.innerHTML='<p class="text-green-400 font-bold">✅ Captcha doğru</p>';document.getElementById('keyNextBtn').disabled=false}else{document.getElementById('kCaptchaError').classList.remove('hidden');document.getElementById('kCaptchaInput').value=''}});break;
         }
-        window.addEventListener('load', () => { pushAds(); setTimeout(pushAds, 800); setTimeout(pushAds, 2000); });
+    }
+    function startKeyTimer(sec,cb){clearKeyTimer();let left=sec;const d=document.getElementById('keyTimerDisplay');if(d)d.textContent=left+'s';keyTimer=setInterval(()=>{left--;if(d)d.textContent=left+'s';if(left<=0){clearKeyTimer();if(cb)cb()}},1000)}
+    function finishKey(){
+        clearKeyTimer();const rk=keyList[Math.floor(Math.random()*keyList.length)];
+        document.getElementById('keyDisplay').textContent=rk;document.getElementById('keyResult').classList.remove('hidden');document.getElementById('keyNextBtn').style.display='none';
+        const exp=Date.now()+86400000;
+        function upd(){const rem=exp-Date.now();if(rem<=0){document.getElementById('expireTimer').textContent='⏰ Süre doldu. Yeni key al.';clearInterval(expireInterval);return}const h=Math.floor(rem/3600000),m=Math.floor((rem%3600000)/60000),s=Math.floor((rem%60000)/1000);document.getElementById('expireTimer').textContent=`⏳ Geçerlilik: ${h}s ${m}d ${s}sn`}
+        upd();expireInterval=setInterval(upd,1000);
+    }
+    window.copyKey = () => { navigator.clipboard.writeText(document.getElementById('keyDisplay').textContent); showToast('Anahtar kopyalandı!'); };
+    document.getElementById('keyNextBtn').addEventListener('click', () => { if (document.getElementById('keyNextBtn').disabled) return; clearKeyTimer(); runKeyStep(keyStep + 1); });
 
-        // ========== YARDIMCI FONKSİYONLAR ==========
-        function escHtml(s) { return String(s).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m])); }
-        function escAttr(s) { return String(s).replace(/[&<>"']/g, ''); }
-        function showToast(m) { const t = document.getElementById('toast'), tm = document.getElementById('toastMsg'); tm.textContent = m; t.style.display = 'flex'; setTimeout(() => t.style.display = 'none', 3000); }
-        function getScriptPageUrl(id) { return `${location.origin}${location.pathname}?script=${id}`; }
-
-        // TikTok video ID'sini çıkar
-        function extractTikTokID(url) {
-            if (!url) return null;
-            const patterns = [
-                /tiktok\.com\/@[\w.-]+\/video\/(\d+)/,
-                /tiktok\.com\/t\/(\w+)/,
-                /vm\.tiktok\.com\/(\w+)/,
-                /tiktok\.com\/embed\/v2\/(\d+)/
-            ];
-            for (const p of patterns) {
-                const match = url.match(p);
-                if (match) return match[1];
-            }
-            return null;
-        }
-
-        // Imgur direkt link
-        function getDirectImgurURL(url) {
-            if (!url) return '';
-            if (url.includes('i.imgur.com')) return url;
-            const match = url.match(/imgur\.com\/([a-zA-Z0-9]+)$/);
-            return match ? `https://i.imgur.com/${match[1]}.png` : url;
-        }
-
-        // ========== SCRIPT LİSTELEME ==========
-        let allScripts = [];
-        async function loadScripts() {
+    // ========== PATH YÖNLENDİRME ==========
+    async function handleRouting() {
+        const path = location.pathname;
+        const mainPage = document.getElementById('mainPage'), keyPage = document.getElementById('keyPage');
+        const keyMatch = path.match(/^\/([a-z0-9-]+)\/key\/?$/);
+        if (keyMatch) { mainPage.style.display = 'none'; keyPage.style.display = 'flex'; openKeySystem(keyMatch[1]); return; }
+        const scriptMatch = path.match(/^\/([a-z0-9-]+)\/script\/([a-zA-Z0-9]+)\/?$/);
+        if (scriptMatch) {
+            const scriptId = scriptMatch[2];
             try {
-                const snap = await scriptsColl.orderBy("createdAt", "desc").get();
-                allScripts = [];
-                snap.forEach(d => allScripts.push({ id: d.id, ...d.data() }));
-                renderScripts();
-            } catch (e) {
-                showToast("⚠️ Veriler yüklenemedi.");
-            }
+                const doc = await scriptsColl.doc(scriptId).get();
+                if (doc.exists) { const s = doc.data(); if (s.pastefy) startFlow(scriptId, s.pastefy, scriptMatch[1]); else showToast('No Pastefy link'); }
+                else showToast('Script not found');
+            } catch (e) { showToast('Error loading script'); }
+            return;
         }
-
-        function renderScripts() {
-            const grid = document.getElementById('scriptGrid');
-            if (!grid) return;
-            grid.innerHTML = allScripts.map(s => {
-                const tiktokID = s.tiktok ? extractTikTokID(s.tiktok) : null;
-                const imgDirect = s.imgur ? getDirectImgurURL(s.imgur) : null;
-                return `<div class="glass-card p-4 md:p-6 flex flex-col">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="p-3 bg-gradient-to-br from-purple-600/20 to-fuchsia-600/20 rounded-xl text-purple-400"><i class="fas fa-file-code text-xl icon-glow"></i></div>
-                        <span class="badge badge-success"><i class="fas fa-check-circle"></i> Verified</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors">${escHtml(s.name)}</h3>
-                    <p class="text-slate-400 text-sm mb-4 flex-grow">${escHtml(s.desc || '')}</p>
-                    ${tiktokID ? `
-                    <div class="tiktok-container">
-                        <iframe src="https://www.tiktok.com/embed/v2/${tiktokID}" allowfullscreen></iframe>
-                    </div>` : ''}
-                    ${imgDirect ? `
-                    <div class="mb-4 rounded-xl overflow-hidden">
-                        <img src="${imgDirect}" alt="Script image" class="w-full h-auto object-cover" style="max-height:200px" onerror="this.style.display='none'">
-                    </div>` : ''}
-                    <div class="flex flex-wrap gap-2 mt-auto">
-                        ${s.tiktok ? `<button onclick="copyToClipboard('${escAttr(s.tiktok)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> TikTok</button>` : ''}
-                        ${s.imgur ? `<button onclick="copyToClipboard('${escAttr(imgDirect)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> Imgur</button>` : ''}
-                        <button onclick="copyToClipboard('${escAttr(getScriptPageUrl(s.id))}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-link"></i> Link</button>
-                    </div>
-                    <button onclick="startFlow('${escAttr(s.id)}', '${escAttr(s.pastebin || '')}')" class="btn-premium w-full py-4 text-sm mt-4"><i class="fas fa-lock-open"></i> ACCESS</button>
-                </div>`;
-            }).join('');
-            pushAds();
-        }
-        window.copyToClipboard = (t) => navigator.clipboard.writeText(t).then(() => showToast('📋 Copied!'));
-
-        // ========== UPLOAD ==========
-        window.toggleUploadModal = (show) => document.getElementById('uploadModal').style.display = show ? 'flex' : 'none';
-        window.handleUpload = async () => {
-            const name = document.getElementById('upName').value.trim();
-            const desc = document.getElementById('upDesc').value.trim();
-            const pastebin = document.getElementById('upPastebin').value.trim();
-            const tiktok = document.getElementById('upTikTok').value.trim();
-            const imgur = document.getElementById('upImgur').value.trim();
-            if (!name || !pastebin) return showToast('Name & Pastebin required.');
-            await scriptsColl.add({
-                name, desc, pastebin, tiktok, imgur,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp()
-            });
-            showToast('✅ Uploaded!');
-            window.toggleUploadModal(false);
-            document.querySelectorAll('#upName,#upDesc,#upPastebin,#upTikTok,#upImgur').forEach(e => e.value = '');
-            loadScripts();
-        };
-
-        // ========== 5 ADIM DOĞRULAMA ==========
-        const state = { step: 1, pastebinUrl: "", subStep: 0, subStepCompleted: [], timerInterval: null, timerSeconds: 0, captchaAnswer: null, captchaSolved: false };
-        const adGate = document.getElementById('adGate');
-        const contentArea = document.getElementById('contentArea');
-        const nextBtn = document.getElementById('nextBtn');
-        const pBar = document.getElementById('pBar');
-        const curStepSpan = document.getElementById('curStep');
-        const stepTitle = document.getElementById('stepTitle');
-        const finalModal = document.getElementById('finalModal');
-        const pastebinBtn = document.getElementById('pastebinBtn');
-        const copyPastebinBtn = document.getElementById('copyPastebinBtn');
-
-        window.startFlow = (id, pb) => {
-            state.pastebinUrl = pb;
-            state.step = 1; state.subStep = 0; state.subStepCompleted = []; state.captchaSolved = false;
-            clearTimer(); adGate.classList.remove('hidden'); document.body.style.overflow = 'hidden';
-            history.pushState({ scriptId: id }, '', getScriptPageUrl(id));
-            loadStep();
-        };
-
-        const titles = ["Quantum Encryption", "Behavioral Matrix", "Neural Lace", "Temporal Firewall", "Dimensional Rift"];
-        function loadStep() {
-            state.subStep = 0; state.subStepCompleted = []; state.captchaSolved = false; clearTimer(); nextBtn.disabled = true;
-            curStepSpan.textContent = state.step; pBar.style.width = `${(state.step / 5) * 100}%`; stepTitle.textContent = titles[(state.step - 1) % 5].toUpperCase();
-            const a = Math.floor(Math.random() * 20) + 1, b = Math.floor(Math.random() * 20) + 1; state.captchaAnswer = a + b;
-            contentArea.innerHTML = `<div class="animate-fade-in space-y-10"><div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8"><h2 class="text-3xl font-black mb-4 bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent font-manrope">${titles[(state.step - 1) % 5]}</h2><p class="text-slate-300 text-lg">Complete all sub-verifications.</p></div><div class="substep-list" id="substepContainer">${sub(1,'Wait 5 seconds','fa-clock')}${sub(2,'Scroll to bottom','fa-arrow-down')}${sub(3,'Wait 15 seconds','fa-hourglass-half')}${sub(4,'Confirm ad view','fa-mouse-pointer')}${sub(5,'Wait 5 seconds','fa-clock')}${sub(6,'Solve Captcha','fa-shield-alt')}</div><div id="actionArea" class="mt-6"></div><div class="ad-container"><span class="ad-label">AD</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto"></ins></div></div>`;
-            adGate.scrollTop = 0; setTimeout(pushAds, 300); advanceToSubStep(1);
-        }
-        function sub(i, t, ic) { return `<div id="substep-${i}" class="substep-item"><i class="fas ${ic}"></i><span>${t}</span></div>`; }
-        function updateSub(i, s) { const el = document.getElementById(`substep-${i}`); if (el) { el.classList.remove('completed', 'active'); el.classList.add(s); } }
-        function advanceToSubStep(i) { if (i > 1) { state.subStepCompleted[i - 1] = true; updateSub(i - 1, 'completed'); } state.subStep = i; updateSub(i, 'active'); executeSubStep(i); }
-        function executeSubStep(i) {
-            const a = document.getElementById('actionArea'); if (!a) return;
-            switch (i) {
-                case 1: a.innerHTML = `<div class="text-center"><p class="text-xl font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Wait 5 seconds</p><div id="timerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div></div>`; startTimer(5, () => { a.innerHTML = ''; advanceToSubStep(2); }); break;
-                case 2: a.innerHTML = `<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-arrow-down text-fuchsia-400 icon-glow"></i> Scroll to the very bottom</p><div class="scroll-prompt">⬇️</div></div>`; const h = () => { if (adGate.scrollTop + adGate.clientHeight >= adGate.scrollHeight - 60) { adGate.removeEventListener('scroll', h); a.innerHTML = '<p class="text-green-400 font-bold text-center text-xl">✅ Scroll detected!</p>'; setTimeout(() => { a.innerHTML = ''; advanceToSubStep(3); }, 800); } }; adGate.addEventListener('scroll', h, { passive: true }); break;
-                case 3: a.innerHTML = `<div class="text-center"><p class="text-xl font-bold mb-3"><i class="fas fa-hourglass-half text-pink-400 icon-glow"></i> Wait 15 seconds</p><div id="timerDisplay" class="text-5xl font-mono font-black text-pink-400">15s</div></div>`; startTimer(15, () => { a.innerHTML = ''; advanceToSubStep(4); }); break;
-                case 4: a.innerHTML = `<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-mouse-pointer text-indigo-400 icon-glow"></i> Confirm you viewed the ad</p><button id="confirmAdBtn" class="btn-premium py-4 px-10 text-lg">I VIEWED IT</button></div>`; document.getElementById('confirmAdBtn').addEventListener('click', () => { a.innerHTML = '<p class="text-green-400 font-bold text-center text-xl">✅ Confirmed.</p>'; setTimeout(() => { a.innerHTML = ''; advanceToSubStep(5); }, 600); }); break;
-                case 5: a.innerHTML = `<div class="text-center"><p class="text-xl font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Finalizing... 5s</p><div id="timerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div></div>`; startTimer(5, () => { a.innerHTML = ''; advanceToSubStep(6); }); break;
-                case 6: a.innerHTML = `<div class="captcha-box text-center"><i class="fas fa-shield-alt text-5xl text-purple-400 icon-glow mb-4"></i><h3 class="text-2xl font-black mb-3 font-manrope">AAA CAPTCHA</h3><p class="text-slate-300 mb-4">Solve: <span class="font-mono text-3xl font-bold text-white">${state.captchaAnswer} = ?</span></p><div class="flex gap-3 justify-center"><input type="number" id="captchaInput" class="input-elite w-28 text-center text-xl" placeholder="?"><button id="captchaSubmit" class="btn-premium py-2 px-6">VERIFY</button></div><p id="captchaError" class="text-red-400 text-sm mt-3 hidden">Incorrect.</p></div>`;
-                    document.getElementById('captchaSubmit').addEventListener('click', () => { if (parseInt(document.getElementById('captchaInput').value) === state.captchaAnswer) { state.captchaSolved = true; state.subStepCompleted[6] = true; updateSub(6, 'completed'); a.innerHTML = '<p class="text-green-400 font-bold text-center text-2xl">✅ All verifications passed!</p>'; nextBtn.disabled = false; showToast('🎉 Step complete!'); } else { document.getElementById('captchaError').classList.remove('hidden'); document.getElementById('captchaInput').value = ''; } }); break;
-            }
-        }
-        function startTimer(s, cb) { clearTimer(); state.timerSeconds = s; const d = document.getElementById('timerDisplay'); if (d) d.textContent = `${s}s`; state.timerInterval = setInterval(() => { state.timerSeconds--; if (d) d.textContent = `${state.timerSeconds}s`; if (state.timerSeconds <= 0) { clearTimer(); if (cb) cb(); } }, 1000); }
-        function clearTimer() { if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; } }
-
-        nextBtn.addEventListener('click', () => {
-            if (nextBtn.disabled) return;
-            if (state.step < 5) { state.step++; loadStep(); } else {
-                adGate.classList.add('hidden'); document.body.style.overflow = '';
-                pastebinBtn.href = state.pastebinUrl;
-                copyPastebinBtn.onclick = () => { navigator.clipboard.writeText(state.pastebinUrl); showToast('📋 Pastebin copied!'); };
-                finalModal.classList.remove('hidden'); clearTimer();
-            }
-        });
-
-        // ========== KEY SYSTEM (10 ADIM) ==========
-        const keyList = ["YOKOSO-AIZEN-01", "KYOKA-GLASS-02", "HADO90-COFFIN-03", "REIATSU-KING-04", "RAIKOHO-STORM-05", "SHUNPO-BLUR-06", "AIZEN-SOUL-07", "GOTEI-VOID-08", "BANKAI-NONE-09", "ULTRA-AIZEN-10"];
-        const keySteps = [
-            { type: 'wait', sec: 5, text: '⏳ 5 saniye bekle...' }, { type: 'scroll', text: '📜 Sayfanın en altına kaydır' },
-            { type: 'wait', sec: 10, text: '⌛ 10 saniye bekle...' }, { type: 'confirm', text: '🖱️ "Reklamı gördüm" butonuna tıkla' },
-            { type: 'wait', sec: 7, text: '⏳ 7 saniye bekle...' }, { type: 'captcha', text: '🔐 Captcha çöz' },
-            { type: 'wait', sec: 6, text: '⏳ 6 saniye bekle...' }, { type: 'scroll', text: '📜 Tekrar en alta kaydır' },
-            { type: 'confirm', text: '🖱️ "Reklamı onayla" butonuna tıkla' }, { type: 'wait', sec: 8, text: '⏳ Son 8 saniye...' }
-        ];
-        let keyStep = 0, keyTimer = null, keyCaptcha = 0, expireInterval = null;
-
-        function openKeySystem() {
-            document.getElementById('mainPage').style.display = 'none';
-            document.getElementById('keyPage').style.display = 'flex';
-            document.getElementById('adGate').classList.add('hidden');
-            finalModal.classList.add('hidden');
-            history.pushState({ key: true }, '', '?key');
-            initKeySteps();
-        }
-        window.closeKeySystem = function() {
-            document.getElementById('keyPage').style.display = 'none';
-            document.getElementById('mainPage').style.display = 'block';
-            history.pushState({}, '', location.pathname);
-            clearKeyTimer();
-        };
-        function initKeySteps() {
-            const dots = document.getElementById('keyDots'); dots.innerHTML = '';
-            for (let i = 0; i < keySteps.length; i++) { const d = document.createElement('div'); d.className = 'step-dot'; d.id = 'kdot' + i; d.textContent = i + 1; dots.appendChild(d); }
-            document.getElementById('keyResult').classList.add('hidden');
-            document.getElementById('keyNextBtn').style.display = 'block';
-            keyStep = 0; runKeyStep(0);
-        }
-        function updateKeyDots() {
-            for (let i = 0; i < keySteps.length; i++) { const d = document.getElementById('kdot' + i); if (i < keyStep) d.className = 'step-dot done active'; else if (i === keyStep) d.className = 'step-dot active'; else d.className = 'step-dot'; }
-        }
-        function clearKeyTimer() { if (keyTimer) { clearInterval(keyTimer); keyTimer = null; } }
-        function runKeyStep(idx) {
-            if (idx >= keySteps.length) { finishKey(); return; }
-            keyStep = idx; updateKeyDots(); document.getElementById('keyNextBtn').disabled = true;
-            const s = keySteps[idx], area = document.getElementById('keyActionArea');
-            switch (s.type) {
-                case 'wait': area.innerHTML = `<p class="text-lg font-bold mb-3">${s.text}</p><div id="keyTimerDisplay" class="text-4xl font-mono font-black text-purple-400">${s.sec}s</div>`; startKeyTimer(s.sec, () => { area.innerHTML = '<p class="text-green-400 font-bold">✅ Tamamlandı</p>'; document.getElementById('keyNextBtn').disabled = false; }); break;
-                case 'scroll': area.innerHTML = `<p class="text-lg font-bold mb-3">${s.text}</p><div class="text-3xl animate-bounce">⬇️</div>`; const h = () => { if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 20) { window.removeEventListener('scroll', h); area.innerHTML = '<p class="text-green-400 font-bold">✅ Scroll algılandı</p>'; document.getElementById('keyNextBtn').disabled = false; } }; window.addEventListener('scroll', h, { passive: true }); break;
-                case 'confirm': area.innerHTML = `<p class="text-lg font-bold mb-3">${s.text}</p><button id="kConfirmBtn" class="btn-premium">ONAYLA</button>`; document.getElementById('kConfirmBtn').addEventListener('click', () => { area.innerHTML = '<p class="text-green-400 font-bold">✅ Onaylandı</p>'; document.getElementById('keyNextBtn').disabled = false; }); break;
-                case 'captcha': keyCaptcha = Math.floor(Math.random() * 20) + 1; area.innerHTML = `<p class="text-lg font-bold mb-3">🔐 Captcha</p><p class="mb-2">Soru: <span class="font-mono text-2xl font-bold">${keyCaptcha} = ?</span></p><input type="number" id="kCaptchaInput" class="input-elite text-center text-lg" placeholder="Cevap"><button id="kCaptchaBtn" class="btn-premium mt-3">DOĞRULA</button><p id="kCaptchaError" class="text-red-400 text-sm mt-2 hidden">Yanlış cevap.</p>`; document.getElementById('kCaptchaBtn').addEventListener('click', () => { if (parseInt(document.getElementById('kCaptchaInput').value) === keyCaptcha) { area.innerHTML = '<p class="text-green-400 font-bold">✅ Captcha doğru</p>'; document.getElementById('keyNextBtn').disabled = false; } else { document.getElementById('kCaptchaError').classList.remove('hidden'); document.getElementById('kCaptchaInput').value = ''; } }); break;
-            }
-        }
-        function startKeyTimer(sec, cb) { clearKeyTimer(); let left = sec; const d = document.getElementById('keyTimerDisplay'); if (d) d.textContent = left + 's'; keyTimer = setInterval(() => { left--; if (d) d.textContent = left + 's'; if (left <= 0) { clearKeyTimer(); if (cb) cb(); } }, 1000); }
-        function finishKey() {
-            clearKeyTimer();
-            const rk = keyList[Math.floor(Math.random() * keyList.length)];
-            document.getElementById('keyDisplay').textContent = rk;
-            document.getElementById('keyResult').classList.remove('hidden');
-            document.getElementById('keyNextBtn').style.display = 'none';
-            const exp = Date.now() + 86400000;
-            function upd() { const rem = exp - Date.now(); if (rem <= 0) { document.getElementById('expireTimer').textContent = '⏰ Süre doldu. Yeni key al.'; clearInterval(expireInterval); return; } const h = Math.floor(rem / 3600000), m = Math.floor((rem % 3600000) / 60000), s = Math.floor((rem % 60000) / 1000); document.getElementById('expireTimer').textContent = `⏳ Geçerlilik: ${h}s ${m}d ${s}sn`; }
-            upd(); expireInterval = setInterval(upd, 1000);
-        }
-        window.copyKey = () => { navigator.clipboard.writeText(document.getElementById('keyDisplay').textContent); showToast('Anahtar kopyalandı!'); };
-        document.getElementById('keyNextBtn').addEventListener('click', () => { if (document.getElementById('keyNextBtn').disabled) return; clearKeyTimer(); runKeyStep(keyStep + 1); });
-
-        // ========== SAYFA YÖNLENDİRME ==========
-        async function handleParams() {
-            const p = new URLSearchParams(location.search);
-            if (p.has('key')) { openKeySystem(); return; }
-            const id = p.get('script');
-            if (id) {
-                try {
-                    const doc = await scriptsColl.doc(id).get();
-                    if (doc.exists) {
-                        const s = doc.data();
-                        if (s.pastebin) startFlow(id, s.pastebin);
-                        else showToast('No Pastebin link');
-                    }
-                } catch (e) { showToast('Script not found'); }
-            }
-        }
-        window.addEventListener('load', async () => { await loadScripts(); handleParams(); });
-        window.addEventListener('popstate', () => { if (adGate && !adGate.classList.contains('hidden')) { adGate.classList.add('hidden'); document.body.style.overflow = ''; } handleParams(); });
-        window.addEventListener('click', (e) => { if (e.target === finalModal) { finalModal.classList.add('hidden'); location.reload(); } });
-    })();
+        mainPage.style.display = 'block'; keyPage.style.display = 'none';
+        if (path !== '/') history.replaceState({}, '', '/');
+    }
+    window.addEventListener('load', async () => { await loadScripts(); handleRouting(); pushAds(); setTimeout(pushAds, 800); setTimeout(pushAds, 2000); });
+    window.addEventListener('popstate', () => { if (adGate && !adGate.classList.contains('hidden')) { adGate.classList.add('hidden'); document.body.style.overflow = ''; clearTimer(); } handleRouting(); });
+    window.addEventListener('click', e => { if (e.target === finalModal) { finalModal.classList.add('hidden'); location.reload(); } });
+})();
 </script>
 </body>
 </html>
