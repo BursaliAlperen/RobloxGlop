@@ -64,12 +64,13 @@
     <div class="text-center"><a href="/" class="btn-premium" onclick="event.preventDefault();goHome()"><i class="fas fa-home"></i> BACK HOME</a></div>
 </div>
 
-<!-- KEY SYSTEM PAGE (hidden, only via /<slug>/<num> or /<slug>/key<num>) -->
+<!-- KEY SYSTEM PAGE (3 steps, hidden, /<slug>/<num> or /<slug>/key<num>) -->
 <div id="keyPage" class="min-h-screen flex items-center justify-center px-4">
     <div class="glass-card p-8 w-full max-w-xl text-center relative animate-fade-in">
         <button onclick="goHome()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl"><i class="fas fa-times"></i></button>
         <h2 class="text-3xl font-black font-manrope bg-gradient-to-r from-purple-400 to-fuchsia-500 bg-clip-text text-transparent mb-1"><i class="fas fa-key mr-2"></i>AAA KEY SYSTEM</h2>
-        <p class="text-sm text-slate-400 mb-4"><i class="fas fa-lock mr-1"></i>Complete the 2‑step verification to reveal your key.</p>
+        <p class="text-sm text-slate-400 mb-4"><i class="fas fa-lock mr-1"></i>3‑step verification to reveal your key.</p>
+        <div class="flex justify-center gap-2 mb-4" id="keyDots"></div>
         <div id="keyActionArea" class="mb-6"></div>
         <div id="keyResult" class="hidden">
             <div class="bg-black border border-purple-500 rounded-xl p-4 font-mono text-2xl font-bold text-white mb-4" id="keyDisplay"></div>
@@ -123,17 +124,18 @@
     setTheme((localStorage.getItem('theme') || 'dark') === 'dark');
 
     // ========== CONSTANTS ==========
+    // 50 unique complex keys (same for all scripts)
     const STATIC_KEYS = [
-        "YOKOSO-AIZEN-01","KYOKA-GLASS-02","HADO90-COFFIN-03","REIATSU-KING-04","RAIKOHO-STORM-05",
-        "SHUNPO-BLUR-06","AIZEN-SOUL-07","GOTEI-VOID-08","BANKAI-NONE-09","ULTRA-AIZEN-10",
-        "ZANPAKUTO-11","SHIKAI-12","BANKAI-13","HOLLOW-14","QUINCY-15",
-        "SOUL-REAPER-16","ESPADA-17","FRACCION-18","VIZARD-19","FULLBRING-20",
-        "HOGYOKU-21","REISHI-22","SAKETSU-23","HAKUSUI-24","SENKAIMON-25",
-        "DANGAI-26","KUROSAKI-27","KUCHIKI-28","SHIHOIN-29","KYORAKU-30",
-        "UKITAKE-31","UNOHANA-32","ZARAKI-33","KUROTSUCHI-34","HITSUGAYA-35",
-        "KOMAMURA-36","TOUSEN-37","GIN-38","AIZEN-SAMA-39","YHWACH-40",
-        "JUGURAM-41","BAMBIETTA-42","AS-NODT-43","MASK-DE-MASCULINE-44","GERARD-45",
-        "LILLE-46","PERNIDA-47","ASKIN-48","ICHIBE-49","YOKOSO-FINAL-50"
+        "FREE01XPL1","BRAV02YQK2","CHAM03ZWR3","DURA04XVS4","ELIT05BQT5",
+        "FURY06CMR6","GLAD07DNS7","HONO08EPT8","IRON09FQU9","JADE10GRV10",
+        "KEEP11HSW11","LION12ITX12","MAGE13JUY13","NOVA14KVZ14","OMEN15LWA15",
+        "PACT16MXB16","QUAD17NYC17","RIFT18OZD18","SAGE19PAE19","TIDE20QBF20",
+        "UNIT21RCG21","VIBE22SDH22","WAVE23TEI23","XERO24UFJ24","YARN25VGK25",
+        "ZETA26WHL26","ALTA27XIM27","BETA28YJN28","CORE29ZKO29","DEEP30ALP30",
+        "ECHO31BMR31","FLUX32CNS32","GRIP33DOT33","HIVE34EPU34","IDEA35FQV35",
+        "JOLT36GRW36","KNIT37HSX37","LACE38ITY38","MELD39JUZ39","NODE40KVA40",
+        "OVAL41LWB41","PLUS42MXC42","QUIZ43NYD43","RUSH44OZE44","SLAM45PAF45",
+        "TRIP46QBG46","URGE47RCH47","VOID48SDI48","WARP49TEJ49","ZONE50UFK50"
     ];
 
     // ========== FIREBASE ==========
@@ -157,7 +159,7 @@
     function extractTikTokID(u) { const m = u?.match(/(?:tiktok\.com\/@[\w.-]+\/video\/|tiktok\.com\/t\/|vm\.tiktok\.com\/|tiktok\.com\/embed\/v2\/)([\w]+)/); return m ? m[1] : null; }
     function extractPastefyID(u) { const m = u?.match(/pastefy\.app\/([a-zA-Z0-9]+)/); return m ? m[1] : null; }
 
-    // ========== RENDER SCRIPTS ==========
+    // ========== RENDER SCRIPTS (simple, only ACCESS button) ==========
     function renderScriptCard(s) {
         const tiktokID = s.tiktok ? extractTikTokID(s.tiktok) : null;
         const slug = s.slug || slugify(s.name);
@@ -245,15 +247,25 @@
     function clearTimer(){if(state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null}}
     nextBtn.addEventListener('click',()=>{if(nextBtn.disabled)return;if(state.step<5){state.step++;loadStep()}else{adGate.classList.add('hidden');document.body.style.overflow='';const pastefyID=extractPastefyID(state.pastefyUrl);pastefyBtn.href=state.pastefyUrl;pastefyEmbed.innerHTML=pastefyID?`<iframe src="https://pastefy.app/${pastefyID}/embed" allowfullscreen></iframe>`:'';copyPastefyBtn.onclick=()=>{navigator.clipboard.writeText(state.pastefyUrl);showToast('📋 Pastefy link copied!')};finalModal.classList.remove('hidden');clearTimer()}});
 
-    // ========== KEY SYSTEM (2-step, static, reusable, hidden, /<slug>/<num> OR /<slug>/key<num>) ==========
-    let keyVerificationState = { step: 0, timerInterval: null, captchaAnswer: null };
+    // ========== KEY SYSTEM (3 steps: wait, scroll, captcha) ==========
+    let keyState = { step: 0, timerInterval: null, captchaAnswer: null };
 
     function openKeySystem(slug, keyNum) {
         hideAll();
         document.getElementById('keyPage').style.display = 'flex';
         document.getElementById('keyResult').classList.add('hidden');
         document.getElementById('keyActionArea').innerHTML = '';
-        history.pushState({ slug, keyNum }, '', `/${slug}/${keyNum}`);
+        // Show 3 dots
+        const dotsDiv = document.getElementById('keyDots');
+        dotsDiv.innerHTML = '';
+        for (let i = 0; i < 3; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'step-dot';
+            dot.id = 'kdot' + i;
+            dot.textContent = i + 1;
+            dotsDiv.appendChild(dot);
+        }
+        history.pushState({ slug, keyNum }, '', `/${slug}/key${keyNum}`);
 
         const keyIndex = keyNum - 1;
         if (keyIndex < 0 || keyIndex >= STATIC_KEYS.length) {
@@ -261,27 +273,53 @@
             return;
         }
 
-        keyVerificationState.step = 1;
+        keyState.step = 1;
         runKeyStep(keyIndex);
+    }
+
+    function updateKeyDots(step) {
+        for (let i = 0; i < 3; i++) {
+            const dot = document.getElementById('kdot' + i);
+            if (i < step - 1) dot.className = 'step-dot done';
+            else if (i === step - 1) dot.className = 'step-dot active';
+            else dot.className = 'step-dot';
+        }
     }
 
     function runKeyStep(keyIndex) {
         const area = document.getElementById('keyActionArea');
-        if (keyVerificationState.step === 1) {
+        updateKeyDots(keyState.step);
+        if (keyState.step === 1) {
+            // Step 1: Wait 5 seconds
             area.innerHTML = `<p class="text-lg font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Please wait 5 seconds...</p><div id="keyTimerDisplay" class="text-4xl font-mono font-black text-purple-400">5s</div>`;
             startKeyTimer(5, () => {
-                keyVerificationState.step = 2;
+                keyState.step = 2;
                 runKeyStep(keyIndex);
             });
-        } else if (keyVerificationState.step === 2) {
+        } else if (keyState.step === 2) {
+            // Step 2: Scroll to bottom
+            area.innerHTML = `<p class="text-lg font-bold mb-4"><i class="fas fa-arrow-down text-fuchsia-400 icon-glow"></i> Scroll to the very bottom of this page</p><div class="scroll-prompt">⬇️</div>`;
+            const scrollHandler = () => {
+                if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 20) {
+                    window.removeEventListener('scroll', scrollHandler);
+                    area.innerHTML = '<p class="text-green-400 font-bold text-center text-xl"><i class="fas fa-check-circle mr-1"></i>Scroll detected!</p>';
+                    setTimeout(() => {
+                        keyState.step = 3;
+                        runKeyStep(keyIndex);
+                    }, 500);
+                }
+            };
+            window.addEventListener('scroll', scrollHandler, { passive: true });
+        } else if (keyState.step === 3) {
+            // Step 3: Captcha
             const captchaAnswer = Math.floor(Math.random() * 20) + 1;
-            keyVerificationState.captchaAnswer = captchaAnswer;
-            area.innerHTML = `<p class="text-lg font-bold mb-3"><i class="fas fa-shield-alt text-purple-400"></i> Solve Captcha</p><p class="mb-2"><i class="fas fa-question-circle mr-1"></i>What is <span class="font-mono text-2xl font-bold">${captchaAnswer} = ?</span></p><input type="number" id="keyCaptchaInput" class="input-elite text-center text-lg" placeholder="Answer"><button id="keyCaptchaBtn" class="btn-premium mt-3 w-full"><i class="fas fa-check mr-1"></i>VERIFY</button><p id="keyCaptchaError" class="text-red-400 text-sm mt-2 hidden"><i class="fas fa-times-circle mr-1"></i>Incorrect answer.</p>`;
+            keyState.captchaAnswer = captchaAnswer;
+            area.innerHTML = `<div class="captcha-box text-center"><i class="fas fa-shield-alt text-5xl text-purple-400 icon-glow mb-4"></i><h3 class="text-2xl font-black mb-3 font-manrope"><i class="fas fa-lock mr-2"></i>AAA CAPTCHA</h3><p class="text-slate-300 mb-4"><i class="fas fa-question-circle mr-1"></i>Solve: <span class="font-mono text-3xl font-bold text-white">${captchaAnswer} = ?</span></p><div class="flex gap-3 justify-center"><input type="number" id="keyCaptchaInput" class="input-elite w-28 text-center text-xl" placeholder="?"><button id="keyCaptchaBtn" class="btn-premium py-2 px-6"><i class="fas fa-check mr-1"></i>VERIFY</button></div><p id="keyCaptchaError" class="text-red-400 text-sm mt-3 hidden"><i class="fas fa-times-circle mr-1"></i>Incorrect answer.</p></div>`;
             document.getElementById('keyCaptchaBtn').addEventListener('click', () => {
                 if (parseInt(document.getElementById('keyCaptchaInput').value) === captchaAnswer) {
                     document.getElementById('keyDisplay').textContent = STATIC_KEYS[keyIndex];
                     document.getElementById('keyResult').classList.remove('hidden');
-                    area.innerHTML = '<p class="text-green-400 font-bold"><i class="fas fa-check-circle mr-1"></i> Verification passed! Your key is below.</p>';
+                    area.innerHTML = '<p class="text-green-400 font-bold"><i class="fas fa-check-circle mr-1"></i>Verification passed! Your key is below.</p>';
                 } else {
                     document.getElementById('keyCaptchaError').classList.remove('hidden');
                     document.getElementById('keyCaptchaInput').value = '';
@@ -291,16 +329,16 @@
     }
 
     function startKeyTimer(sec, cb) {
-        if (keyVerificationState.timerInterval) clearInterval(keyVerificationState.timerInterval);
+        if (keyState.timerInterval) clearInterval(keyState.timerInterval);
         let left = sec;
         const d = document.getElementById('keyTimerDisplay');
         if (d) d.textContent = left + 's';
-        keyVerificationState.timerInterval = setInterval(() => {
+        keyState.timerInterval = setInterval(() => {
             left--;
             if (d) d.textContent = left + 's';
             if (left <= 0) {
-                clearInterval(keyVerificationState.timerInterval);
-                keyVerificationState.timerInterval = null;
+                clearInterval(keyState.timerInterval);
+                keyState.timerInterval = null;
                 if (cb) cb();
             }
         }, 1000);
@@ -311,18 +349,12 @@
         if (key) navigator.clipboard.writeText(key).then(() => showToast('🔑 Key copied!'));
     };
 
-    // ========== PATH ROUTING (supports both /aizen/31 and /aizen/key31) ==========
+    // ========== PATH ROUTING (supports /<slug>/<num> and /<slug>/key<num>) ==========
     async function handleRouting() {
         const path = location.pathname;
-        // Accepts /<slug>/key<num> and /<slug>/<num>
         let keyMatch = path.match(/^\/([a-z0-9-]+)\/key(\d+)\/?$/);
-        if (!keyMatch) {
-            keyMatch = path.match(/^\/([a-z0-9-]+)\/(\d{1,2})\/?$/);
-        }
-        if (keyMatch) {
-            openKeySystem(keyMatch[1], parseInt(keyMatch[2]));
-            return;
-        }
+        if (!keyMatch) keyMatch = path.match(/^\/([a-z0-9-]+)\/(\d{1,2})\/?$/);
+        if (keyMatch) { openKeySystem(keyMatch[1], parseInt(keyMatch[2])); return; }
         const scriptMatch = path.match(/^\/([a-z0-9-]+)\/script\/([a-zA-Z0-9]+)\/?$/);
         if (scriptMatch) {
             try { const doc = await scriptsColl.doc(scriptMatch[2]).get(); if (doc.exists) { const s = doc.data(); if (s.pastefy) startFlow(scriptMatch[2], s.pastefy, scriptMatch[1]); else showToast('No Pastefy link'); } else showToast('Script not found'); } catch (e) { showToast('Error'); }
