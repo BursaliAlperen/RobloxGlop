@@ -45,51 +45,38 @@
         <p class="text-slate-400 max-w-2xl mx-auto text-xl md:text-2xl">Multi‑layer AAA security. Zero keys, pure verification velocity.</p>
         <div class="mt-6"><span class="countdown-badge" id="countdownBadge">⏳ New scripts in <span id="countdownTimer">--</span></span></div>
     </div>
-
-    <!-- Arama -->
-    <div class="max-w-xl mx-auto mb-12"><input id="homeSearch" type="text" placeholder="🔍 Script ara..." class="input-elite text-center" oninput="filterHomeScripts()"></div>
-
+    <div class="max-w-xl mx-auto mb-12"><input id="homeSearch" type="text" placeholder="🔍 Search scripts..." class="input-elite text-center" oninput="filterHomeScripts()"></div>
     <div class="ad-container max-w-2xl mx-auto"><span class="ad-label"><i class="fas fa-ad"></i> SPONSORED</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
-
-    <!-- Adsterra Banner 728x90 -->
     <div class="banner-slot" style="min-height:90px;"><script>(function(){var o={key:'e12472019e50186885ab292efec5e643',format:'iframe',height:90,width:728,params:{}};var s=document.createElement('script');s.src='https://www.highperformanceformat.com/e12472019e50186885ab292efec5e643/invoke.js';document.currentScript.parentNode.appendChild(s);})();</script></div>
-
     <h2 class="text-4xl font-black mb-10 text-center"><i class="fas fa-fire text-fuchsia-500"></i> LATEST SCRIPTS</h2>
     <div id="homeScriptGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"></div>
-
     <div class="text-center"><a href="/aizen/scripts/" class="btn-premium" onclick="event.preventDefault();openArchive()"><i class="fas fa-archive"></i> VIEW ALL SCRIPTS (A-Z)</a></div>
-
     <div class="ad-container max-w-2xl mx-auto mt-16"><span class="ad-label"><i class="fas fa-star"></i> PREMIUM</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-format="autorelaxed" data-ad-client="ca-pub-7036109597530319" data-ad-slot="8023120978"></ins></div>
-
-    <!-- Adsterra Banner 300x250 -->
     <div class="banner-slot" style="min-height:250px;"><script>(function(){var o={key:'a2ca6e2544abe06bd1e7e854140fe5fe',format:'iframe',height:250,width:300,params:{}};var s=document.createElement('script');s.src='https://www.highperformanceformat.com/a2ca6e2544abe06bd1e7e854140fe5fe/invoke.js';document.currentScript.parentNode.appendChild(s);})();</script></div>
 </main>
 
-<!-- SCRIPT ARŞİV SAYFASI -->
+<!-- ARŞİV SAYFASI -->
 <div id="archivePage" class="max-w-7xl mx-auto px-4 md:px-8 py-16">
     <h2 class="text-4xl font-black mb-4 text-center"><i class="fas fa-archive text-fuchsia-500"></i> ALL SCRIPTS (A-Z)</h2>
-    <div class="max-w-xl mx-auto mb-8"><input id="archiveSearch" type="text" placeholder="🔍 Script ara... (isim, açıklama)" class="input-elite text-center" oninput="filterArchiveScripts()"></div>
+    <div class="max-w-xl mx-auto mb-8"><input id="archiveSearch" type="text" placeholder="🔍 Search by name or description..." class="input-elite text-center" oninput="filterArchiveScripts()"></div>
     <div class="ad-container max-w-2xl mx-auto mb-10"><span class="ad-label"><i class="fas fa-ad"></i> SPONSORED</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
-    <!-- Adsterra Banner 468x60 -->
     <div class="banner-slot" style="min-height:60px;"><script>(function(){var o={key:'265cf9840f93624909075559deaa6785',format:'iframe',height:60,width:468,params:{}};var s=document.createElement('script');s.src='https://www.highperformanceformat.com/265cf9840f93624909075559deaa6785/invoke.js';document.currentScript.parentNode.appendChild(s);})();</script></div>
     <div id="archiveScriptGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"></div>
     <div class="text-center"><a href="/" class="btn-premium" onclick="event.preventDefault();goHome()"><i class="fas fa-home"></i> BACK HOME</a></div>
 </div>
 
-<!-- KEY SYSTEM PAGE (dinamik /<slug>/key) -->
+<!-- KEY SYSTEM PAGE (dynamic /<slug>/key<num>) -->
 <div id="keyPage" class="min-h-screen flex items-center justify-center px-4">
     <div class="glass-card p-8 w-full max-w-xl text-center relative animate-fade-in">
         <button onclick="goHome()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">&times;</button>
         <h2 class="text-3xl font-black font-manrope bg-gradient-to-r from-purple-400 to-fuchsia-500 bg-clip-text text-transparent mb-1" id="keyScriptTitle">AAA KEY SYSTEM</h2>
-        <p class="text-sm text-slate-400 mb-4">10 adımı tamamla, 24 saat geçerli anahtarını al</p>
-        <div class="flex justify-center gap-2 mb-6" id="keyDots"></div>
-        <div id="keyActionArea" class="mb-6"></div>
-        <div id="keyResult" class="hidden"><div class="bg-black border border-purple-500 rounded-xl p-4 font-mono text-2xl font-bold text-white mb-4" id="keyDisplay"></div><button class="btn-premium w-full mb-2" onclick="copyKey()"><i class="fas fa-copy"></i> COPY KEY</button><p class="text-sm text-yellow-400" id="expireTimer"></p></div>
-        <button class="btn-premium w-full" id="keyNextBtn" disabled>CONTINUE <i class="fas fa-arrow-right"></i></button>
+        <p class="text-sm text-slate-400 mb-4" id="keyInfo">Loading key...</p>
+        <div id="keyStatusArea" class="mb-6"></div>
+        <div id="keyActions" class="space-y-4"></div>
     </div>
 </div>
 
-<!-- AD GATE (5 adım doğrulama) -->
+<!-- AD GATE (5 steps) -->
 <div id="adGate" class="hidden fixed inset-0 z-[200] bg-[#0b0f19] overflow-y-auto">
     <header class="sticky top-0 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800 px-4 md:px-8 py-4 z-[210] flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center gap-3"><span class="bg-purple-600 text-white text-xs font-black px-4 py-2 rounded-xl">STEP <span id="curStep">1</span>/5</span><h3 id="stepTitle" class="font-bold text-sm text-slate-300">AAA SECURE LAYER</h3></div>
@@ -104,28 +91,28 @@
     <div class="glass-card p-8 md:p-10 w-full max-w-lg border-purple-500/20 animate-fade-in relative">
         <button onclick="toggleUploadModal(false)" class="absolute top-3 right-3 text-slate-400 hover:text-white text-2xl">&times;</button>
         <h2 class="text-3xl font-black mb-6"><i class="fas fa-upload text-purple-400"></i> UPLOAD</h2>
-        <input id="upName" placeholder="Script Adı" class="input-elite mb-3"><input id="upDesc" placeholder="Açıklama" class="input-elite mb-3"><input id="upPastefy" placeholder="Pastefy.app URL (ödül)" class="input-elite mb-3"><input id="upTikTok" placeholder="TikTok Video URL" class="input-elite mb-3"><input id="upImgur" placeholder="Imgur URL" class="input-elite mb-3">
+        <input id="upName" placeholder="Script Name" class="input-elite mb-3"><input id="upDesc" placeholder="Description" class="input-elite mb-3"><input id="upPastefy" placeholder="Pastefy.app URL (reward)" class="input-elite mb-3"><input id="upTikTok" placeholder="TikTok Video URL" class="input-elite mb-3"><input id="upImgur" placeholder="Imgur URL" class="input-elite mb-3">
         <button onclick="handleUpload()" class="btn-premium w-full">SUBMIT</button>
     </div>
 </div>
 
-<!-- PASTEFY ÖDÜL MODAL -->
+<!-- PASTEFY REWARD MODAL -->
 <div id="finalModal" class="fixed inset-0 z-[400] hidden flex flex-col items-center justify-center p-4 bg-[#0b0f19]/90 backdrop-blur-xl">
     <div class="glass-card p-10 text-center max-w-2xl w-full border-purple-500/30 animate-fade-in">
         <div class="w-20 h-20 bg-gradient-to-br from-purple-600 to-fuchsia-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl shadow-2xl animate-bounce"><i class="fas fa-check icon-glow"></i></div>
-        <h2 class="text-3xl font-black mb-2 font-manrope">ACCESS GRANTED</h2><p class="text-slate-400 mb-4">Pastefy.app ödülün:</p>
+        <h2 class="text-3xl font-black mb-2 font-manrope">ACCESS GRANTED</h2><p class="text-slate-400 mb-4">Your Pastefy.app reward:</p>
         <div id="pastefyEmbed" class="pastefy-container mb-4"></div><a id="pastefyBtn" href="#" target="_blank" class="btn-premium w-full mb-3"><i class="fas fa-external-link-alt"></i> OPEN PASTEFY</a><button id="copyPastefyBtn" class="btn-copy w-full py-3 text-lg mb-4"><i class="fas fa-copy"></i> COPY LINK</button>
         <button onclick="location.reload()" class="text-slate-400 text-xs uppercase hover:text-purple-300">New Session</button>
     </div>
 </div>
 
-<!-- DÜZENLEME MODAL -->
+<!-- EDIT MODAL -->
 <div id="editModal" class="fixed inset-0 z-[500] hidden items-center justify-center p-4 modal-overlay">
     <div class="glass-card p-8 md:p-10 w-full max-w-lg border-purple-500/20 animate-fade-in relative">
         <button onclick="closeEditModal()" class="absolute top-3 right-3 text-slate-400 hover:text-white text-2xl">&times;</button>
         <h2 class="text-3xl font-black mb-6"><i class="fas fa-edit text-purple-400"></i> EDIT SCRIPT</h2>
-        <div id="editAuth" class="space-y-4"><p class="text-sm text-slate-400">Bu scripti düzenlemek için lütfen şifreyi girin.</p><input id="editPassword" type="password" placeholder="Düzenleme Şifresi" class="input-elite"><button onclick="verifyEditPassword()" class="btn-premium w-full">DOĞRULA</button><p id="editPasswordError" class="text-red-400 text-sm hidden">Yanlış şifre!</p></div>
-        <div id="editForm" class="hidden space-y-4"><input id="editName" placeholder="Script Adı" class="input-elite"><input id="editDesc" placeholder="Açıklama" class="input-elite"><input id="editPastefy" placeholder="Pastefy.app URL" class="input-elite"><input id="editTikTok" placeholder="TikTok Video URL" class="input-elite"><input id="editImgur" placeholder="Imgur URL" class="input-elite"><button onclick="saveEdit()" class="btn-premium w-full">KAYDET</button></div>
+        <div id="editAuth" class="space-y-4"><p class="text-sm text-slate-400">Enter the password to edit this script.</p><input id="editPassword" type="password" placeholder="Edit Password" class="input-elite"><button onclick="verifyEditPassword()" class="btn-premium w-full">VERIFY</button><p id="editPasswordError" class="text-red-400 text-sm hidden">Wrong password!</p></div>
+        <div id="editForm" class="hidden space-y-4"><input id="editName" placeholder="Script Name" class="input-elite"><input id="editDesc" placeholder="Description" class="input-elite"><input id="editPastefy" placeholder="Pastefy.app URL" class="input-elite"><input id="editTikTok" placeholder="TikTok Video URL" class="input-elite"><input id="editImgur" placeholder="Imgur URL" class="input-elite"><button onclick="saveEdit()" class="btn-premium w-full">SAVE</button></div>
     </div>
 </div>
 
@@ -137,30 +124,44 @@
 
 <script>
 (function() {
-    // ========== TEMA ==========
+    // ========== THEME ==========
     const html = document.documentElement, themeIcon = document.getElementById('themeIcon');
     function setTheme(d) { if (d) { html.classList.add('dark'); html.classList.remove('light'); if (themeIcon) themeIcon.className = 'fas fa-moon text-white text-lg'; localStorage.setItem('theme', 'dark'); } else { html.classList.remove('dark'); html.classList.add('light'); if (themeIcon) themeIcon.className = 'fas fa-sun text-yellow-400 text-lg'; localStorage.setItem('theme', 'light'); } }
     window.toggleTheme = () => setTheme(!html.classList.contains('dark'));
     setTheme((localStorage.getItem('theme') || 'dark') === 'dark');
 
-    // ========== SABİTLER ==========
+    // ========== CONSTANTS ==========
     const EDIT_PASSWORD = "AizenGlop2025";
-    const COUNTDOWN_MINUTES = 45; // 45 dakikada bir yeni script dalgası
+    const COUNTDOWN_MINUTES = 45;
+
+    // ========== 50 STATIC KEYS ==========
+    const STATIC_KEYS = [
+        "YOKOSO-AIZEN-01","KYOKA-GLASS-02","HADO90-COFFIN-03","REIATSU-KING-04","RAIKOHO-STORM-05",
+        "SHUNPO-BLUR-06","AIZEN-SOUL-07","GOTEI-VOID-08","BANKAI-NONE-09","ULTRA-AIZEN-10",
+        "ZANPAKUTO-11","SHIKAI-12","BANKAI-13","HOLLOW-14","QUINCY-15",
+        "SOUL-REAPER-16","ESPADA-17","FRACCION-18","VIZARD-19","FULLBRING-20",
+        "HOGYOKU-21","REISHI-22","SAKETSU-23","HAKUSUI-24","SENKAIMON-25",
+        "DANGAI-26","KUROSAKI-27","KUCHIKI-28","SHIHOIN-29","KYORAKU-30",
+        "UKITAKE-31","UNOHANA-32","ZARAKI-33","KUROTSUCHI-34","HITSUGAYA-35",
+        "KOMAMURA-36","TOUSEN-37","GIN-38","AIZEN-SAMA-39","YHWACH-40",
+        "JUGURAM-41","BAMBIETTA-42","AS-NODT-43","MASK-DE-MASCULINE-44","GERARD-45",
+        "LILLE-46","PERNIDA-47","ASKIN-48","ICHIBE-49","YOKOSO-FINAL-50"
+    ];
 
     // ========== FIREBASE ==========
     firebase.initializeApp({ apiKey: "AIzaSyBhuzEF0gg6CfiddF33hUlm9pWMJQexNWw", authDomain: "robloxglop.firebaseapp.com", projectId: "robloxglop", storageBucket: "robloxglop.firebasestorage.app", messagingSenderId: "956125985175", appId: "1:956125985175:web:1fe8437a767d8107506cd2" });
-    const db = firebase.firestore(), scriptsColl = db.collection("scripts");
+    const db = firebase.firestore(), scriptsColl = db.collection("scripts"), keysColl = db.collection("keys");
 
-    // ========== GÜVENLİK ==========
+    // ========== SECURITY ==========
     document.oncontextmenu = () => false;
     document.onkeydown = e => { if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J'].includes(e.key)) || (e.ctrlKey && e.key === 'u')) { e.preventDefault(); return false; } };
 
-    // ========== REKLAM ==========
+    // ========== ADS ==========
     function pushAds() { requestAnimationFrame(() => { document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status="done"])').forEach(el => { try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {} }); }); }
     function pushAllAds() { pushAds(); setTimeout(pushAds, 600); setTimeout(pushAds, 1500); setTimeout(pushAds, 3000); }
     window.addEventListener('load', pushAllAds);
 
-    // ========== YARDIMCI ==========
+    // ========== HELPERS ==========
     function escHtml(s) { return String(s).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m])); }
     function escAttr(s) { return String(s).replace(/[&<>"']/g, ''); }
     function showToast(m) { const t = document.getElementById('toast'), tm = document.getElementById('toastMsg'); tm.textContent = m; t.style.display = 'flex'; setTimeout(() => t.style.display = 'none', 3000); }
@@ -168,28 +169,22 @@
     function extractTikTokID(u) { const m = u?.match(/(?:tiktok\.com\/@[\w.-]+\/video\/|tiktok\.com\/t\/|vm\.tiktok\.com\/|tiktok\.com\/embed\/v2\/)([\w]+)/); return m ? m[1] : null; }
     function extractPastefyID(u) { const m = u?.match(/pastefy\.app\/([a-zA-Z0-9]+)/); return m ? m[1] : null; }
     function getDirectImgurURL(u) { if (!u) return ''; if (u.includes('i.imgur.com')) return u; const m = u.match(/imgur\.com\/([a-zA-Z0-9]+)$/); return m ? `https://i.imgur.com/${m[1]}.png` : u; }
+    function getUsedKeys() { try { return JSON.parse(localStorage.getItem('usedKeys') || '[]'); } catch(e) { return []; } }
+    function addUsedKey(key) { const used = getUsedKeys(); if (!used.includes(key)) { used.push(key); localStorage.setItem('usedKeys', JSON.stringify(used)); } }
 
-    // ========== GERİ SAYIM ==========
+    // ========== COUNTDOWN ==========
     function startCountdown() {
-        const display = document.getElementById('countdownTimer');
-        if (!display) return;
+        const display = document.getElementById('countdownTimer'); if (!display) return;
         const targetTime = Date.now() + COUNTDOWN_MINUTES * 60 * 1000;
-        function update() {
-            const remaining = targetTime - Date.now();
-            if (remaining <= 0) { display.textContent = '00:00'; loadScripts(); startCountdown(); return; }
-            const m = Math.floor(remaining / 60000), s = Math.floor((remaining % 60000) / 1000);
-            display.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-        }
-        update();
-        setInterval(update, 1000);
+        function update() { const rem = targetTime - Date.now(); if (rem <= 0) { display.textContent = '00:00'; loadScripts(); startCountdown(); return; } const m = Math.floor(rem / 60000), s = Math.floor((rem % 60000) / 1000); display.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; }
+        update(); setInterval(update, 1000);
     }
 
-    // ========== SCRIPT RENDER (ortak) ==========
+    // ========== RENDER SCRIPTS ==========
     function renderScriptCard(s) {
         const tiktokID = s.tiktok ? extractTikTokID(s.tiktok) : null, pastefyID = s.pastefy ? extractPastefyID(s.pastefy) : null, imgDirect = s.imgur ? getDirectImgurURL(s.imgur) : null;
         const slug = s.slug || slugify(s.name);
         const scriptPageUrl = `${location.origin}/${slug}/script/${s.id}`;
-        const keyPageUrl = `${location.origin}/${slug}/key`;
         return `<div class="glass-card p-4 md:p-6 flex flex-col">
             <div class="flex justify-between items-start mb-4"><div class="p-3 bg-gradient-to-br from-purple-600/20 to-fuchsia-600/20 rounded-xl text-purple-400"><i class="fas fa-file-code text-xl icon-glow"></i></div><span class="badge badge-success"><i class="fas fa-check-circle"></i> Verified</span></div>
             <h3 class="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors">${escHtml(s.name)}</h3>
@@ -205,46 +200,33 @@
                 <button onclick="openEditModal('${escAttr(s.id)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-edit"></i> Edit</button>
             </div>
             <button onclick="startFlow('${escAttr(s.id)}', '${escAttr(s.pastefy || '')}', '${escAttr(slug)}')" class="btn-premium w-full py-4 text-sm mt-4"><i class="fas fa-lock-open"></i> ACCESS</button>
-            <button onclick="window.location='${escAttr(keyPageUrl)}'" class="btn-copy w-full py-2 text-xs mt-2 justify-center"><i class="fas fa-key"></i> GET KEY</button>
         </div>`;
     }
     window.copyToClipboard = t => navigator.clipboard.writeText(t).then(() => showToast('📋 Copied!'));
 
-    // ========== VERİ ÇEKME ==========
+    // ========== DATA FETCH ==========
     let allScripts = [];
     async function loadScripts() {
         try { const snap = await scriptsColl.orderBy("createdAt", "desc").get(); allScripts = []; snap.forEach(d => allScripts.push({ id: d.id, ...d.data() })); renderAll(); }
-        catch (e) { showToast("⚠️ Veriler yüklenemedi."); }
+        catch (e) { showToast("⚠️ Failed to load data."); }
     }
-
-    function renderAll() {
-        renderHomeScripts();
-        renderArchiveScripts();
-        pushAllAds();
-    }
-
-    // Ana sayfa: son 6 script
+    function renderAll() { renderHomeScripts(); renderArchiveScripts(); pushAllAds(); }
     function renderHomeScripts(filter = '') {
-        const grid = document.getElementById('homeScriptGrid');
-        if (!grid) return;
+        const grid = document.getElementById('homeScriptGrid'); if (!grid) return;
         let list = allScripts.slice(0, 6);
         if (filter) list = list.filter(s => s.name.toLowerCase().includes(filter) || (s.desc || '').toLowerCase().includes(filter));
-        grid.innerHTML = list.map(s => renderScriptCard(s)).join('') || '<p class="text-slate-400 col-span-full text-center">Sonuç bulunamadı.</p>';
+        grid.innerHTML = list.map(s => renderScriptCard(s)).join('') || '<p class="text-slate-400 col-span-full text-center">No results found.</p>';
     }
-
-    // Arşiv sayfası: tüm scriptler A-Z
     function renderArchiveScripts(filter = '') {
-        const grid = document.getElementById('archiveScriptGrid');
-        if (!grid) return;
+        const grid = document.getElementById('archiveScriptGrid'); if (!grid) return;
         let list = [...allScripts].sort((a, b) => (a.name || '').localeCompare(b.name || ''));
         if (filter) list = list.filter(s => s.name.toLowerCase().includes(filter) || (s.desc || '').toLowerCase().includes(filter));
-        grid.innerHTML = list.map(s => renderScriptCard(s)).join('') || '<p class="text-slate-400 col-span-full text-center">Sonuç bulunamadı.</p>';
+        grid.innerHTML = list.map(s => renderScriptCard(s)).join('') || '<p class="text-slate-400 col-span-full text-center">No results found.</p>';
     }
-
     window.filterHomeScripts = () => renderHomeScripts(document.getElementById('homeSearch')?.value?.toLowerCase() || '');
     window.filterArchiveScripts = () => renderArchiveScripts(document.getElementById('archiveSearch')?.value?.toLowerCase() || '');
 
-    // ========== SAYFA GEÇİŞLERİ ==========
+    // ========== PAGE NAVIGATION ==========
     function hideAll() { ['mainPage','archivePage','keyPage'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; }); document.getElementById('adGate')?.classList.add('hidden'); document.getElementById('finalModal')?.classList.add('hidden'); document.body.style.overflow = ''; clearTimer(); }
     window.goHome = () => { hideAll(); document.getElementById('mainPage').style.display = 'block'; history.pushState({}, '', '/'); renderHomeScripts(); pushAllAds(); };
     window.openArchive = () => { hideAll(); document.getElementById('archivePage').style.display = 'block'; history.pushState({}, '', '/aizen/scripts/'); renderArchiveScripts(); pushAllAds(); };
@@ -260,7 +242,7 @@
         loadScripts();
     };
 
-    // ========== DÜZENLEME ==========
+    // ========== EDIT ==========
     let editingScriptId = null;
     window.openEditModal = (id) => { editingScriptId = id; document.getElementById('editModal').style.display = 'flex'; document.getElementById('editAuth').classList.remove('hidden'); document.getElementById('editForm').classList.add('hidden'); document.getElementById('editPassword').value = ''; document.getElementById('editPasswordError').classList.add('hidden'); };
     window.closeEditModal = () => { document.getElementById('editModal').style.display = 'none'; editingScriptId = null; };
@@ -279,7 +261,7 @@
         showToast('✅ Updated!'); closeEditModal(); loadScripts();
     };
 
-    // ========== 5 ADIM DOĞRULAMA (öncekiyle aynı) ==========
+    // ========== 5-STEP VERIFICATION ==========
     const state = { step: 1, pastefyUrl: "", subStep: 0, subStepCompleted: [], timerInterval: null, timerSeconds: 0, captchaAnswer: null, captchaSolved: false };
     const adGate = document.getElementById('adGate'), contentArea = document.getElementById('contentArea'), nextBtn = document.getElementById('nextBtn'), pBar = document.getElementById('pBar'), curStepSpan = document.getElementById('curStep'), stepTitle = document.getElementById('stepTitle'), finalModal = document.getElementById('finalModal'), pastefyBtn = document.getElementById('pastefyBtn'), copyPastefyBtn = document.getElementById('copyPastefyBtn'), pastefyEmbed = document.getElementById('pastefyEmbed');
     window.startFlow = (id, pastefyUrl, slug) => {
@@ -315,49 +297,66 @@
     function clearTimer(){if(state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null}}
     nextBtn.addEventListener('click',()=>{if(nextBtn.disabled)return;if(state.step<5){state.step++;loadStep()}else{adGate.classList.add('hidden');document.body.style.overflow='';const pastefyID=extractPastefyID(state.pastefyUrl);pastefyBtn.href=state.pastefyUrl;pastefyEmbed.innerHTML=pastefyID?`<iframe src="https://pastefy.app/${pastefyID}/embed" allowfullscreen></iframe>`:'';copyPastefyBtn.onclick=()=>{navigator.clipboard.writeText(state.pastefyUrl);showToast('📋 Pastefy link copied!')};finalModal.classList.remove('hidden');clearTimer()}});
 
-    // ========== KEY SYSTEM (10 ADIM) ==========
-    const keyList = ["YOKOSO-AIZEN-01","KYOKA-GLASS-02","HADO90-COFFIN-03","REIATSU-KING-04","RAIKOHO-STORM-05","SHUNPO-BLUR-06","AIZEN-SOUL-07","GOTEI-VOID-08","BANKAI-NONE-09","ULTRA-AIZEN-10"];
-    const keySteps = [{type:'wait',sec:5,text:'⏳ 5 saniye bekle...'},{type:'scroll',text:'📜 Sayfanın en altına kaydır'},{type:'wait',sec:10,text:'⌛ 10 saniye bekle...'},{type:'confirm',text:'🖱️ "Reklamı gördüm" butonuna tıkla'},{type:'wait',sec:7,text:'⏳ 7 saniye bekle...'},{type:'captcha',text:'🔐 Captcha çöz'},{type:'wait',sec:6,text:'⏳ 6 saniye bekle...'},{type:'scroll',text:'📜 Tekrar en alta kaydır'},{type:'confirm',text:'🖱️ "Reklamı onayla" butonuna tıkla'},{type:'wait',sec:8,text:'⏳ Son 8 saniye...'}];
-    let keyStep=0,keyTimer=null,keyCaptcha=0,expireInterval=null;
-    function openKeySystem(slug) {
+    // ========== KEY SYSTEM (STATIC, UNIQUE, 50 KEYS) ==========
+    async function openKeySystem(slug, keyNum) {
         hideAll(); document.getElementById('keyPage').style.display = 'flex';
-        document.getElementById('keyScriptTitle').textContent = (slug ? slug.toUpperCase() : '') + ' KEY SYSTEM';
-        history.pushState({ slug, key: true }, '', `${location.origin}/${slug}/key`);
-        initKeySteps();
-    }
-    function initKeySteps() {
-        const dots=document.getElementById('keyDots');dots.innerHTML='';
-        for(let i=0;i<keySteps.length;i++){const d=document.createElement('div');d.className='step-dot';d.id='kdot'+i;d.textContent=i+1;dots.appendChild(d)}
-        document.getElementById('keyResult').classList.add('hidden');document.getElementById('keyNextBtn').style.display='block';keyStep=0;runKeyStep(0);
-    }
-    function updateKeyDots(){for(let i=0;i<keySteps.length;i++){const d=document.getElementById('kdot'+i);if(i<keyStep)d.className='step-dot done';else if(i===keyStep)d.className='step-dot active';else d.className='step-dot'}}
-    function clearKeyTimer(){if(keyTimer){clearInterval(keyTimer);keyTimer=null}}
-    function runKeyStep(idx){
-        if(idx>=keySteps.length){finishKey();return}
-        keyStep=idx;updateKeyDots();document.getElementById('keyNextBtn').disabled=true;
-        const s=keySteps[idx],area=document.getElementById('keyActionArea');
-        switch(s.type){
-            case'wait':area.innerHTML=`<p class="text-lg font-bold mb-3">${s.text}</p><div id="keyTimerDisplay" class="text-4xl font-mono font-black text-purple-400">${s.sec}s</div>`;startKeyTimer(s.sec,()=>{area.innerHTML='<p class="text-green-400 font-bold">✅ Tamamlandı</p>';document.getElementById('keyNextBtn').disabled=false});break;
-            case'scroll':area.innerHTML=`<p class="text-lg font-bold mb-3">${s.text}</p><div class="text-3xl animate-bounce">⬇️</div>`;const h=()=>{if(window.innerHeight+window.scrollY>=document.body.scrollHeight-20){window.removeEventListener('scroll',h);area.innerHTML='<p class="text-green-400 font-bold">✅ Scroll algılandı</p>';document.getElementById('keyNextBtn').disabled=false}};window.addEventListener('scroll',h,{passive:true});break;
-            case'confirm':area.innerHTML=`<p class="text-lg font-bold mb-3">${s.text}</p><button id="kConfirmBtn" class="btn-premium">ONAYLA</button>`;document.getElementById('kConfirmBtn').addEventListener('click',()=>{area.innerHTML='<p class="text-green-400 font-bold">✅ Onaylandı</p>';document.getElementById('keyNextBtn').disabled=false});break;
-            case'captcha':keyCaptcha=Math.floor(Math.random()*20)+1;area.innerHTML=`<p class="text-lg font-bold mb-3">🔐 Captcha</p><p class="mb-2">Soru: <span class="font-mono text-2xl font-bold">${keyCaptcha} = ?</span></p><input type="number" id="kCaptchaInput" class="input-elite text-center text-lg" placeholder="Cevap"><button id="kCaptchaBtn" class="btn-premium mt-3">DOĞRULA</button><p id="kCaptchaError" class="text-red-400 text-sm mt-2 hidden">Yanlış cevap.</p>`;document.getElementById('kCaptchaBtn').addEventListener('click',()=>{if(parseInt(document.getElementById('kCaptchaInput').value)===keyCaptcha){area.innerHTML='<p class="text-green-400 font-bold">✅ Captcha doğru</p>';document.getElementById('keyNextBtn').disabled=false}else{document.getElementById('kCaptchaError').classList.remove('hidden');document.getElementById('kCaptchaInput').value=''}});break;
-        }
-    }
-    function startKeyTimer(sec,cb){clearKeyTimer();let left=sec;const d=document.getElementById('keyTimerDisplay');if(d)d.textContent=left+'s';keyTimer=setInterval(()=>{left--;if(d)d.textContent=left+'s';if(left<=0){clearKeyTimer();if(cb)cb()}},1000)}
-    function finishKey(){
-        clearKeyTimer();const rk=keyList[Math.floor(Math.random()*keyList.length)];
-        document.getElementById('keyDisplay').textContent=rk;document.getElementById('keyResult').classList.remove('hidden');document.getElementById('keyNextBtn').style.display='none';
-        const exp=Date.now()+86400000;
-        function upd(){const rem=exp-Date.now();if(rem<=0){document.getElementById('expireTimer').textContent='⏰ Süre doldu. Yeni key al.';clearInterval(expireInterval);return}const h=Math.floor(rem/3600000),m=Math.floor((rem%3600000)/60000),s=Math.floor((rem%60000)/1000);document.getElementById('expireTimer').textContent=`⏳ Geçerlilik: ${h}s ${m}d ${s}sn`}
-        upd();expireInterval=setInterval(upd,1000);
-    }
-    window.copyKey = () => { navigator.clipboard.writeText(document.getElementById('keyDisplay').textContent); showToast('Anahtar kopyalandı!'); };
-    document.getElementById('keyNextBtn').addEventListener('click', () => { if (document.getElementById('keyNextBtn').disabled) return; clearKeyTimer(); runKeyStep(keyStep + 1); });
+        const titleEl = document.getElementById('keyScriptTitle');
+        const infoEl = document.getElementById('keyInfo');
+        const statusArea = document.getElementById('keyStatusArea');
+        const actionsArea = document.getElementById('keyActions');
+        titleEl.textContent = (slug ? slug.toUpperCase() : '') + ' KEY SYSTEM';
+        infoEl.textContent = `Key #${keyNum} of 50`;
+        history.pushState({ slug, keyNum }, '', `/${slug}/key${keyNum}`);
 
-    // ========== PATH YÖNLENDİRME ==========
+        // Local storage check
+        const usedLocal = getUsedKeys();
+        const keyIndex = keyNum - 1;
+        if (keyIndex < 0 || keyIndex >= STATIC_KEYS.length) {
+            statusArea.innerHTML = '<p class="text-red-400">Invalid key number.</p>';
+            actionsArea.innerHTML = '<button class="btn-premium w-full" onclick="goHome()">GO HOME</button>';
+            return;
+        }
+        const assignedKey = STATIC_KEYS[keyIndex];
+
+        // Firestore check
+        const keyDocId = `${slug}_key${keyNum}`;
+        const keyDoc = await keysColl.doc(keyDocId).get();
+        const isUsedInFirestore = keyDoc.exists && keyDoc.data().used === true;
+        const isUsedLocally = usedLocal.includes(assignedKey);
+
+        if (isUsedInFirestore || isUsedLocally) {
+            statusArea.innerHTML = `<div class="text-5xl mb-6">🔒</div><h3 class="text-2xl font-bold text-red-400">KEY ALREADY USED</h3><p class="text-slate-400 mt-2">This key has already been claimed and cannot be used again.</p>`;
+            actionsArea.innerHTML = '<button class="btn-premium w-full" onclick="goHome()">GO HOME</button>';
+            return;
+        }
+
+        // Key is available
+        statusArea.innerHTML = `<div class="text-5xl mb-6">🔑</div><h3 class="text-2xl font-bold text-green-400">KEY AVAILABLE</h3>
+            <div class="bg-black border border-purple-500 rounded-xl p-4 font-mono text-2xl font-bold text-white mt-4">${assignedKey}</div>`;
+        actionsArea.innerHTML = `
+            <button class="btn-premium w-full" onclick="claimKey('${keyDocId}', '${escAttr(assignedKey)}', ${keyNum})"><i class="fas fa-copy"></i> COPY & CLAIM KEY</button>
+            <p class="text-xs text-slate-500 mt-2">This key can only be used once and will be marked as claimed immediately.</p>`;
+    }
+
+    window.claimKey = async (keyDocId, key, keyNum) => {
+        // Mark as used in Firestore
+        try {
+            await keysColl.doc(keyDocId).set({ used: true, key: key, claimedAt: firebase.firestore.FieldValue.serverTimestamp() });
+        } catch(e) { showToast('⚠️ Failed to claim key.'); return; }
+        // Mark locally
+        addUsedKey(key);
+        // Copy to clipboard
+        navigator.clipboard.writeText(key).then(() => showToast('🔑 Key copied & claimed!'));
+        // Refresh UI
+        const slug = location.pathname.match(/^\/([a-z0-9-]+)\/key/)?.[1] || 'aizen';
+        openKeySystem(slug, keyNum);
+    };
+
+    // ========== PATH ROUTING ==========
     async function handleRouting() {
         const path = location.pathname;
-        if (path.match(/^\/([a-z0-9-]+)\/key\/?$/)) { openKeySystem(path.match(/^\/([a-z0-9-]+)\/key\/?$/)[1]); return; }
+        const keyMatch = path.match(/^\/([a-z0-9-]+)\/key(\d+)\/?$/);
+        if (keyMatch) { openKeySystem(keyMatch[1], parseInt(keyMatch[2])); return; }
         const scriptMatch = path.match(/^\/([a-z0-9-]+)\/script\/([a-zA-Z0-9]+)\/?$/);
         if (scriptMatch) {
             try { const doc = await scriptsColl.doc(scriptMatch[2]).get(); if (doc.exists) { const s = doc.data(); if (s.pastefy) startFlow(scriptMatch[2], s.pastefy, scriptMatch[1]); else showToast('No Pastefy link'); } else showToast('Script not found'); } catch (e) { showToast('Error'); }
