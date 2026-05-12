@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>RobloxGlop | AAA Ultra Secure Access</title>
 
-    <!-- Google AdSense Ana Script -->
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7036109597530319" crossorigin="anonymous"></script>
 
     <!-- RichAds Inpage -->
@@ -13,10 +13,34 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#faf5ff',
+                            100: '#f3e8ff',
+                            200: '#e9d5ff',
+                            300: '#d8b4fe',
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            700: '#7e22ce',
+                            800: '#6b21a8',
+                            900: '#581c87',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@700&family=Manrope:wght@800&display=swap" rel="stylesheet" />
 
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -26,14 +50,23 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary: #5b21b6;
-            --primary-light: #8b5cf6;
-            --accent: #d946ef;
-            --bg-deep: #0b0f19;
-            --surface: #111827;
-            --border-subtle: rgba(255, 255, 255, 0.06);
+            --glass-bg: rgba(17, 24, 39, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7);
             --text-primary: #f1f5f9;
             --text-secondary: #94a3b8;
+            --bg-deep: #0b0f19;
+            --surface: #111827;
+        }
+
+        .light {
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(0, 0, 0, 0.05);
+            --glass-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.1);
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --bg-deep: #f8fafc;
+            --surface: #ffffff;
         }
 
         body {
@@ -43,24 +76,25 @@
             overflow-x: hidden;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            cursor: default;
+            transition: background-color 0.4s, color 0.4s;
         }
 
+        /* Arkaplan animasyonu */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(217, 70, 239, 0.06) 0%, transparent 50%),
-                        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.07) 0%, transparent 50%);
-            animation: bgRotate 20s linear infinite;
+            background: radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(217, 70, 239, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.09) 0%, transparent 50%);
+            animation: bgRotate 25s linear infinite;
             z-index: -2;
         }
 
         @keyframes bgRotate {
             0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.08); }
+            50% { transform: rotate(180deg) scale(1.1); }
             100% { transform: rotate(360deg) scale(1); }
         }
 
@@ -69,7 +103,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"><path d="M10 10 L90 10 L90 90 L10 90 Z" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/><circle cx="20" cy="20" r="1.5" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.04)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.03)"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"><path d="M10 10 L90 10 L90 90 L10 90 Z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/><circle cx="20" cy="20" r="1.5" fill="rgba(255,255,255,0.06)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.04)"/></svg>');
             background-size: 200px 200px;
             opacity: 0.5;
             pointer-events: none;
@@ -77,12 +111,12 @@
         }
 
         .glass-card {
-            background: rgba(17, 24, 39, 0.6);
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--glass-border);
             border-radius: 2rem;
-            box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255,255,255,0.05);
+            box-shadow: var(--glass-shadow), inset 0 1px 1px rgba(255,255,255,0.05);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
@@ -93,17 +127,17 @@
             position: absolute;
             top: -50%; left: -50%;
             width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%);
             opacity: 0;
-            transition: opacity 0.4s;
+            transition: opacity 0.5s;
             pointer-events: none;
         }
 
         .glass-card:hover::after { opacity: 1; }
         .glass-card:hover {
-            border-color: rgba(139, 92, 246, 0.3);
-            box-shadow: 0 30px 60px -20px rgba(139, 92, 246, 0.3);
-            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 30px 60px -20px rgba(139, 92, 246, 0.3), inset 0 1px 1px rgba(255,255,255,0.1);
+            transform: translateY(-5px);
         }
 
         .btn-premium {
@@ -112,18 +146,19 @@
             color: white;
             font-weight: 700;
             border-radius: 1rem;
-            padding: 0.8rem 1.5rem;
+            padding: 0.9rem 1.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
             transition: all 0.3s ease;
             box-shadow: 0 8px 24px -6px rgba(139, 92, 246, 0.5), 0 0 0 1px rgba(255,255,255,0.1) inset;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             border: none;
             cursor: pointer;
-            animation: gradientShift 4s ease infinite;
+            animation: gradientShift 5s ease infinite;
+            white-space: nowrap;
         }
 
         @keyframes gradientShift {
@@ -142,7 +177,7 @@
         }
 
         .btn-copy {
-            background: rgba(139, 92, 246, 0.15);
+            background: rgba(139, 92, 246, 0.12);
             border: 1px solid rgba(139, 92, 246, 0.3);
             color: #c4b5fd;
             border-radius: 0.8rem;
@@ -154,17 +189,18 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
+            white-space: nowrap;
         }
 
         .btn-copy:hover { background: rgba(139, 92, 246, 0.25); color: white; }
 
         .ad-spot {
-            background: rgba(15, 20, 32, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 1.5rem;
             padding: 1.5rem;
             text-align: center;
-            min-height: 270px;
+            min-height: 280px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -175,14 +211,14 @@
         }
 
         .ad-spot.active-highlight {
-            border-color: rgba(139, 92, 246, 0.4);
-            box-shadow: 0 0 30px -5px rgba(139, 92, 246, 0.15);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 0 35px -5px rgba(139, 92, 246, 0.2);
             animation: glowPulse 3s infinite;
         }
 
         @keyframes glowPulse {
             0% { border-color: rgba(139, 92, 246, 0.3); }
-            50% { border-color: rgba(217, 70, 239, 0.5); }
+            50% { border-color: rgba(217, 70, 239, 0.6); }
             100% { border-color: rgba(139, 92, 246, 0.3); }
         }
 
@@ -200,6 +236,7 @@
             border-radius: 30px;
             border: 1px solid rgba(139, 92, 246, 0.3);
             backdrop-filter: blur(12px);
+            z-index: 1;
         }
 
         .progress-indicator {
@@ -347,6 +384,20 @@
             height: 100%;
             border: none;
         }
+
+        /* Tema butonu */
+        .theme-toggle {
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+        .theme-toggle:hover { transform: scale(1.1); background: rgba(255,255,255,0.2); }
     </style>
 </head>
 <body class="antialiased" oncontextmenu="return false">
@@ -358,20 +409,26 @@
             <div class="w-12 h-12 bg-gradient-to-br from-purple-600 to-fuchsia-700 rounded-2xl flex items-center justify-center text-white shadow-2xl shadow-purple-900/50">
                 <i class="fas fa-bolt text-2xl icon-glow"></i>
             </div>
-            <span class="text-2xl md:text-3xl font-black tracking-tight">
+            <span class="text-2xl md:text-3xl font-black tracking-tight font-manrope">
                 ROBLOX<span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-500">GLOP</span>
             </span>
         </div>
-        <button onclick="toggleUploadModal(true)" class="btn-premium py-2.5 px-5 text-sm">
-            <i class="fas fa-cloud-upload-alt"></i> <span class="hidden sm:inline">UPLOAD</span>
-        </button>
+        <div class="flex items-center gap-3">
+            <!-- Tema toggle -->
+            <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light">
+                <i class="fas fa-moon text-white text-lg" id="themeIcon"></i>
+            </div>
+            <button onclick="toggleUploadModal(true)" class="btn-premium py-2.5 px-5 text-sm">
+                <i class="fas fa-cloud-upload-alt"></i> <span class="hidden sm:inline">UPLOAD</span>
+            </button>
+        </div>
     </div>
 </nav>
 
 <!-- Ana İçerik -->
 <main class="max-w-7xl mx-auto px-4 md:px-8 py-16">
     <div class="text-center mb-20">
-        <h1 class="text-5xl md:text-8xl font-black mb-6 tracking-tight leading-none">
+        <h1 class="text-5xl md:text-8xl font-black mb-6 tracking-tight leading-none font-manrope">
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500 animate-pulse">Access the Unreachable.</span>
         </h1>
         <p class="text-slate-400 max-w-2xl mx-auto text-xl md:text-2xl">
@@ -380,10 +437,10 @@
     </div>
 
     <!-- Görüntülü Reklam 1 -->
-    <div class="ad-spot mb-16 max-w-2xl mx-auto">
+    <div class="ad-spot mb-16 max-w-2xl mx-auto" style="min-height:280px;">
         <span class="ad-label"><i class="fas fa-ad"></i> SPONSORED</span>
         <ins class="adsbygoogle"
-             style="display:block"
+             style="display:block; width:100%; min-height:250px;"
              data-ad-client="ca-pub-7036109597530319"
              data-ad-slot="6017950337"
              data-ad-format="auto"
@@ -399,19 +456,19 @@
     </div>
 
     <!-- Multiplex Reklam -->
-    <div class="ad-spot mb-24 max-w-2xl mx-auto">
+    <div class="ad-spot mb-24 max-w-2xl mx-auto" style="min-height:280px;">
         <span class="ad-label"><i class="fas fa-star"></i> PREMIUM AD</span>
         <ins class="adsbygoogle"
-             style="display:block"
+             style="display:block; width:100%; min-height:250px;"
              data-ad-format="autorelaxed"
              data-ad-client="ca-pub-7036109597530319"
              data-ad-slot="8023120978"></ins>
     </div>
 
     <!-- Yazı İçi Reklam -->
-    <div class="max-w-4xl mx-auto mb-24">
+    <div class="max-w-4xl mx-auto mb-24" style="min-height:120px;">
         <ins class="adsbygoogle"
-             style="display:block; text-align:center;"
+             style="display:block; text-align:center; min-height:100px;"
              data-ad-layout="in-article"
              data-ad-format="fluid"
              data-ad-client="ca-pub-7036109597530319"
@@ -419,10 +476,10 @@
     </div>
 
     <!-- Feed İçi Reklam -->
-    <div class="ad-spot mb-10 max-w-2xl mx-auto">
+    <div class="ad-spot mb-10 max-w-2xl mx-auto" style="min-height:280px;">
         <span class="ad-label"><i class="fas fa-stream"></i> FEED AD</span>
         <ins class="adsbygoogle"
-             style="display:block"
+             style="display:block; width:100%; min-height:250px;"
              data-ad-format="fluid"
              data-ad-layout-key="-6t+ed+2i-1n-4w"
              data-ad-client="ca-pub-7036109597530319"
@@ -479,7 +536,7 @@
         <div class="w-24 h-24 bg-gradient-to-br from-purple-600 to-fuchsia-600 rounded-full flex items-center justify-center mx-auto mb-8 text-4xl shadow-2xl shadow-purple-500/40 animate-bounce">
             <i class="fas fa-check icon-glow"></i>
         </div>
-        <h2 class="text-4xl font-black mb-3">ACCESS GRANTED</h2>
+        <h2 class="text-4xl font-black mb-3 font-manrope">ACCESS GRANTED</h2>
         <p class="text-slate-400 mb-4">All AAA layers passed! Your Pastebin reward is ready.</p>
         <div class="space-y-4">
             <a id="pastebinBtn" href="#" target="_blank" class="block w-full btn-premium py-5 text-xl">
@@ -496,13 +553,40 @@
 <!-- Toast -->
 <div id="toast" class="toast-pop"><i class="fas fa-info-circle text-purple-300"></i> <span id="toastMsg"></span></div>
 
-<!-- RichAds Pops + Push (body sonunda) -->
+<!-- RichAds Pops + Push -->
 <script src="https://richinfo.co/richpartners/pops/js/richads-pu-ob.js" data-pubid="988708" data-siteid="396626" async data-cfasync="false"></script>
 <script type="module" src="https://richinfo.co/richpartners/push/js/rp-cl-ob.js?pubid=988708&siteid=396625&niche=33" async data-cfasync="false"></script>
 
 <script>
     (function() {
-        // ========== FIREBASE CONFIG ==========
+        // ========== TEMA YÖNETİMİ ==========
+        const htmlEl = document.documentElement;
+        const themeIcon = document.getElementById('themeIcon');
+
+        function setTheme(isDark) {
+            if (isDark) {
+                htmlEl.classList.add('dark');
+                htmlEl.classList.remove('light');
+                if (themeIcon) themeIcon.className = 'fas fa-moon text-white text-lg';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlEl.classList.remove('dark');
+                htmlEl.classList.add('light');
+                if (themeIcon) themeIcon.className = 'fas fa-sun text-yellow-400 text-lg';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        window.toggleTheme = function() {
+            const isDark = htmlEl.classList.contains('dark');
+            setTheme(!isDark);
+        };
+
+        // Başlangıç teması
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme === 'dark');
+
+        // ========== FIREBASE ==========
         const firebaseConfig = {
             apiKey: "AIzaSyBhuzEF0gg6CfiddF33hUlm9pWMJQexNWw",
             authDomain: "robloxglop.firebaseapp.com",
@@ -517,7 +601,7 @@
         const db = firebase.firestore();
         const scriptsCollection = db.collection("scripts");
 
-        // Güvenlik engelleri
+        // Güvenlik
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F12' || e.keyCode === 123 ||
@@ -558,16 +642,14 @@
         const scriptGrid = document.getElementById('scriptGrid');
 
         function refreshAds() {
-            try {
-                const adElements = document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status="done"])');
-                if (adElements.length > 0) {
-                    adElements.forEach(el => {
+            requestAnimationFrame(() => {
+                try {
+                    const ads = document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status="done"])');
+                    ads.forEach(ad => {
                         (window.adsbygoogle = window.adsbygoogle || []).push({});
                     });
-                }
-            } catch(e) {
-                console.warn("AdSense push error:", e);
-            }
+                } catch(e) {}
+            });
         }
 
         function extractYouTubeID(url) {
@@ -593,12 +675,9 @@
             try {
                 const snapshot = await scriptsCollection.orderBy("createdAt", "desc").get();
                 allScripts = [];
-                snapshot.forEach(doc => {
-                    allScripts.push({ id: doc.id, ...doc.data() });
-                });
+                snapshot.forEach(doc => allScripts.push({ id: doc.id, ...doc.data() }));
                 renderScripts();
             } catch (error) {
-                console.error("Firestore yükleme hatası:", error);
                 showToast("⚠️ Veriler yüklenirken hata oluştu.");
                 renderScripts();
             }
@@ -628,8 +707,8 @@
                         <img src="${imgurDirect}" alt="Script image" class="w-full h-auto object-cover" style="max-height:200px;" onerror="this.style.display='none'">
                     </div>` : ''}
                     <div class="flex flex-wrap gap-2 mt-auto">
-                        ${s.youtube ? `<button onclick="copyToClipboard('${escapeAttr(s.youtube)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> YouTube</button>` : ''}
-                        ${s.imgur ? `<button onclick="copyToClipboard('${escapeAttr(getDirectImgurURL(s.imgur))}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> Imgur</button>` : ''}
+                        ${s.youtube ? `<button onclick="copyToClipboard('${escapeAttr(s.youtube)}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> YT</button>` : ''}
+                        ${s.imgur ? `<button onclick="copyToClipboard('${escapeAttr(getDirectImgurURL(s.imgur))}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-copy"></i> IMG</button>` : ''}
                         <button onclick="copyToClipboard('${escapeAttr(getScriptPageUrl(s.id))}')" class="btn-copy text-xs py-1.5 px-3"><i class="fas fa-link"></i> Link</button>
                     </div>
                     <button onclick="startFlow('${escapeAttr(s.id)}', '${escapeAttr(s.pastebin || '')}', '${escapeAttr(s.youtube || '')}', '${escapeAttr(s.imgur || '')}')" class="w-full btn-premium py-4 text-sm mt-4">
@@ -637,7 +716,7 @@
                     </button>
                 </div>`;
             }).join('');
-            setTimeout(refreshAds, 200);
+            setTimeout(refreshAds, 300);
         }
 
         window.copyToClipboard = function(text) {
@@ -656,11 +735,7 @@
 
             try {
                 await scriptsCollection.add({
-                    name: name,
-                    desc: desc,
-                    pastebin: pastebin,
-                    youtube: youtube,
-                    imgur: imgur,
+                    name, desc, pastebin, youtube, imgur,
                     createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
                 showToast('✅ Script uploaded!');
@@ -668,7 +743,6 @@
                 document.querySelectorAll('#upName, #upDesc, #upPastebin, #upYoutube, #upImgur').forEach(el => el.value = '');
                 loadScripts();
             } catch (error) {
-                console.error("Upload error:", error);
                 showToast("⚠️ Upload failed. Check Firestore rules.");
             }
         };
@@ -677,16 +751,14 @@
             state.pastebinUrl = pastebinUrl || '';
             state.youtubeUrl = youtubeUrl || '';
             state.imgurUrl = imgurUrl || '';
-            state.step = 1;
-            state.subStep = 0;
-            state.subStepCompleted = [false, false, false, false, false, false];
+            state.step = 1; state.subStep = 0;
+            state.subStepCompleted = [false,false,false,false,false,false];
             state.captchaSolved = false;
             clearTimer();
             adGate.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             if (scriptId) {
-                const newUrl = getScriptPageUrl(scriptId);
-                window.history.pushState({ scriptId }, '', newUrl);
+                window.history.pushState({ scriptId }, '', getScriptPageUrl(scriptId));
             }
             loadStep();
         };
@@ -700,7 +772,7 @@
             contentArea.innerHTML = `
                 <div class="animate-fade-in space-y-10">
                     <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8">
-                        <h2 class="text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">${stepTitles[(state.step-1)%5]}</h2>
+                        <h2 class="text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent font-manrope">${stepTitles[(state.step-1)%5]}</h2>
                         <p class="text-slate-300 text-lg">Complete all sub-verifications. This elite security ensures maximum protection.</p>
                     </div>
                     <div class="substep-list" id="substepContainer">
@@ -712,11 +784,11 @@
                         ${renderSubStepItem(6,'Solve Captcha','fa-shield-alt')}
                     </div>
                     <div id="actionArea" class="mt-6"></div>
-                    <div class="ad-spot active-highlight"><span class="ad-label">PREMIUM AD</span><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto"></ins></div>
-                    <div class="ad-spot"><span class="ad-label">SECONDARY</span><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7036109597530319" data-ad-slot="7169204305" data-ad-format="auto"></ins></div>
+                    <div class="ad-spot active-highlight"><span class="ad-label">PREMIUM AD</span><ins class="adsbygoogle" style="display:block; width:100%; min-height:250px;" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto"></ins></div>
+                    <div class="ad-spot"><span class="ad-label">SECONDARY</span><ins class="adsbygoogle" style="display:block; width:100%; min-height:250px;" data-ad-client="ca-pub-7036109597530319" data-ad-slot="7169204305" data-ad-format="auto"></ins></div>
                 </div>`;
             adGate.scrollTop=0;
-            setTimeout(refreshAds, 200);
+            setTimeout(refreshAds, 300);
             advanceToSubStep(1);
         }
 
@@ -741,7 +813,7 @@
                 case 6: area.innerHTML=`
                     <div class="captcha-box text-center">
                         <i class="fas fa-shield-alt text-5xl text-purple-400 icon-glow mb-4"></i>
-                        <h3 class="text-2xl font-black mb-3">AAA CAPTCHA</h3>
+                        <h3 class="text-2xl font-black mb-3 font-manrope">AAA CAPTCHA</h3>
                         <p class="text-slate-300 mb-4">Solve: <span class="font-mono text-3xl font-bold text-white">${state.captchaAnswer} = ?</span></p>
                         <div class="flex gap-3 justify-center"><input type="number" id="captchaInput" class="input-elite w-28 text-center text-xl" placeholder="?"><button id="captchaSubmit" class="btn-premium py-2 px-6">VERIFY</button></div>
                         <p id="captchaError" class="text-red-400 text-sm mt-3 hidden">Incorrect.</p>
@@ -762,15 +834,10 @@
             if(nextBtn.disabled) return;
             if(state.step<5){ state.step++; loadStep(); }
             else {
-                adGate.classList.add('hidden');
-                document.body.style.overflow='';
+                adGate.classList.add('hidden'); document.body.style.overflow='';
                 pastebinBtn.href = state.pastebinUrl;
-                copyPastebinBtn.onclick = () => {
-                    navigator.clipboard.writeText(state.pastebinUrl);
-                    showToast('📋 Pastebin link copied!');
-                };
-                finalModal.classList.remove('hidden');
-                clearTimer();
+                copyPastebinBtn.onclick = () => { navigator.clipboard.writeText(state.pastebinUrl); showToast('📋 Pastebin link copied!'); };
+                finalModal.classList.remove('hidden'); clearTimer();
             }
         });
 
@@ -783,55 +850,32 @@
                 try {
                     const doc = await scriptsCollection.doc(scriptId).get();
                     if (doc.exists) {
-                        const scriptData = doc.data();
-                        if (scriptData.pastebin) {
-                            window.startFlow(scriptId, scriptData.pastebin, scriptData.youtube, scriptData.imgur);
-                        } else {
-                            showToast("This script doesn't have a Pastebin link.");
-                            window.history.replaceState({}, '', window.location.pathname);
-                        }
-                    } else {
-                        showToast("Script not found.");
-                        window.history.replaceState({}, '', window.location.pathname);
-                    }
-                } catch (error) {
-                    console.error("Script yüklenemedi:", error);
-                }
+                        const d = doc.data();
+                        if (d.pastebin) window.startFlow(scriptId, d.pastebin, d.youtube, d.imgur);
+                        else { showToast("No Pastebin link."); window.history.replaceState({}, '', window.location.pathname); }
+                    } else { showToast("Script not found."); window.history.replaceState({}, '', window.location.pathname); }
+                } catch(e) {}
             }
         }
 
-        window.addEventListener('click', (e) => {
-            if (e.target === finalModal) {
-                finalModal.classList.add('hidden');
-                location.reload();
-            }
-        });
+        window.addEventListener('click', (e) => { if (e.target === finalModal) { finalModal.classList.add('hidden'); location.reload(); } });
 
-        // Sayfa yüklendiğinde tüm reklamları çalıştır
         window.addEventListener('load', async () => {
             await loadScripts();
             await handleUrlParams();
             refreshAds();
-            setTimeout(refreshAds, 1500);
+            setTimeout(refreshAds, 1200);
+            setTimeout(refreshAds, 2500);
         });
 
         window.addEventListener('popstate', () => {
-            if (adGate && !adGate.classList.contains('hidden')) {
-                adGate.classList.add('hidden');
-                document.body.style.overflow = '';
-                clearTimer();
-            }
+            if (adGate && !adGate.classList.contains('hidden')) { adGate.classList.add('hidden'); document.body.style.overflow = ''; clearTimer(); }
             handleUrlParams();
         });
 
+        function escapeHTML(str) { return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
+        function escapeAttr(str) { return String(str).replace(/[&<>"']/g, ''); }
         window.showToast = showToast;
-
-        function escapeHTML(str) {
-            return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-        }
-        function escapeAttr(str) {
-            return String(str).replace(/[&<>"']/g, '');
-        }
     })();
 </script>
 </body>
