@@ -43,7 +43,7 @@
     <div class="text-center mb-14">
         <h1 class="text-5xl md:text-8xl font-black mb-6 font-manrope"><span class="bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500 bg-clip-text text-transparent animate-pulse">Access the Unreachable.</span></h1>
         <p class="text-slate-400 max-w-2xl mx-auto text-xl md:text-2xl">Multi‑layer AAA security. Zero keys, pure verification velocity.</p>
-        <div class="mt-6"><span class="countdown-badge" id="countdownBadge">⏳ New scripts in <span id="countdownTimer">--</span></span></div>
+        <div class="mt-6"><span class="countdown-badge" id="countdownBadge"><i class="fas fa-clock"></i> New scripts in <span id="countdownTimer">--</span></span></div>
     </div>
     <div class="max-w-xl mx-auto mb-12"><input id="homeSearch" type="text" placeholder="🔍 Search scripts..." class="input-elite text-center" oninput="filterHomeScripts()"></div>
     <div class="ad-container max-w-2xl mx-auto"><span class="ad-label"><i class="fas fa-ad"></i> SPONSORED</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
@@ -65,18 +65,21 @@
     <div class="text-center"><a href="/" class="btn-premium" onclick="event.preventDefault();goHome()"><i class="fas fa-home"></i> BACK HOME</a></div>
 </div>
 
-<!-- KEY SYSTEM PAGE (dynamic /<slug>/key<num>) -->
+<!-- KEY SYSTEM PAGE (hidden, only via direct URL, 2-step verification) -->
 <div id="keyPage" class="min-h-screen flex items-center justify-center px-4">
     <div class="glass-card p-8 w-full max-w-xl text-center relative animate-fade-in">
         <button onclick="goHome()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">&times;</button>
         <h2 class="text-3xl font-black font-manrope bg-gradient-to-r from-purple-400 to-fuchsia-500 bg-clip-text text-transparent mb-1" id="keyScriptTitle">AAA KEY SYSTEM</h2>
-        <p class="text-sm text-slate-400 mb-4" id="keyInfo">Loading key...</p>
-        <div id="keyStatusArea" class="mb-6"></div>
-        <div id="keyActions" class="space-y-4"></div>
+        <p class="text-sm text-slate-400 mb-4">Complete the 2‑step verification to reveal your key.</p>
+        <div id="keyActionArea" class="mb-6"></div>
+        <div id="keyResult" class="hidden">
+            <div class="bg-black border border-purple-500 rounded-xl p-4 font-mono text-2xl font-bold text-white mb-4" id="keyDisplay"></div>
+            <button class="btn-premium w-full" onclick="copyKey()"><i class="fas fa-copy"></i> COPY KEY</button>
+        </div>
     </div>
 </div>
 
-<!-- AD GATE (5 steps) -->
+<!-- AD GATE (5 steps verification for script reward) -->
 <div id="adGate" class="hidden fixed inset-0 z-[200] bg-[#0b0f19] overflow-y-auto">
     <header class="sticky top-0 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800 px-4 md:px-8 py-4 z-[210] flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center gap-3"><span class="bg-purple-600 text-white text-xs font-black px-4 py-2 rounded-xl">STEP <span id="curStep">1</span>/5</span><h3 id="stepTitle" class="font-bold text-sm text-slate-300">AAA SECURE LAYER</h3></div>
@@ -96,7 +99,7 @@
     </div>
 </div>
 
-<!-- PASTEFY REWARD MODAL -->
+<!-- PASTEFY REWARD MODAL (only Pastefy copy buttons) -->
 <div id="finalModal" class="fixed inset-0 z-[400] hidden flex flex-col items-center justify-center p-4 bg-[#0b0f19]/90 backdrop-blur-xl">
     <div class="glass-card p-10 text-center max-w-2xl w-full border-purple-500/30 animate-fade-in">
         <div class="w-20 h-20 bg-gradient-to-br from-purple-600 to-fuchsia-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl shadow-2xl animate-bounce"><i class="fas fa-check icon-glow"></i></div>
@@ -134,7 +137,7 @@
     const EDIT_PASSWORD = "AizenGlop2025";
     const COUNTDOWN_MINUTES = 45;
 
-    // ========== 50 STATIC KEYS ==========
+    // 50 static keys
     const STATIC_KEYS = [
         "YOKOSO-AIZEN-01","KYOKA-GLASS-02","HADO90-COFFIN-03","REIATSU-KING-04","RAIKOHO-STORM-05",
         "SHUNPO-BLUR-06","AIZEN-SOUL-07","GOTEI-VOID-08","BANKAI-NONE-09","ULTRA-AIZEN-10",
@@ -150,7 +153,7 @@
 
     // ========== FIREBASE ==========
     firebase.initializeApp({ apiKey: "AIzaSyBhuzEF0gg6CfiddF33hUlm9pWMJQexNWw", authDomain: "robloxglop.firebaseapp.com", projectId: "robloxglop", storageBucket: "robloxglop.firebasestorage.app", messagingSenderId: "956125985175", appId: "1:956125985175:web:1fe8437a767d8107506cd2" });
-    const db = firebase.firestore(), scriptsColl = db.collection("scripts"), keysColl = db.collection("keys");
+    const db = firebase.firestore(), scriptsColl = db.collection("scripts");
 
     // ========== SECURITY ==========
     document.oncontextmenu = () => false;
@@ -169,8 +172,6 @@
     function extractTikTokID(u) { const m = u?.match(/(?:tiktok\.com\/@[\w.-]+\/video\/|tiktok\.com\/t\/|vm\.tiktok\.com\/|tiktok\.com\/embed\/v2\/)([\w]+)/); return m ? m[1] : null; }
     function extractPastefyID(u) { const m = u?.match(/pastefy\.app\/([a-zA-Z0-9]+)/); return m ? m[1] : null; }
     function getDirectImgurURL(u) { if (!u) return ''; if (u.includes('i.imgur.com')) return u; const m = u.match(/imgur\.com\/([a-zA-Z0-9]+)$/); return m ? `https://i.imgur.com/${m[1]}.png` : u; }
-    function getUsedKeys() { try { return JSON.parse(localStorage.getItem('usedKeys') || '[]'); } catch(e) { return []; } }
-    function addUsedKey(key) { const used = getUsedKeys(); if (!used.includes(key)) { used.push(key); localStorage.setItem('usedKeys', JSON.stringify(used)); } }
 
     // ========== COUNTDOWN ==========
     function startCountdown() {
@@ -180,7 +181,7 @@
         update(); setInterval(update, 1000);
     }
 
-    // ========== RENDER SCRIPTS ==========
+    // ========== RENDER SCRIPTS (no key links) ==========
     function renderScriptCard(s) {
         const tiktokID = s.tiktok ? extractTikTokID(s.tiktok) : null, pastefyID = s.pastefy ? extractPastefyID(s.pastefy) : null, imgDirect = s.imgur ? getDirectImgurURL(s.imgur) : null;
         const slug = s.slug || slugify(s.name);
@@ -261,7 +262,7 @@
         showToast('✅ Updated!'); closeEditModal(); loadScripts();
     };
 
-    // ========== 5-STEP VERIFICATION ==========
+    // ========== 5-STEP VERIFICATION (script reward) ==========
     const state = { step: 1, pastefyUrl: "", subStep: 0, subStepCompleted: [], timerInterval: null, timerSeconds: 0, captchaAnswer: null, captchaSolved: false };
     const adGate = document.getElementById('adGate'), contentArea = document.getElementById('contentArea'), nextBtn = document.getElementById('nextBtn'), pBar = document.getElementById('pBar'), curStepSpan = document.getElementById('curStep'), stepTitle = document.getElementById('stepTitle'), finalModal = document.getElementById('finalModal'), pastefyBtn = document.getElementById('pastefyBtn'), copyPastefyBtn = document.getElementById('copyPastefyBtn'), pastefyEmbed = document.getElementById('pastefyEmbed');
     window.startFlow = (id, pastefyUrl, slug) => {
@@ -297,70 +298,131 @@
     function clearTimer(){if(state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null}}
     nextBtn.addEventListener('click',()=>{if(nextBtn.disabled)return;if(state.step<5){state.step++;loadStep()}else{adGate.classList.add('hidden');document.body.style.overflow='';const pastefyID=extractPastefyID(state.pastefyUrl);pastefyBtn.href=state.pastefyUrl;pastefyEmbed.innerHTML=pastefyID?`<iframe src="https://pastefy.app/${pastefyID}/embed" allowfullscreen></iframe>`:'';copyPastefyBtn.onclick=()=>{navigator.clipboard.writeText(state.pastefyUrl);showToast('📋 Pastefy link copied!')};finalModal.classList.remove('hidden');clearTimer()}});
 
-    // ========== KEY SYSTEM (STATIC, UNIQUE, 50 KEYS) ==========
-    async function openKeySystem(slug, keyNum) {
-        hideAll(); document.getElementById('keyPage').style.display = 'flex';
-        const titleEl = document.getElementById('keyScriptTitle');
-        const infoEl = document.getElementById('keyInfo');
-        const statusArea = document.getElementById('keyStatusArea');
-        const actionsArea = document.getElementById('keyActions');
-        titleEl.textContent = (slug ? slug.toUpperCase() : '') + ' KEY SYSTEM';
-        infoEl.textContent = `Key #${keyNum} of 50`;
+    // ========== KEY SYSTEM (2-step, static, reusable, hidden) ==========
+    let keyVerificationState = { step: 0, timerInterval: null, captchaAnswer: null };
+
+    function openKeySystem(slug, keyNum) {
+        hideAll();
+        document.getElementById('keyPage').style.display = 'flex';
+        document.getElementById('keyScriptTitle').textContent = (slug ? slug.toUpperCase() : '') + ' KEY SYSTEM';
+        document.getElementById('keyResult').classList.add('hidden');
+        document.getElementById('keyActionArea').innerHTML = '';
         history.pushState({ slug, keyNum }, '', `/${slug}/key${keyNum}`);
 
-        const usedLocal = getUsedKeys();
+        // Validate key number
         const keyIndex = keyNum - 1;
         if (keyIndex < 0 || keyIndex >= STATIC_KEYS.length) {
-            statusArea.innerHTML = '<p class="text-red-400">Invalid key number.</p>';
-            actionsArea.innerHTML = '<button class="btn-premium w-full" onclick="goHome()">GO HOME</button>';
-            return;
-        }
-        const assignedKey = STATIC_KEYS[keyIndex];
-
-        const keyDocId = `${slug}_key${keyNum}`;
-        const keyDoc = await keysColl.doc(keyDocId).get();
-        const isUsedInFirestore = keyDoc.exists && keyDoc.data().used === true;
-        const isUsedLocally = usedLocal.includes(assignedKey);
-
-        if (isUsedInFirestore || isUsedLocally) {
-            statusArea.innerHTML = `<div class="text-5xl mb-6">🔒</div><h3 class="text-2xl font-bold text-red-400">KEY ALREADY USED</h3><p class="text-slate-400 mt-2">This key has already been claimed and cannot be used again.</p>`;
-            actionsArea.innerHTML = '<button class="btn-premium w-full" onclick="goHome()">GO HOME</button>';
+            document.getElementById('keyActionArea').innerHTML = '<p class="text-red-400">Invalid key number. Must be between 1 and 50.</p>';
             return;
         }
 
-        statusArea.innerHTML = `<div class="text-5xl mb-6">🔑</div><h3 class="text-2xl font-bold text-green-400">KEY AVAILABLE</h3>
-            <div class="bg-black border border-purple-500 rounded-xl p-4 font-mono text-2xl font-bold text-white mt-4">${assignedKey}</div>`;
-        actionsArea.innerHTML = `
-            <button class="btn-premium w-full" onclick="claimKey('${keyDocId}', '${escAttr(assignedKey)}', ${keyNum})"><i class="fas fa-copy"></i> COPY & CLAIM KEY</button>
-            <p class="text-xs text-slate-500 mt-2">This key can only be used once and will be marked as claimed immediately.</p>`;
+        // Start 2-step verification
+        keyVerificationState.step = 1;
+        runKeyStep(keyIndex);
     }
 
-    window.claimKey = async (keyDocId, key, keyNum) => {
-        try {
-            await keysColl.doc(keyDocId).set({ used: true, key: key, claimedAt: firebase.firestore.FieldValue.serverTimestamp() });
-        } catch(e) { showToast('⚠️ Failed to claim key.'); return; }
-        addUsedKey(key);
-        navigator.clipboard.writeText(key).then(() => showToast('🔑 Key copied & claimed!'));
-        const slug = location.pathname.match(/^\/([a-z0-9-]+)\/key/)?.[1] || 'aizen';
-        openKeySystem(slug, keyNum);
+    function runKeyStep(keyIndex) {
+        const area = document.getElementById('keyActionArea');
+        if (keyVerificationState.step === 1) {
+            // Step 1: Wait 5 seconds
+            area.innerHTML = `<p class="text-lg font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Please wait 5 seconds...</p><div id="keyTimerDisplay" class="text-4xl font-mono font-black text-purple-400">5s</div>`;
+            startKeyTimer(5, () => {
+                keyVerificationState.step = 2;
+                runKeyStep(keyIndex);
+            });
+        } else if (keyVerificationState.step === 2) {
+            // Step 2: Captcha
+            const captchaAnswer = Math.floor(Math.random() * 20) + 1;
+            keyVerificationState.captchaAnswer = captchaAnswer;
+            area.innerHTML = `<p class="text-lg font-bold mb-3">🔐 Solve Captcha</p><p class="mb-2">What is <span class="font-mono text-2xl font-bold">${captchaAnswer} = ?</span></p><input type="number" id="keyCaptchaInput" class="input-elite text-center text-lg" placeholder="Answer"><button id="keyCaptchaBtn" class="btn-premium mt-3 w-full">VERIFY</button><p id="keyCaptchaError" class="text-red-400 text-sm mt-2 hidden">Incorrect answer.</p>`;
+            document.getElementById('keyCaptchaBtn').addEventListener('click', () => {
+                if (parseInt(document.getElementById('keyCaptchaInput').value) === captchaAnswer) {
+                    // Correct: reveal key
+                    document.getElementById('keyDisplay').textContent = STATIC_KEYS[keyIndex];
+                    document.getElementById('keyResult').classList.remove('hidden');
+                    area.innerHTML = '<p class="text-green-400 font-bold">✅ Verification passed! Your key is below.</p>';
+                } else {
+                    document.getElementById('keyCaptchaError').classList.remove('hidden');
+                    document.getElementById('keyCaptchaInput').value = '';
+                }
+            });
+        }
+    }
+
+    function startKeyTimer(sec, cb) {
+        if (keyVerificationState.timerInterval) clearInterval(keyVerificationState.timerInterval);
+        let left = sec;
+        const d = document.getElementById('keyTimerDisplay');
+        if (d) d.textContent = left + 's';
+        keyVerificationState.timerInterval = setInterval(() => {
+            left--;
+            if (d) d.textContent = left + 's';
+            if (left <= 0) {
+                clearInterval(keyVerificationState.timerInterval);
+                keyVerificationState.timerInterval = null;
+                if (cb) cb();
+            }
+        }, 1000);
+    }
+
+    window.copyKey = () => {
+        const key = document.getElementById('keyDisplay').textContent;
+        if (key) {
+            navigator.clipboard.writeText(key).then(() => showToast('🔑 Key copied!'));
+        }
     };
 
     // ========== PATH ROUTING ==========
     async function handleRouting() {
         const path = location.pathname;
+        // key pages: /<slug>/key<num>
         const keyMatch = path.match(/^\/([a-z0-9-]+)\/key(\d+)\/?$/);
-        if (keyMatch) { openKeySystem(keyMatch[1], parseInt(keyMatch[2])); return; }
-        const scriptMatch = path.match(/^\/([a-z0-9-]+)\/script\/([a-zA-Z0-9]+)\/?$/);
-        if (scriptMatch) {
-            try { const doc = await scriptsColl.doc(scriptMatch[2]).get(); if (doc.exists) { const s = doc.data(); if (s.pastefy) startFlow(scriptMatch[2], s.pastefy, scriptMatch[1]); else showToast('No Pastefy link'); } else showToast('Script not found'); } catch (e) { showToast('Error'); }
+        if (keyMatch) {
+            openKeySystem(keyMatch[1], parseInt(keyMatch[2]));
             return;
         }
-        if (path === '/aizen/scripts/' || path === '/aizen/scripts') { window.openArchive(); return; }
+        // script pages: /<slug>/script/<id>
+        const scriptMatch = path.match(/^\/([a-z0-9-]+)\/script\/([a-zA-Z0-9]+)\/?$/);
+        if (scriptMatch) {
+            try {
+                const doc = await scriptsColl.doc(scriptMatch[2]).get();
+                if (doc.exists) {
+                    const s = doc.data();
+                    if (s.pastefy) startFlow(scriptMatch[2], s.pastefy, scriptMatch[1]);
+                    else showToast('No Pastefy link');
+                } else showToast('Script not found');
+            } catch (e) { showToast('Error loading script'); }
+            return;
+        }
+        // archive page
+        if (path === '/aizen/scripts/' || path === '/aizen/scripts') {
+            window.openArchive();
+            return;
+        }
+        // default home
         window.goHome();
     }
-    window.addEventListener('load', async () => { await loadScripts(); handleRouting(); startCountdown(); pushAllAds(); });
-    window.addEventListener('popstate', () => { if (adGate && !adGate.classList.contains('hidden')) { adGate.classList.add('hidden'); document.body.style.overflow = ''; clearTimer(); } handleRouting(); });
-    window.addEventListener('click', e => { if (e.target === finalModal) { finalModal.classList.add('hidden'); location.reload(); } });
+
+    window.addEventListener('load', async () => {
+        await loadScripts();
+        handleRouting();
+        startCountdown();
+        pushAllAds();
+    });
+    window.addEventListener('popstate', () => {
+        if (adGate && !adGate.classList.contains('hidden')) {
+            adGate.classList.add('hidden');
+            document.body.style.overflow = '';
+            clearTimer();
+        }
+        handleRouting();
+    });
+    window.addEventListener('click', e => {
+        if (e.target === finalModal) {
+            finalModal.classList.add('hidden');
+            location.reload();
+        }
+    });
 })();
 </script>
 </body>
