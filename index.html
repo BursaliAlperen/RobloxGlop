@@ -54,7 +54,7 @@
     <div class="banner-slot" style="min-height:250px;"><script>(function(){var o={key:'a2ca6e2544abe06bd1e7e854140fe5fe',format:'iframe',height:250,width:300,params:{}};var s=document.createElement('script');s.src='https://www.highperformanceformat.com/a2ca6e2544abe06bd1e7e854140fe5fe/invoke.js';document.currentScript.parentNode.appendChild(s);})();</script></div>
 </main>
 
-<!-- ARŞİV SAYFASI (sadece script listesi) -->
+<!-- ARŞİV SAYFASI -->
 <div id="archivePage" class="max-w-7xl mx-auto px-4 md:px-8 py-16">
     <h2 class="text-4xl font-black mb-4 text-center"><i class="fas fa-archive text-fuchsia-500"></i> ALL SCRIPTS (A-Z)</h2>
     <div class="max-w-xl mx-auto mb-8"><input id="archiveSearch" type="text" placeholder="🔍 Search by name or description..." class="input-elite text-center" oninput="filterArchiveScripts()"></div>
@@ -74,10 +74,10 @@
     <div class="max-w-4xl mx-auto py-12 px-4 md:px-8"><div id="contentArea" class="space-y-10"></div><div class="h-[15vh]"></div></div>
 </div>
 
-<!-- KEY GATE (key almak için 5 adım doğrulama, script mantığıyla aynı) -->
+<!-- KEY GATE (2 adım doğrulama) -->
 <div id="keyGate" class="hidden fixed inset-0 z-[250] bg-[#0b0f19] overflow-y-auto">
     <header class="sticky top-0 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800 px-4 md:px-8 py-4 z-[260] flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center gap-3"><span class="bg-purple-600 text-white text-xs font-black px-4 py-2 rounded-xl"><i class="fas fa-key mr-1"></i>KEY STEP <span id="keyCurStep">1</span>/5</span><h3 id="keyGateTitle" class="font-bold text-sm text-slate-300"><i class="fas fa-lock mr-1"></i>AAA KEY LAYER</h3></div>
+        <div class="flex items-center gap-3"><span class="bg-purple-600 text-white text-xs font-black px-4 py-2 rounded-xl"><i class="fas fa-key mr-1"></i>KEY STEP <span id="keyCurStep">1</span>/2</span><h3 id="keyGateTitle" class="font-bold text-sm text-slate-300"><i class="fas fa-lock mr-1"></i>AAA KEY LAYER</h3></div>
         <button id="keyNextBtn" disabled class="btn-premium px-8 py-3 text-sm"><i class="fas fa-arrow-right"></i> CONTINUE</button>
     </header>
     <div class="progress-indicator" style="z-index:10001;"><div id="keyPBar" class="progress-fill"></div></div>
@@ -118,7 +118,7 @@
     window.toggleTheme = () => setTheme(!html.classList.contains('dark'));
     setTheme((localStorage.getItem('theme') || 'dark') === 'dark');
 
-    // ========== STATIC KEY LIST ==========
+    // ========== CONSTANTS ==========
     const STATIC_KEYS = [
         "KEY1-X7K2MP","KEY2-Q9L3NR","KEY3-W5T8VS","KEY4-R1Y6UB","KEY5-A8C4DW",
         "KEY6-M3F9EJ","KEY7-P2H6KT","KEY8-Z4J7LM","KEY9-N5V1QR","KEY10-B8X3SW",
@@ -245,8 +245,8 @@
     function clearTimer(){if(state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null}}
     nextBtn.addEventListener('click',()=>{if(nextBtn.disabled)return;if(state.step<5){state.step++;loadStep()}else{adGate.classList.add('hidden');document.body.style.overflow='';const pastefyID=extractPastefyID(state.pastefyUrl);pastefyBtn.href=state.pastefyUrl;pastefyEmbed.innerHTML=pastefyID?`<iframe src="https://pastefy.app/${pastefyID}/embed" allowfullscreen></iframe>`:'';copyPastefyBtn.onclick=()=>{navigator.clipboard.writeText(state.pastefyUrl);showToast('📋 Pastefy link copied!')};finalModal.classList.remove('hidden');clearTimer()}});
 
-    // ========== 5-STEP KEY VERIFICATION (same UI as script) ==========
-    const keyState = { step: 1, subStep: 0, subStepCompleted: [], timerInterval: null, timerSeconds: 0, captchaAnswer: null, captchaSolved: false, currentKeyIndex: 0 };
+    // ========== 2-STEP KEY VERIFICATION (bekle + captcha) ==========
+    const keyState = { step: 1, timerInterval: null, timerSeconds: 0, captchaAnswer: null, currentKeyIndex: 0 };
     const keyGate = document.getElementById('keyGate'), keyContentArea = document.getElementById('keyContentArea'), keyNextBtn = document.getElementById('keyNextBtn'), keyPBar = document.getElementById('keyPBar'), keyCurStepSpan = document.getElementById('keyCurStep'), keyGateTitle = document.getElementById('keyGateTitle');
 
     function openKeySystem(slug, keyNum) {
@@ -259,47 +259,92 @@
             keyContentArea.innerHTML = '<p class="text-red-400 text-center mt-20"><i class="fas fa-exclamation-circle mr-1"></i>Invalid key number. Must be between 1 and 50.</p>';
             return;
         }
-        keyState.step = 1; keyState.subStep = 0; keyState.subStepCompleted = []; keyState.captchaSolved = false; keyState.currentKeyIndex = keyIndex;
+        keyState.step = 1; keyState.currentKeyIndex = keyIndex;
         clearKeyTimer();
         loadKeyStep();
     }
 
-    const keyTitles = ["Key Encryption","Key Behavioral Matrix","Key Neural Lace","Key Temporal Firewall","Key Dimensional Rift"];
     function loadKeyStep() {
-        keyState.subStep=0; keyState.subStepCompleted=[]; keyState.captchaSolved=false; clearKeyTimer(); keyNextBtn.disabled=true;
-        keyCurStepSpan.textContent=keyState.step; keyPBar.style.width=`${(keyState.step/5)*100}%`; keyGateTitle.textContent=keyTitles[(keyState.step-1)%5].toUpperCase();
-        const a=Math.floor(Math.random()*20)+1, b=Math.floor(Math.random()*20)+1; keyState.captchaAnswer=a+b;
-        keyContentArea.innerHTML=`<div class="animate-fade-in space-y-10"><div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8"><h2 class="text-3xl font-black mb-4 bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent font-manrope"><i class="fas fa-key mr-2"></i>${keyTitles[(keyState.step-1)%5]}</h2><p class="text-slate-300 text-lg"><i class="fas fa-check-circle mr-1"></i>Complete all sub-verifications to get your key.</p></div><div class="substep-list" id="keySubstepContainer">${keySub(1,'Wait 5 seconds','fa-clock')}${keySub(2,'Scroll to bottom','fa-arrow-down')}${keySub(3,'Wait 15 seconds','fa-hourglass-half')}${keySub(4,'Confirm ad view','fa-mouse-pointer')}${keySub(5,'Wait 5 seconds','fa-clock')}${keySub(6,'Solve Captcha','fa-shield-alt')}</div><div id="keyActionArea" class="mt-6"></div><div class="ad-container"><span class="ad-label"><i class="fas fa-ad"></i> AD</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto"></ins></div></div>`;
-        keyGate.scrollTop=0; setTimeout(pushAds,300); advanceKeySubStep(1);
-    }
-    function keySub(i,t,ic){return `<div id="keysubstep-${i}" class="substep-item"><i class="fas ${ic}"></i><span>${t}</span></div>`}
-    function updateKeySub(i,s){const el=document.getElementById(`keysubstep-${i}`);if(el){el.classList.remove('completed','active');el.classList.add(s)}}
-    function advanceKeySubStep(i){if(i>1){keyState.subStepCompleted[i-1]=true;updateKeySub(i-1,'completed')}keyState.subStep=i;updateKeySub(i,'active');executeKeySubStep(i)}
-    function executeKeySubStep(i){
-        const a=document.getElementById('keyActionArea');if(!a)return;
-        switch(i){
-            case 1:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Wait 5 seconds</p><div id="keyTimerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div></div>`;startKeyTimer(5,()=>{a.innerHTML='';advanceKeySubStep(2)});break;
-            case 2:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-arrow-down text-fuchsia-400 icon-glow"></i> Scroll to the very bottom</p><div class="scroll-prompt">⬇️</div></div>`;const h=()=>{if(keyGate.scrollTop+keyGate.clientHeight>=keyGate.scrollHeight-60){keyGate.removeEventListener('scroll',h);a.innerHTML='<p class="text-green-400 font-bold text-center text-xl"><i class="fas fa-check-circle mr-1"></i>Scroll detected!</p>';setTimeout(()=>{a.innerHTML='';advanceKeySubStep(3)},800)}};keyGate.addEventListener('scroll',h,{passive:true});break;
-            case 3:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="fas fa-hourglass-half text-pink-400 icon-glow"></i> Wait 15 seconds</p><div id="keyTimerDisplay" class="text-5xl font-mono font-black text-pink-400">15s</div></div>`;startKeyTimer(15,()=>{a.innerHTML='';advanceKeySubStep(4)});break;
-            case 4:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-4"><i class="fas fa-mouse-pointer text-indigo-400 icon-glow"></i> Confirm you viewed the ad</p><button id="keyConfirmAdBtn" class="btn-premium py-4 px-10 text-lg"><i class="fas fa-check mr-2"></i>I VIEWED IT</button></div>`;document.getElementById('keyConfirmAdBtn').addEventListener('click',()=>{a.innerHTML='<p class="text-green-400 font-bold text-center text-xl"><i class="fas fa-check-circle mr-1"></i>Confirmed.</p>';setTimeout(()=>{a.innerHTML='';advanceKeySubStep(5)},600)});break;
-            case 5:a.innerHTML=`<div class="text-center"><p class="text-xl font-bold mb-3"><i class="far fa-clock text-purple-400 icon-glow"></i> Finalizing... 5s</p><div id="keyTimerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div></div>`;startKeyTimer(5,()=>{a.innerHTML='';advanceKeySubStep(6)});break;
-            case 6:a.innerHTML=`<div class="captcha-box text-center"><i class="fas fa-shield-alt text-5xl text-purple-400 icon-glow mb-4"></i><h3 class="text-2xl font-black mb-3 font-manrope"><i class="fas fa-lock mr-2"></i>AAA CAPTCHA</h3><p class="text-slate-300 mb-4"><i class="fas fa-question-circle mr-1"></i>Solve: <span class="font-mono text-3xl font-bold text-white">${keyState.captchaAnswer} = ?</span></p><div class="flex gap-3 justify-center"><input type="number" id="keyCaptchaInput" class="input-elite w-28 text-center text-xl" placeholder="?"><button id="keyCaptchaSubmit" class="btn-premium py-2 px-6"><i class="fas fa-check mr-1"></i>VERIFY</button></div><p id="keyCaptchaError" class="text-red-400 text-sm mt-3 hidden"><i class="fas fa-times-circle mr-1"></i>Incorrect.</p></div>`;
-            document.getElementById('keyCaptchaSubmit').addEventListener('click',()=>{if(parseInt(document.getElementById('keyCaptchaInput').value)===keyState.captchaAnswer){keyState.captchaSolved=true;keyState.subStepCompleted[6]=true;updateKeySub(6,'completed');a.innerHTML='<p class="text-green-400 font-bold text-center text-2xl"><i class="fas fa-check-circle mr-2"></i>All verifications passed!</p>';keyNextBtn.disabled=false;showToast('🎉 Key step complete!')}else{document.getElementById('keyCaptchaError').classList.remove('hidden');document.getElementById('keyCaptchaInput').value=''}});break;
-        }
-    }
-    function startKeyTimer(s,cb){clearKeyTimer();keyState.timerSeconds=s;const d=document.getElementById('keyTimerDisplay');if(d)d.textContent=`${s}s`;keyState.timerInterval=setInterval(()=>{keyState.timerSeconds--;if(d)d.textContent=`${keyState.timerSeconds}s`;if(keyState.timerSeconds<=0){clearKeyTimer();if(cb)cb()}},1000)}
-    function clearKeyTimer(){if(keyState.timerInterval){clearInterval(keyState.timerInterval);keyState.timerInterval=null}}
-    function clearAllTimers(){clearTimer();clearKeyTimer()}
+        clearKeyTimer(); keyNextBtn.disabled = true;
+        keyCurStepSpan.textContent = keyState.step;
+        keyPBar.style.width = `${(keyState.step / 2) * 100}%`;
+        keyGateTitle.textContent = keyState.step === 1 ? 'WAIT & VERIFY' : 'SOLVE CAPTCHA';
 
-    keyNextBtn.addEventListener('click',()=>{
-        if(keyNextBtn.disabled)return;
-        if(keyState.step<5){keyState.step++;loadKeyStep()}else{
-            const fullKey = STATIC_KEYS[keyState.currentKeyIndex];
-            const shortKey = fullKey.split('-').pop();
-            keyContentArea.innerHTML = `<div class="text-center mt-10"><div class="bg-black border border-purple-500 rounded-xl p-4 font-mono text-2xl font-bold text-white mb-4">${shortKey}</div><button class="btn-premium" onclick="copyKey('${shortKey}')"><i class="fas fa-copy"></i> COPY KEY</button></div>`;
-            keyNextBtn.style.display = 'none';
+        if (keyState.step === 1) {
+            // Adım 1: 5 saniye bekle
+            keyContentArea.innerHTML = `<div class="animate-fade-in space-y-10">
+                <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 text-center">
+                    <h2 class="text-3xl font-black mb-4 bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent font-manrope"><i class="fas fa-clock mr-2"></i>Please Wait</h2>
+                    <p class="text-slate-300 text-lg mb-4">Verifying your request...</p>
+                    <div id="keyTimerDisplay" class="text-5xl font-mono font-black text-purple-400">5s</div>
+                </div>
+                <div class="ad-container"><span class="ad-label"><i class="fas fa-ad"></i> AD</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto"></ins></div>
+            </div>`;
+            startKeyTimer(5, () => {
+                keyState.step = 2;
+                loadKeyStep();
+            });
+        } else if (keyState.step === 2) {
+            // Adım 2: Captcha
+            const captchaAnswer = Math.floor(Math.random() * 20) + 1;
+            keyState.captchaAnswer = captchaAnswer;
+            keyContentArea.innerHTML = `<div class="animate-fade-in space-y-10">
+                <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 text-center">
+                    <h2 class="text-3xl font-black mb-4 bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent font-manrope"><i class="fas fa-shield-alt mr-2"></i>Security Captcha</h2>
+                    <p class="text-slate-300 text-lg mb-4">Prove you are human.</p>
+                    <div class="captcha-box inline-block">
+                        <p class="text-slate-300 mb-4"><i class="fas fa-question-circle mr-1"></i>Solve: <span class="font-mono text-3xl font-bold text-white">${captchaAnswer} = ?</span></p>
+                        <div class="flex gap-3 justify-center"><input type="number" id="keyCaptchaInput" class="input-elite w-28 text-center text-xl" placeholder="?"><button id="keyCaptchaBtn" class="btn-premium py-2 px-6"><i class="fas fa-check mr-1"></i>VERIFY</button></div>
+                        <p id="keyCaptchaError" class="text-red-400 text-sm mt-3 hidden"><i class="fas fa-times-circle mr-1"></i>Incorrect answer.</p>
+                    </div>
+                </div>
+                <div class="ad-container"><span class="ad-label"><i class="fas fa-ad"></i> AD</span><ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-7036109597530319" data-ad-slot="6017950337" data-ad-format="auto"></ins></div>
+            </div>`;
+            setTimeout(pushAds, 300);
+            document.getElementById('keyCaptchaBtn').addEventListener('click', () => {
+                if (parseInt(document.getElementById('keyCaptchaInput').value) === captchaAnswer) {
+                    const fullKey = STATIC_KEYS[keyState.currentKeyIndex];
+                    const shortKey = fullKey.split('-').pop();
+                    keyContentArea.innerHTML = `<div class="text-center mt-10 animate-fade-in">
+                        <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-8">
+                            <i class="fas fa-check-circle text-green-400 text-5xl mb-4"></i>
+                            <h3 class="text-xl font-bold mb-4">Your Key</h3>
+                            <div class="bg-black border border-purple-500 rounded-xl p-4 font-mono text-2xl font-bold text-white mb-4">${shortKey}</div>
+                            <button class="btn-premium" onclick="copyKey('${shortKey}')"><i class="fas fa-copy"></i> COPY KEY</button>
+                        </div>
+                    </div>`;
+                    keyNextBtn.style.display = 'none';
+                } else {
+                    document.getElementById('keyCaptchaError').classList.remove('hidden');
+                    document.getElementById('keyCaptchaInput').value = '';
+                }
+            });
         }
-    });
+    }
+
+    function startKeyTimer(sec, cb) {
+        clearKeyTimer();
+        keyState.timerSeconds = sec;
+        const d = document.getElementById('keyTimerDisplay');
+        if (d) d.textContent = `${sec}s`;
+        keyState.timerInterval = setInterval(() => {
+            keyState.timerSeconds--;
+            if (d) d.textContent = `${keyState.timerSeconds}s`;
+            if (keyState.timerSeconds <= 0) {
+                clearKeyTimer();
+                if (cb) cb();
+            }
+        }, 1000);
+    }
+
+    function clearKeyTimer() {
+        if (keyState.timerInterval) {
+            clearInterval(keyState.timerInterval);
+            keyState.timerInterval = null;
+        }
+    }
+
+    function clearAllTimers() { clearTimer(); clearKeyTimer(); }
 
     window.copyKey = (key) => {
         if (!key) key = document.getElementById('keyDisplay')?.textContent;
